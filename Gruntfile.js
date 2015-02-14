@@ -106,5 +106,4 @@ module.exports = function(grunt) {
   grunt.registerTask('imgmin', ['imagemin']);
   //bower
   grunt.loadNpmTasks('grunt-bower-task');
-  grunt.registerTask('default', ['bower:install']);
 };
