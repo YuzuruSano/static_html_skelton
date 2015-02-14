@@ -1,8 +1,8 @@
-静的htmlコーディング用のセットです。
+静的htmlコーディング用のセットです。  
 要grunt,bower,sassです。
 
-下記のライブラリ群が一括でインストールできます。
-（依存関係のあるcssやfontファイルや画像も）
+下記のライブラリ群が一括でインストールできます。  
+（依存関係のあるcssやfontファイルや画像も）  
 
 font-awesome
 underscore
@@ -11,7 +11,7 @@ jQuery.mmenu
 fixheight
 bxslider
 
-【コマンドラインからインストール】
+【コマンドラインからインストール】  
 cloneしたフォルダにcdして
 
 npm install
