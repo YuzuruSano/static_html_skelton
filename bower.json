@@ -1,0 +1,47 @@
+{
+  "name": "y",
+  "version": "0.0.0",
+  "authors": [
+    "Yuzuru Sano"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jQuery.mmenu": "~4.7.5",
+    "font-awesome": "~4.3.0",
+    "jquery": "1",
+    "underscore": "~1.7.0",
+    "bxslider": "*",
+    "fixheight": "https://sizennmod@bitbucket.org/sizennmod/fixheight.git"
+  },
+  "exportsOverride": {
+    "font-awesome": {
+      "css": "css/*.css",
+      "fonts": "fonts/*"
+    },
+    "underscore": {
+      "js": "underscore-min.js"
+    },
+    "jquery": {
+      "js": "**/jquery.min.js"
+    },
+    "jQuery.mmenu": {
+      "js": "**/jquery.mmenu.min.all.js",
+      "css": "**/jquery.mmenu.all.css"
+    },
+    "fixheight": {
+      "js": "fixheight.js"
+    },
+    "bxslider": {
+      "js": "jquery.bxSlider.min.js",
+      "css": "**/bx_styles/*"
+    }
+
+  }
+}

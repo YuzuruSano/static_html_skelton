@@ -1,0 +1,13 @@
+@charset "UTF-8";
+@import "compass";
+@import "mixin_tablet";
+@import "mixin_sp";
+/* pc 〜800
+------------------------------------------------------------*/
+@media only screen and (max-width: 960px) {
+	@include tablet;
+}
+
+@media only screen and (max-width: 640px) {
+	@include sp;
+}

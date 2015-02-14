@@ -1,0 +1,61 @@
+@import "compass";
+
+@mixin gnavi_list($li_width,$li_height,$li_length) {
+    li { width:$li_width;
+    height:$li_height}
+    @for $i from 1 through $li_length {
+      li.navi-#{$i} {
+        background: url(#{$base_dir}navi#{$i}_back.jpg) left top;
+      }&:hover { background-position: left bottom;}
+    }
+}
+
+
+
+@mixin abs_position ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+     position: absolute;
+     @if $top != 'auto' {
+         top: $top;
+     };
+     @if $right != 'auto' {
+         right: $right;
+     };
+     @if $bottom != 'auto' {
+         bottom: $bottom;
+     };
+     @if $left != 'auto' {
+         left: $left;
+     };
+}
+
+@mixin font-family($type, $important: false) {
+    @if $important == 'important' or $important == true {
+        $important: ' !important';
+    } @else {
+        $important: '';
+    }
+    @if $type == sans-serif {
+        font-family: sans-serif#{$important};
+        @if $support-ie6 {
+            _font-family: 'MS PGothic', sans-serif#{$important};
+        }
+    } @else if $type == serif {
+        font-family: serif#{$important};
+        @if $support-ie6 {
+            _font-family: 'MS Gothic', serif#{$important};
+        }
+    } @else if $type == meiryo {
+        font-family: Meiryo, 'MS PGothic', sans-serif#{$important};
+    } @else if $type == monospace {
+        font-family: monospace#{$important};
+        @if $support-ie6 {
+            _font-family: 'MS Gothic', monospace#{$important};
+        }
+    } @else if $type == hiragino {
+        font-family: 'Hiragino Kaku Gothic Pro', Meiryo, 'MS PGothic', sans-serif#{$important};
+    } @else if $type == verdana {
+        font-family: Verdana, Arial, Helvetica, sans-serif#{$important};
+    } @else if $type == tahoma {
+        font-family: Tahoma, Arial, Helvetica, sans-serif#{$important};
+    }
+}

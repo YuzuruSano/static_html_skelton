@@ -1,0 +1,78 @@
+	$max-width: 1032px;
+	@mixin reset {
+
+	/* reset*/
+	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend {
+	background: none repeat scroll 0 0;
+	border: 0 none;
+	font-size: $base_font_size;
+	margin: 0;
+	outline: 0 none;
+	padding: 0;
+	vertical-align: baseline;
+	}
+	body {
+	background-color: #fff;
+	color:$font_color;
+	// font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"ＭＳ Ｐゴシック",sans-serif;
+	font-family : Arial,'ＭＳ Ｐゴシック',sans-serif ;
+	@if $-webkit-text-size-adjust == false {-webkit-text-size-adjust: none;}
+	}
+
+	h1,h2,h3,h4,h5,h6,p { color:$font_color;}
+
+	h1,h2,h3,h4,h5,h6{
+	line-height: 1.5em;
+	@if $support-ie7 or $support-ie6 {
+	line-height: normal;
+	}
+	}
+
+	table, caption, tbody, tfoot, thead {
+	margin: 0;
+	outline: 0 none;
+	padding: 0;
+	}
+
+	th, td {
+	vertical-align: top;
+	background: none repeat scroll 0 0;
+	font-size: $base_font_size;
+	margin: 0;
+	outline: 0 none;
+	padding: 0;
+	}
+
+	p,span,div{ line-height:inherit;
+	font-size:inherit;
+	color:$font_color;
+	}
+
+	a { color:$link_color;
+	font-size:inherit;
+	text-decoration: underline;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	}
+
+	a:hover {
+	text-decoration: none;
+	color:$link_hover_color;
+	}
+
+	ol, ul {list-style: none outside none;}
+
+	fieldset, img {vertical-align: bottom;}
+
+	blockquote, q {quotes: none;}
+
+	blockquote:before, blockquote:after, q:before, q:after {content: none;}
+	ins {text-decoration: none;}
+	del {text-decoration: line-through;}
+	table {border-collapse: collapse;border-spacing: 0;}
+	br {letter-spacing: 0;}
+	hr {border: 0 none;height: 0;visibility: hidden;}
+	select, input, textarea {font-size: 99%;}
+	pre, code {font: 100% monospace;}
+
+}
+
