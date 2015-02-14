@@ -4,12 +4,12 @@
 下記のライブラリ群が一括でインストールできます。  
 （依存関係のあるcssやfontファイルや画像も）  
 
-font-awesome
-underscore
-jquery
-jQuery.mmenu
-fixheight
-bxslider
+font-awesome  
+underscore  
+jquery  
+jQuery.mmenu  
+fixheight  
+bxslider  
 
 【コマンドラインからインストール】  
 cloneしたフォルダにcdして
