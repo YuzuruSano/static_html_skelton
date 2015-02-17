@@ -18,7 +18,7 @@
     "jquery": "1",
     "underscore": "~1.7.0",
     "bxslider": "*",
-    "fixheight": "https://sizennmod@bitbucket.org/sizennmod/fixheight.git"
+    "fixheight": "https://sizennmod@bitbucket.org/suitoshainc/fixheight.git"
   },
   "exportsOverride": {
     "font-awesome": {
