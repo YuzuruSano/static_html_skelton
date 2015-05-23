@@ -1,3 +1,4 @@
+@charset "UTF-8";
 // # Support
 $support-ie6: false;
 $support-ie7: true;
@@ -38,9 +39,6 @@ $font_color:#555555;
 $link_color:#006f46;
 $link_hover_color:#006f46;
 
-//基本width
-//$base_width:768px;
-
 //.clearfixはextendで。
 //.fineindent（テキストの1文字ぶら下がり）はextendで。
 //.text-indent-none（テキストのインデントを飛ばして非表示）はextendで。
@@ -50,7 +48,7 @@ $link_hover_color:#006f46;
 // $sprites: sprite-map("icons/*.png");
 // $sprites-img:sprite-url($sprites);
 
-//ratina用css sprite
+//ratina用css sprite　最終行のbackground-sizeにsprite用イメージの半分のwidthを指定する。必ず偶数であること
 // @mixin sprite-background_retina($name) {
 //      background-image: $sprites-img;
 //      background-repeat: no-repeat;

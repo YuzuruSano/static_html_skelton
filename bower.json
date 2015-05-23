@@ -13,11 +13,13 @@
     "tests"
   ],
   "dependencies": {
-    "jQuery.mmenu": "~4.7.5",
-    "font-awesome": "~4.3.0",
+    "jQuery.mmenu": null,
+    "font-awesome": null,
     "jquery": "1",
-    "underscore": "~1.7.0",
-    "bxslider": "*",
+    "lodash": null,
+    "bxslider-4": null,
+    "jquery.inview": null,
+    "imagesloaded":null,
     "fixheight": "https://sizennmod@bitbucket.org/suitoshainc/fixheight.git"
   },
   "exportsOverride": {
@@ -25,8 +27,8 @@
       "css": "css/*.css",
       "fonts": "fonts/*"
     },
-    "underscore": {
-      "js": "underscore-min.js"
+    "lodash": {
+      "js": "lodash.min.js"
     },
     "jquery": {
       "js": "**/jquery.min.js"
@@ -38,9 +40,19 @@
     "fixheight": {
       "js": "fixheight.js"
     },
-    "bxslider": {
-      "js": "jquery.bxSlider.min.js",
-      "css": "**/bx_styles/*"
+    "bxslider-4": {
+      "js": "**/jquery.bxSlider.min.js",
+      "css": [
+        "**/jquery.bxslider.css",
+        "dist/images/bx_loader.gif",
+        "dist/images/controls.png"
+        ]
+    },
+    "imagesloaded":{
+      "js":"imagesloaded.pkgd.min.js"
+    },
+    "jquery.inview":{
+      "js":"jquery.inview.min.js"
     }
 
   }
