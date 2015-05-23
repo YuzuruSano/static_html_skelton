@@ -9,7 +9,9 @@ underscore
 jquery  
 jQuery.mmenu  
 fixheight  
-bxslider  
+bxslider
+imagesloaded
+inview
 
 【コマンドラインからインストール】  
 cloneしたフォルダにcdして
