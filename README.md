@@ -26,9 +26,9 @@ bower.json内のfixheightのURL指定箇所は自身のアカウントが先頭�
 
 ## ところでlodashってなんやねん？
 
-下記、underscore.jsの改良版でjavascriptの配列操作を強化し、且つ簡単に扱えるようにしてくれます。
-身も蓋もない言い方をすると、phpライクな強力な配列操作機能というか・・・
-一度なれるともう、地獄の便利さです。
+下記、underscore.jsの改良版でjavascriptの配列操作を強化し、且つ簡単に扱えるようにしてくれます。  
+身も蓋もない言い方をすると、phpライクな強力な配列操作機能というか・・・  
+一度なれるともう、地獄の便利さです。  
 
 ### undescorejsの概要
 [http://www.tam-tam.co.jp/tipsnote/javascript/post3868.html](http://www.tam-tam.co.jp/tipsnote/javascript/post3868.html)
