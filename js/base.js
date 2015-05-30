@@ -1,7 +1,22 @@
 /* ===============================================
 不要なコメント、未使用の機能は納品時に削除すること
 =============================================== */
-
+/* ===============================================
+viewportの動的切替
+=============================================== */
+// (function($) {
+// //viewport切り替え
+// $(function(){
+// 	$(window).on('load resize', function(){
+// 		var w = $(window).width();
+// 		if( w > 640 ){//ブレークポイント任意で
+// 			$("#viewport").attr("content","width=1024");//width指定任意で
+// 		}else{
+// 			$("#viewport").attr("content","width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=5.0,user-scalable=1");
+// 		}
+// 	});
+// });
+// })(jQuery);
 /* ===============================================
 smooth scroll
 =============================================== */
@@ -141,38 +156,35 @@ Lodashのサンプルコード
 詳しい使い方は下記
 http://qiita.com/takeharu/items/7d4ead780710c627172e
 =============================================== */
-(function($) {
-$(function(){
-	var data = 'json';//jsonや配列を代入する
+// (function($) {
+// $(function(){
+// 	var data = 'json';//jsonや配列を代入する
 
-	//each（foreach）
-	_.each(data, function(item) {
-		console.log(item);//処理
-	});
-	//filter
-	filterd_data = _.filter(data, function(item){
-		return _.contains(item.category, '検索対象としたいカテゴリー');
-	});
-	//filterしたデータをテンプレートで出力
-	//テンプレート
-	var compiled = _.template(
-		 '<% _.each(items, function(item,index) { %>'
-			+'<li class="link_wrap">'
-				+'<img src="<%= item.src_s %>" alt="">'
-				+'<div class="meta">'
-					+'<div class="tag_wrap clearfix">'
-						+'<%= item.tag_html %>'
-					+'</div>'
-					+'<a href="<%= item.href %>"<%= item.target %>><%= item.new %><%= item.title %></a>'
-				+'</div>'
-			+'</li>'
-		+ '<% }); %>'
-	);
+// 	//each（foreach）
+// 	_.each(data, function(item) {
+// 		console.log(item);//処理
+// 	});
+// 	//filter
+// 	filterd_data = _.filter(data, function(item){
+// 		return _.contains(item.category, '検索対象としたいカテゴリー');
+// 	});
+// 	//filterしたデータをテンプレートで出力
+// 	//テンプレート
+// 	var compiled = _.template(
+// 		 '<% _.each(items, function(item,index) { %>'
+// 			+'<li class="link_wrap">'
+// 				+'<img src="<%= item.src_s %>" alt="">'
+// 				+'<div class="meta">'
+// 					+'<div class="tag_wrap clearfix">'
+// 						+'<%= item.tag_html %>'
+// 					+'</div>'
+// 					+'<a href="<%= item.href %>"<%= item.target %>><%= item.new %><%= item.title %></a>'
+// 				+'</div>'
+// 			+'</li>'
+// 		+ '<% }); %>'
+// 	);
 
-	// テンプレート適用
-	tab_wrap.html(compiled(filtered_obj));
-});
-})(jQuery);
-
-
-
+// 	// テンプレート適用
+// 	tab_wrap.html(compiled(filtered_obj));
+// });
+// })(jQuery);
