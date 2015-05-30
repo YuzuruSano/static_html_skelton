@@ -2,6 +2,20 @@
 @import "compass";
 @import "mixin_tablet";
 @import "mixin_sp";
+
+//pcレイアウトでは表示
+.pc {
+	display: block;
+}
+//レスポンシブレイアウトで非表示
+.sp {
+	display: none;
+}
+//スマートフォンレイアウトでblockに変更し、jsでの判定に使用する
+//mediaQueryの判定タイミングをjsでも利用するため
+#responsive_flg {
+	display: none;
+}
 /* pc 〜800
 ------------------------------------------------------------*/
 @media only screen and (max-width: 960px) {

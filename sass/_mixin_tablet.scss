@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @mixin text-indent-none{
 	text-indent: 100%;
      white-space: nowrap;
@@ -6,6 +7,17 @@
 }
 
 @mixin tablet {
+	.pc {
+		display: none;
+	}
+	.sp {
+		display: block;
+	}
+	#responsive_flg {
+		display: block;
+		position: absolute;
+		left:-9999px;
+	}
 	body {
 		-webkit-text-size-adjust: none;
 		//overflow-x: hidden;

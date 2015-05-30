@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import "compass";
 
 @mixin gnavi_list($li_width,$li_height,$li_length) {
@@ -9,8 +10,6 @@
       }&:hover { background-position: left bottom;}
     }
 }
-
-
 
 @mixin abs_position ($top: auto, $right: auto, $bottom: auto, $left: auto) {
      position: absolute;
