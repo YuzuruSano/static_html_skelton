@@ -1,0 +1,23 @@
+- var lang = 'ja'
+!= '<!-- [if IEMobile 7 ]>  '
+!= '<html lang="'+lang+'" class="no-js iem7">'
+!= '<![endif] -->'
+!= '\n'
+
+!= '<!-- [if lt IE 7]>'
+!= '<html lang="'+lang+'" class="no-js lt-ie9 lt-ie8 lt-ie7 ie6">'
+!= '<![endif] -->'
+!= '\n'
+
+!= '<!-- [if IE 7]>'
+!= '<html lang="'+lang+'" class="no-js lt-ie9 lt-ie8 ie7">'
+!= '<![endif] -->'
+!= '\n'
+
+!= '<!-- [if IE 8]>'
+!= '<html lang="'+lang+'" class="no-js lt-ie9 ie8">'
+!= '<![endif] -->'
+!= '\n'
+// [if (gte IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!
+!= '<html lang="'+lang+'" class="no-js">'
+// <![endif]
