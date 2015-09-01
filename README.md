@@ -45,6 +45,16 @@ node moduleのインストール時にjadeもインストールされます。
 jade_srcディレクトリ内の.jadeファイルが、distディレクトリにコンパイルされます。  
 livereloadに渡すパラメータが通常のhtmlと異なるので、Gruntfile内のjsonを確認の上切り替えて下さい。  
   
+livereload立ち上げ時に自動コンパイルされる他、grunt jade_con をしてもコンパイルされます。  
+  
 尚、livereloadはアップデートに伴い、組み込みサーバーのアクセス先が  
 http://localhost:8000  
 に変更になりました。
+
+### jadeお役立ちリンク
+
+http://blogged.e2esound.com/2013/07/25/21_tips_to_use_jade_for_markup_engineer/  
+  
+http://qiita.com/BYODKM/items/53eee7fcac7c0a80bce8  
+  
+http://blog.96color.com/article-know-the-basis-of-jade.html
