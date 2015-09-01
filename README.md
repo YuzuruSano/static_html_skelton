@@ -42,8 +42,7 @@ bower.json内のfixheightのURL指定箇所は自身のアカウントが先頭�
 # 2015/09/01 jadeに対応しました。
 
 node moduleのインストール時にjadeもインストールされます。  
-jade_srcディレクトリ内の.jadeファイルが、  
-distディレクトリにコンパイルされます。  
+jade_srcディレクトリ内の.jadeファイルが、distディレクトリにコンパイルされます。  
 livereloadに渡すパラメータが通常のhtmlと異なるので、Gruntfile内のjsonを確認の上切り替えて下さい。  
   
 尚、livereloadはアップデートに伴い、組み込みサーバーのアクセス先が  
