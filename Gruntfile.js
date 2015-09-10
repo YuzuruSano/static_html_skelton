@@ -10,14 +10,14 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 		copy: {
-		dist: {
-			files: [{
-				　src: ['**/*.css','**/*.js','**/images/**','**/Templates/**','*.html','**/*.html','**/*.php','**/*.cgi','**/*.scss','**/config.rb','!**/node_modules/**','!Gruntfile.js'],
-				　dest: "build/",
-							dot: false
-			}]
-		}
-	},
+			dist: {
+				files: [{
+					　src: ['**/*.css','**/*.js','**/images/**','**/Templates/**','*.html','**/*.html','**/*.php','**/*.cgi','**/*.scss','**/config.rb','!**/node_modules/**','!Gruntfile.js'],
+					　dest: "build/",
+								dot: false
+				}]
+			}
+		},
 		bower: {
 			install: {
 				options: {
@@ -38,26 +38,26 @@ module.exports = function(grunt) {
 			}
 		},
 		concat: {
-		　options: {
-			　// 結合したファイルの頭にコメント入れたいとき
-			　banner: "/* concat */\n"
+			　options: {
+				　// 結合したファイルの頭にコメント入れたいとき
+				　banner: "/* concat */\n"
+			　},
+			　dist: {
+				　// 出力元 結合対象のファイルを指定する
+				　src: [
+					　"build/js/base.js",
+					　"build/js/fixHeight.js"
+				　],
+				　// 出力先
+				　dest: "build/js/script.js"
+			　}
 		　},
-		　dist: {
-			　// 出力元 結合対象のファイルを指定する
-			　src: [
-				　"build/js/base.js",
-				　"build/js/fixHeight.js"
-			　],
-			　// 出力先
-			　dest: "build/js/script.js"
-		　}
-	　},
 		uglify: {//上記の結合スクリプトをminify
 			main: {
 				　src: "build/js/script.js",
 				　dest: "build/js/script.min.js"
 			}
-	　},
+		},
 		imagemin : {//png,jpgを最適化
 				dist : {
 						files : [
@@ -72,27 +72,34 @@ module.exports = function(grunt) {
 		},
 		clean: {
 				contact: ['build/contact'],
-	　},
+		},
 		connect: {
+			options: {
+				port: 1234,
+				livereload: 35729,
+				hostname: 'localhost'
+			},
 			livereload: {
 				options: {
-					livereload:8000
+					open: true,
+					base: [__dirname]
 				}
-			}
+			},
 		},
-		//htmlファイルを対象とした通常ライブリロード
-		// regarde: {
-		// 	fred: {
-		// 		files: ['**/*.html','**/*.css','js/*.js','**/images/**'],
-		// 		tasks: ['livereload']
-		// 	 }
-		// },
-		//jadeファイルを対象としたjadeコンパイル時のライブリロード
-		regarde: {
-			fred: {
-				files: ['**/*.css','js/*.js','**/images/**','**/*.jade'],
-				tasks: ['livereload','jade']
-			 }
+		// Watches files for changes and runs tasks based on the changed files
+		watch: {
+			livereload: {
+				options: {
+					livereload: '<%= connect.options.livereload %>'
+				},
+				files: [
+					'**/!(_)*.jade'
+				]
+			},
+			html:{
+				files: ['**/!(_)*.jade'],
+				tasks: ['jade'],
+			}
 		},
 		// jade
 		jade: {
@@ -118,7 +125,7 @@ module.exports = function(grunt) {
 		}
 	}
 	//デフォルトタスク
-	grunt.registerTask('default', ['livereload-start', 'connect', 'regarde']);
+	grunt.registerTask('default', ['connect:livereload','watch']);
 	//ビルド時のタスク
 	grunt.registerTask('build', ['copy']);
 	//ビルドファイルの画像を圧縮
