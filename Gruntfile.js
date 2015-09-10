@@ -92,9 +92,7 @@ module.exports = function(grunt) {
 				options: {
 					livereload: '<%= connect.options.livereload %>'
 				},
-				files: [
-					'**/!(_)*.jade'
-				]
+				files: ['**/!(_)*.jade', 'css/**/*.css']
 			},
 			html:{
 				files: ['**/!(_)*.jade'],
