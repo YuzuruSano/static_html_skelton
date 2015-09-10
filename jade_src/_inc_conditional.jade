@@ -1,4 +1,5 @@
-- var lang = 'ja'
+doctype html
+- var lang = 'ja-JP'
 != '<!-- [if IEMobile 7 ]>  '
 != '<html lang="'+lang+'" class="no-js iem7">'
 != '<![endif] -->'
@@ -19,5 +20,4 @@
 != '<![endif] -->'
 != '\n'
 // [if (gte IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!
-!= '<html lang="'+lang+'" class="no-js">'
-// <![endif]
+!= '<html lang="'+lang+'" class="no-js"><!--<![endif]-->'
