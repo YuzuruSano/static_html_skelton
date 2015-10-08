@@ -4,19 +4,19 @@
 /* ===============================================
 viewportの動的切替
 =============================================== */
-// (function($) {
-// //viewport切り替え
-// $(function(){
-// 	$(window).on('load resize', function(){
-// 		var w = $(window).width();
-// 		if( w > 640 ){//ブレークポイント任意で
-// 			$("#viewport").attr("content","width=1024");//width指定任意で
-// 		}else{
-// 			$("#viewport").attr("content","width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=5.0,user-scalable=1");
-// 		}
-// 	});
-// });
-// })(jQuery);
+//(function($) {
+////viewport切り替え
+//$(function(){
+//	$(window).on('load resize', function(){
+//		var w = $(window).width();
+//		if( w > 640 ){//ブレークポイント任意で
+//			$("#viewport").attr("content","width=1024");//width指定任意で
+//		}else{
+//			$("#viewport").attr("content","width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=5.0,user-scalable=1");
+//		}
+//	});
+//});
+//})(jQuery);
 /* ===============================================
 smooth scroll
 =============================================== */
@@ -55,19 +55,19 @@ body {
 	opacity:0;
 }
 =============================================== */
-// (function($) {
-// $(function(){
-// 	$('body').imagesLoaded(function(){
-// 		setTimeout(function(){
-// 			$('body').css({'visibility':'visible'}).animate({'opacity':100},300);
-// 			//inview.js
-// 			$('#wrap img').on('inview',function(event, isInView, visiblePartX, visiblePartY){
-// 				$(this).animate({'opacity':100},5000);
-// 			});
-// 		},800);
-// 	});
-// });
-// })(jQuery);
+//(function($) {
+//$(function(){
+//	$('body').imagesLoaded(function(){
+//		setTimeout(function(){
+//			$('body').css({'visibility':'visible'}).animate({'opacity':100},300);
+//			//inview.js
+//			$('#wrap img').on('inview',function(event, isInView, visiblePartX, visiblePartY){
+//				$(this).animate({'opacity':100},5000);
+//			});
+//		},800);
+//	});
+//});
+//})(jQuery);
 /* ===============================================
 簡易画像置換
 #responsive_flgでレスポンシブレイアウトか否かを判定し、画像を差し替える
@@ -75,47 +75,47 @@ body {
 imgのdata-spsrc属性に差し替える画像を指定
 imgのdata-spsrc属性に差し替える画像のwidthを指定
 =============================================== */
-// (function($) {
-// $(function(){
-// 	var spsrc;
-// 	var src;
-// 	var base_src;
+//(function($) {
+//$(function(){
+//	var spsrc;
+//	var src;
+//	var base_src;
 
-// 	$('img').each(function(){
-// 		base_src = $(this).attr('src');
-// 		$(this).data('basesrc',base_src);
-// 	});
+//	$('img').each(function(){
+//		base_src = $(this).attr('src');
+//		$(this).data('basesrc',base_src);
+//	});
 
-// 	$(window).on('load resize',function(){
-// 		if($('#responsive_flg').css('display') == 'block'){
-// 			$('img').each(function(){
-// 				spsrc = $(this).data('spsrc');
-// 				spwidth = $(this).data('spwidth');
-// 				src = $(this).attr('src');
-// 				if(spsrc != void 0){
-// 					$(this).attr('src',spsrc);
-// 				}
+//	$(window).on('load resize',function(){
+//		if($('#responsive_flg').css('display') == 'block'){
+//			$('img').each(function(){
+//				spsrc = $(this).data('spsrc');
+//				spwidth = $(this).data('spwidth');
+//				src = $(this).attr('src');
+//				if(spsrc != void 0){
+//					$(this).attr('src',spsrc);
+//				}
 
-// 				if(spwidth != void 0){
-// 					$(this).width(spwidth).height('auto');
-// 				}
-// 			});
-// 		}else{
-// 			$('img').each(function(){
-// 				spsrc = $(this).data('spsrc');
-// 				src = $(this).data('basesrc');
+//				if(spwidth != void 0){
+//					$(this).width(spwidth).height('auto');
+//				}
+//			});
+//		}else{
+//			$('img').each(function(){
+//				spsrc = $(this).data('spsrc');
+//				src = $(this).data('basesrc');
 
-// 				if(spsrc != void 0){
-// 					$(this).attr('src',src);
-// 				}
+//				if(spsrc != void 0){
+//					$(this).attr('src',src);
+//				}
 
-// 				$(this).width('').height('');
-// 			});
-// 		}
-// 	});
+//				$(this).width('').height('');
+//			});
+//		}
+//	});
 
-// });
-// })(jQuery);
+//});
+//})(jQuery);
 
 /* ===============================================
 accordion
@@ -124,31 +124,40 @@ accordion
 =============================================== */
 // (function($) {
 // 	 $(function(){
-//         $("dt").on("click", function() {
-//             $(this).next().slideToggle();
-//             $(this).toggleClass("active");
-//         });
-//     });
+// 		//旧バージョン
+// 		$("dt").on("click", function() {
+// 			$(this).next().slideToggle();
+// 			$(this).toggleClass("active");
+// 		});
+// 		//新バージョン
+// 		$("dt").toggle(function(){
+// 			$(this).next().slideDown('100');
+// 			$(this).addClass('active');
+// 		},function(){
+// 			$(this).next().slideUp('100');
+// 			$(this).removeClass('active');
+// 		});
+// 	});
 // })(jQuery);
 
 /* ===============================================
 tab
 クリックイベントをバインドする要素と開くタブを.eq()で紐付けて開く
 =============================================== */
-// (function($) {
-// $(function(){
-// 	$('クリックイベントをバインドする要素').click(function() {
-// 		var index = $('クリックイベントをバインドする要素').index(this);
+//(function($) {
+//$(function(){
+//	$('クリックイベントをバインドする要素').click(function() {
+//		var index = $('クリックイベントをバインドする要素').index(this);
 
-// 		$(タブ).css('display','none');
-// 		$(タブ).eq(index).css('display','block');
+//		$(タブ).css('display','none');
+//		$(タブ).eq(index).css('display','block');
 
-// 		$(タブ).removeClass('active');
-// 		$(this).addClass('active');
+//		$(タブ).removeClass('active');
+//		$(this).addClass('active');
 
-// 		return false;
-// 	});
-// });
+//		return false;
+//	});
+//});
 //})(jQuery);
 
 /* ===============================================
@@ -156,35 +165,35 @@ Lodashのサンプルコード
 詳しい使い方は下記
 http://qiita.com/takeharu/items/7d4ead780710c627172e
 =============================================== */
-// (function($) {
-// $(function(){
-// 	var data = 'json';//jsonや配列を代入する
+//(function($) {
+//$(function(){
+//	var data = 'json';//jsonや配列を代入する
 
-// 	//each（foreach）
-// 	_.each(data, function(item) {
-// 		console.log(item);//処理
-// 	});
-// 	//filter
-// 	filterd_data = _.filter(data, function(item){
-// 		return _.contains(item.category, '検索対象としたいカテゴリー');
-// 	});
-// 	//filterしたデータをテンプレートで出力
-// 	//テンプレート
-// 	var compiled = _.template(
-// 		 '<% _.each(items, function(item,index) { %>'
-// 			+'<li class="link_wrap">'
-// 				+'<img src="<%= item.src_s %>" alt="">'
-// 				+'<div class="meta">'
-// 					+'<div class="tag_wrap clearfix">'
-// 						+'<%= item.tag_html %>'
-// 					+'</div>'
-// 					+'<a href="<%= item.href %>"<%= item.target %>><%= item.new %><%= item.title %></a>'
-// 				+'</div>'
-// 			+'</li>'
-// 		+ '<% }); %>'
-// 	);
+//	//each（foreach）
+//	_.each(data, function(item) {
+//		console.log(item);//処理
+//	});
+//	//filter
+//	filterd_data = _.filter(data, function(item){
+//		return _.contains(item.category, '検索対象としたいカテゴリー');
+//	});
+//	//filterしたデータをテンプレートで出力
+//	//テンプレート
+//	var compiled = _.template(
+//		 '<% _.each(items, function(item,index) { %>'
+//			+'<li class="link_wrap">'
+//				+'<img src="<%= item.src_s %>" alt="">'
+//				+'<div class="meta">'
+//					+'<div class="tag_wrap clearfix">'
+//						+'<%= item.tag_html %>'
+//					+'</div>'
+//					+'<a href="<%= item.href %>"<%= item.target %>><%= item.new %><%= item.title %></a>'
+//				+'</div>'
+//			+'</li>'
+//		+ '<% }); %>'
+//	);
 
-// 	// テンプレート適用
-// 	tab_wrap.html(compiled(filtered_obj));
-// });
-// })(jQuery);
+//	//テンプレート適用
+//	tab_wrap.html(compiled(filtered_obj));
+//});
+//})(jQuery);

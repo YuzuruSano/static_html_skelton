@@ -82,7 +82,7 @@ module.exports = function(grunt) {
 			livereload: {
 				options: {
 					open: true,
-					base: [__dirname]
+					base: [__dirname]//バージョンによってはエラー出るのでその時はstring渡し__dirname
 				}
 			},
 		},
@@ -92,9 +92,9 @@ module.exports = function(grunt) {
 				options: {
 					livereload: '<%= connect.options.livereload %>'
 				},
-				files: ['**/!(_)*.jade', 'css/**/*.css']
+				files: ['**/!(_)*.jade', 'css/**/*.css']//コンパイルしたいファイルによって調整
 			},
-			html:{
+			html:{//jade無いときはコメントアウト
 				files: ['**/!(_)*.jade'],
 				tasks: ['jade'],
 			}
