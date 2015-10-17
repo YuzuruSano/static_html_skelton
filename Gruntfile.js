@@ -71,7 +71,7 @@ module.exports = function(grunt) {
 				}
 		},
 		clean: {
-				contact: ['build/contact'],
+				contact: ['build/contact','styleguide'],
 		},
 		connect: {
 			options: {
@@ -96,7 +96,11 @@ module.exports = function(grunt) {
 			},
 			html:{//jade無いときはコメントアウト
 				files: ['**/!(_)*.jade'],
-				tasks: ['jade'],
+				tasks: ['jade']
+			},
+			styleguides:{
+				files: ['css/**/*.css'],
+				tasks: ['styledocco']
 			}
 		},
 		// jade
@@ -111,6 +115,18 @@ module.exports = function(grunt) {
 				src: '**/!(_)*.jade',
 				dest: 'dist',
 				ext: '.html'
+			}
+		},
+		styledocco: {
+			dist: {
+				options: {
+					name: 'Styleguide',
+					//include:["js/styledocco/jquery_docco.js","js/styledocco/base_docco.js"],インクルードしたいファイルがあればここへ
+					preprocessor: 'scss --compass'
+				},
+				files: {
+					'styleguide': 'sass'
+				}
 			}
 		}
 	});
