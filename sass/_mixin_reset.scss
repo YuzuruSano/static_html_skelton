@@ -1,15 +1,15 @@
 @charset "UTF-8";
-	@mixin reset {
+@mixin reset {
 
 	/* reset*/
 	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend {
-	background: none repeat scroll 0 0;
-	border: 0 none;
-	font-size: $base_font_size;
-	margin: 0;
-	outline: 0 none;
-	padding: 0;
-	vertical-align: baseline;
+		background: none repeat scroll 0 0;
+		border: 0 none;
+		font-size: $base_font_size;
+		margin: 0;
+		outline: 0 none;
+		padding: 0;
+		vertical-align: baseline;
 	}
 	body {
 		background-color: #fff;
@@ -19,13 +19,12 @@
 		@if $-webkit-text-size-adjust == false {-webkit-text-size-adjust: none;}
 	}
 
+	*{ -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important; }
+
 	h1,h2,h3,h4,h5,h6,p { color:$font_color;}
 
 	h1,h2,h3,h4,h5,h6{
-		line-height: 1.5em;
-		@if $support-ie7 or $support-ie6 {
-			line-height: normal;
-		}
+		line-height: 1.5;
 	}
 
 	table, caption, tbody, tfoot, thead {
@@ -37,7 +36,6 @@
 	th, td {
 		vertical-align: top;
 		background: none repeat scroll 0 0;
-		font-size: $base_font_size;
 		margin: 0;
 		outline: 0 none;
 		padding: 0;
@@ -52,11 +50,26 @@
 		color:$link_color;
 		text-decoration: underline;
 		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		img {
+			border:none;
+			outline:0 !important;
+		}
 	}
 
 	a:hover {
 		text-decoration: none;
 		color:$link_hover_color;
+	}
+
+	button:focus {outline:0 !important;}
+	button::active {
+		outline:none;
+	}
+
+	a,p,img,div{
+		&:focus {
+			outline: none;
+		}
 	}
 
 	ol, ul {list-style: none outside none;}

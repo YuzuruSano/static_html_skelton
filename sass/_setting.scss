@@ -1,109 +1,13 @@
 @charset "UTF-8";
-// # Support
-$support-ie6: false;
-$support-ie7: true;
-$support-ie8: true;
-$support-ie9: true;
-$support-mozilla: true;
-$support-webkit : true; // Chrome, Safari
-$support-opera  : true;
-
-// # Vendor-prefixed CSS Property
-$use-prefix-webkit: true;
-$use-prefix-moz   : true;
-$use-prefix-ms    : true;
-$use-prefix-o     : true;
-
-// # IE
-$use-ie-filter    : false;
-$use-ie-expression: false;
-
 // # text adjust
 $-webkit-text-size-adjust : false;
 
-// # Path
-$path-pj : "..";
-$path-img: "#{$path-pj}/images";
-$path-sprite: "#{$path-img}/sprite.png";
-
-// # DataURI
-$dataURI-btn: "data:image/png;base64,*****";
-
 // # text
-$base_font_size:14px;
-$font_size:100%;
-$line_height:150%;
+$base_font_size:16px;
+//$font_size:100%;
+$line_height:1.5;
 $font_color:#555555;
 
 // link
 $link_color:#006f46;
 $link_hover_color:#006f46;
-
-//.clearfixはextendで。
-//.fineindent（テキストの1文字ぶら下がり）はextendで。
-//.text-indent-none（テキストのインデントを飛ばして非表示）はextendで。
-//.rollover-op（マウスオーバーで半透明）はextendで。
-
-//下記、sprite用　mixin
-// $sprites: sprite-map("icons/*.png");
-// $sprites-img:sprite-url($sprites);
-
-//ratina用css sprite　最終行のbackground-sizeにsprite用イメージの半分のwidthを指定する。必ず偶数であること
-// @mixin sprite-background_retina($name) {
-//      background-image: $sprites-img;
-//      background-repeat: no-repeat;
-//      display: block;
-//      height: image-height(sprite-file($sprites, $name)) / 2;
-//      width: image-width(sprite-file($sprites, $name)) / 2;
-//      $ypos: round(nth(sprite-position($sprites, $name), 2) / 2);
-//      background-position: 0 $ypos;
-//      @include background-size(300px auto);
-// }
-
-//ノーマルcss sprite
-// @mixin sprite-background_wh($name) {
-//      background-image: $sprites-img;
-//      background-repeat: no-repeat;
-//      display: block;
-//      height: image-height(sprite-file($sprites, $name));
-//      width: image-width(sprite-file($sprites, $name));
-//      background-position: sprite-position($sprites, $name);
-// }
-
-// @mixin sprite-background_wh_important($name) {
-//      background-image: $sprites-img!important;
-//      background-repeat: no-repeat!important;
-//      display: block!important;
-//      height: image-height(sprite-file($sprites, $name))!important;
-//      width: image-width(sprite-file($sprites, $name))!important;
-//      background-position: sprite-position($sprites, $name)!important;
-// }
-
-// //リピートcss sprite
-// $sprites_r: sprite-map("icons_r/*.png", $layout: diagonal);
-// $sprites_r-img:sprite-url($sprites_r);
-
-// @mixin sprite-background_r($name) {
-//      background-image: $sprites_r-img;
-//      background-repeat: repeat;
-//      background-position: sprite-position($sprites_r, $name);
-// }
-
-@mixin gnavi_pc($from,$to) {
-	@for $i from $from through $to {
-		#gnavi_#{$i} a{
-			@include sprite-background_wh(gnavi0#{$i});
-			@extend .text-indent-none;
-			margin: 0 auto;
-		}
-	}
-}
-
-@mixin repeat_icon($from,$to,$class_name,$img_name) {
-     @for $i from $from through $to {
-          .#{$class_name}#{$i} span{
-               @include sprite-background_wh(#{$img_name}0#{$i});
-               @extend .text-indent-none;
-          }
-     }
-}

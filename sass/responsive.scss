@@ -1,7 +1,6 @@
 @charset "UTF-8";
 @import "compass";
-@import "mixin_tablet";
-@import "mixin_sp";
+@import "mixin_common";
 
 //pcレイアウトでは表示
 .pc {
@@ -19,9 +18,9 @@
 /* pc 〜800
 ------------------------------------------------------------*/
 @media only screen and (max-width: 960px) {
-	@include tablet;
+	@import "tablet";
 }
 
 @media only screen and (max-width: 640px) {
-	@include sp;
+	@import "sp";
 }

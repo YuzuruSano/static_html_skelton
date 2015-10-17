@@ -71,7 +71,7 @@ module.exports = function(grunt) {
 				}
 		},
 		clean: {
-				contact: ['build/contact','styleguide'],
+				contact: ['build/contact'],
 		},
 		connect: {
 			options: {
