@@ -1,21 +1,13 @@
 @charset "UTF-8";
 @import "compass";
 
-/*
-# Mixins
+/* ***************************************
+# Mixins 汎用mixin
+*************************************** */
 
-汎用mixin、纏めてます。
-*/
-
-/*
-# text_indent_none
-
-テキストぶっ飛ばし
-
-```
-<p class="text_indent_none">テキスト見えないよ</p>
-```
-*/
+/* ******************************
+# テキスト非表示
+****************************** */
 .text_indent_none{
 	text-indent: 100%;
 	white-space: nowrap;
@@ -29,25 +21,24 @@
 	display: block;
 	overflow: hidden;
 }
-/*
-# 下記、sprite用　mixin
 
-$sprites-sizeはretina用の設定
-画像の半分のサイズを設定する。
+/* *******************************
+# sprite用
+******************************* */
+// $sprites-sizeはretina用の設定
+// 画像の半分のサイズを設定する。
+// ※スプライトする画像は全て偶数サイズで書き出すこと。
 
-※スプライトする画像は全て偶数サイズで書き出すこと。
-*/
 $path-pj : "..";
 $path-img: "#{$path-pj}/images";
 $path-sprite: "#{$path-img}/sprite.png";
 $sprites: sprite-map("icons/*.png");
 $sprites-img:sprite-url($sprites);
 $sprites-size: 300;
-/*
-## ratina用css sprite
 
-最終行のbackground-sizeにsprite用イメージの半分のwidthを指定する。必ず偶数であること
-*/
+// ratina用css sprite
+// 最終行のbackground-sizeにsprite用イメージの半分のwidthを指定する。必ず偶数であること
+
 @mixin sprite_background_retina($name) {
 	background-image: $sprites-img;
 	background-repeat: no-repeat;
@@ -58,9 +49,8 @@ $sprites-size: 300;
 	background-position: 0 $ypos;
 	@include background-size($sprites-size*1px auto);
 }
-/*
-## ノーマルcss sprite
-*/
+
+// ノーマルcss sprite
 @mixin sprite_background_wh($name) {
 	background-image: $sprites-img;
 	background-repeat: no-repeat;
@@ -70,9 +60,7 @@ $sprites-size: 300;
 	background-position: sprite-position($sprites, $name);
 }
 
-/*
-## ノーマルcss sprite width&heightに!important付
-*/
+// ノーマルcss sprite width&heightに!important付
 @mixin sprite_background_wh_important($name) {
 	background-image: $sprites-img!important;
 	background-repeat: no-repeat!important;
@@ -81,9 +69,8 @@ $sprites-size: 300;
 	width: image-width(sprite-file($sprites, $name))!important;
 	background-position: sprite-position($sprites, $name)!important;
 }
-/*
-## リピートcss sprite
-*/
+
+// リピートcss sprite
 $sprites_r: sprite-map("icons_r/*.png", $layout: diagonal);
 $sprites_r-img:sprite-url($sprites_r);
 
