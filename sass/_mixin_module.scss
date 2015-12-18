@@ -32,7 +32,7 @@
 	.mt3 {
 		margin-top: 3px !important;
 	}
-	@for $i from 1 through 10 {
+	@for $i from 0 through 10 {
 	  .mt#{$i * 5} {
 	    margin-top:#{$i * 5}px !important;
 	  }
@@ -41,7 +41,7 @@
 	.mb3 {
 		margin-bottom: 3px !important;
 	}
-	@for $i from 1 through 10 {
+	@for $i from 0 through 10 {
 	  .mb#{$i * 5} {
 	    margin-bottom:#{$i * 5}px !important;
 	  }
@@ -56,7 +56,7 @@
 	.ml3 {
 		margin-left: 3px !important;
 	}
-	@for $i from 1 through 10 {
+	@for $i from 0 through 10 {
 	  .ml#{$i * 5} {
 	    margin-left:#{$i * 5}px !important;
 	  }
