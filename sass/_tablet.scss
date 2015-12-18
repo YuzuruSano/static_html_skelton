@@ -1,0 +1,19 @@
+.pc {
+	display: none;
+}
+.sp {
+	display: block;
+}
+#responsive_flg {
+	display: block;
+	position: absolute;
+	left:-9999px;
+}
+body {
+	-webkit-text-size-adjust: none;
+	//overflow-x: hidden;
+	min-width: 320px;
+}
+body,div,p,h1,h2,h3,h4,h5,li,a,ul,li,dl,dt,dd,#wrap,header,footer,article,section,aside{
+	box-sizing:border-box;
+}

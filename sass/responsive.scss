@@ -1,7 +1,6 @@
 @charset "UTF-8";
 @import "compass";
-@import "mixin_tablet";
-@import "mixin_sp";
+@import "mixin_common";
 
 //pcレイアウトでは表示
 .pc {
@@ -16,12 +15,14 @@
 #responsive_flg {
 	display: none;
 }
-/* pc 〜800
+/* tablet 〜960
 ------------------------------------------------------------*/
 @media only screen and (max-width: 960px) {
-	@include tablet;
+	@import "tablet";
 }
 
+/* sp 〜640
+------------------------------------------------------------*/
 @media only screen and (max-width: 640px) {
-	@include sp;
+	@import "sp";
 }

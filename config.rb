@@ -10,18 +10,13 @@ output_style = :expanded
 line_comments = false
 relative_assets = true
 
-# You can select your preferred output style here (can be overridden via the command line):
-# output_style = :expanded or :nested or :compact or :compressed
+# 本番用css（debug code無し・圧縮）を生成する際は下記をコメントアウト
+# environment = :production
 
-# To enable relative paths to assets via compass helper functions. Uncomment:
-# relative_assets = true
+output_style = (environment == :production)? :compressed: :nested
+line_comments = (environment == :production)? false: true
+sass_options = (environment == :production) ? { :debug_info => false } : { :debug_info => true }
 
-# To disable debugging comments that display the original location of your selectors. Uncomment:
-line_comments = true
-
-
-# If you prefer the indented syntax, you might want to regenerate this
-# project again passing --syntax sass, or you can uncomment this:
-# preferred_syntax = :sass
-# and then run:
-# sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass
+asset_cache_buster do |http_path, real_path|
+  nil
+end

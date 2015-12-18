@@ -1,60 +1,81 @@
 @charset "UTF-8";
 @import "compass";
 
-@mixin gnavi_list($li_width,$li_height,$li_length) {
-    li { width:$li_width;
-    height:$li_height}
-    @for $i from 1 through $li_length {
-      li.navi-#{$i} {
-        background: url(#{$base_dir}navi#{$i}_back.jpg) left top;
-      }&:hover { background-position: left bottom;}
-    }
+/* ***************************************
+# Mixins 汎用mixin
+*************************************** */
+
+/* ******************************
+# テキスト非表示
+****************************** */
+.text_indent_none{
+	text-indent: 100%;
+	white-space: nowrap;
+	display: block;
+	overflow: hidden;
 }
 
-@mixin abs_position ($top: auto, $right: auto, $bottom: auto, $left: auto) {
-     position: absolute;
-     @if $top != 'auto' {
-         top: $top;
-     };
-     @if $right != 'auto' {
-         right: $right;
-     };
-     @if $bottom != 'auto' {
-         bottom: $bottom;
-     };
-     @if $left != 'auto' {
-         left: $left;
-     };
+@mixin text_indent_none{
+	text-indent: 100%;
+	white-space: nowrap;
+	display: block;
+	overflow: hidden;
 }
 
-@mixin font-family($type, $important: false) {
-    @if $important == 'important' or $important == true {
-        $important: ' !important';
-    } @else {
-        $important: '';
-    }
-    @if $type == sans-serif {
-        font-family: sans-serif#{$important};
-        @if $support-ie6 {
-            _font-family: 'MS PGothic', sans-serif#{$important};
-        }
-    } @else if $type == serif {
-        font-family: serif#{$important};
-        @if $support-ie6 {
-            _font-family: 'MS Gothic', serif#{$important};
-        }
-    } @else if $type == meiryo {
-        font-family: Meiryo, 'MS PGothic', sans-serif#{$important};
-    } @else if $type == monospace {
-        font-family: monospace#{$important};
-        @if $support-ie6 {
-            _font-family: 'MS Gothic', monospace#{$important};
-        }
-    } @else if $type == hiragino {
-        font-family: 'Hiragino Kaku Gothic Pro', Meiryo, 'MS PGothic', sans-serif#{$important};
-    } @else if $type == verdana {
-        font-family: Verdana, Arial, Helvetica, sans-serif#{$important};
-    } @else if $type == tahoma {
-        font-family: Tahoma, Arial, Helvetica, sans-serif#{$important};
-    }
+/* *******************************
+# sprite用
+******************************* */
+// $sprites-sizeはretina用の設定
+// 画像の半分のサイズを設定する。
+// ※スプライトする画像は全て偶数サイズで書き出すこと。
+
+$path-pj : "..";
+$path-img: "#{$path-pj}/images";
+$path-sprite: "#{$path-img}/sprite.png";
+$sprites: sprite-map("icons/*.png");
+$sprites-img:sprite-url($sprites);
+$sprites-size: 300;
+
+// ratina用css sprite
+// 最終行のbackground-sizeにsprite用イメージの半分のwidthを指定する。必ず偶数であること
+
+@mixin sprite_background_retina($name) {
+	background-image: $sprites-img;
+	background-repeat: no-repeat;
+	display: block;
+	height: image-height(sprite-file($sprites, $name)) / 2;
+	width: image-width(sprite-file($sprites, $name)) / 2;
+	$ypos: round(nth(sprite-position($sprites, $name), 2) / 2);
+	background-position: 0 $ypos;
+	@include background-size($sprites-size*1px auto);
+}
+
+// ノーマルcss sprite
+@mixin sprite_background_wh($name) {
+	background-image: $sprites-img;
+	background-repeat: no-repeat;
+	display: block;
+	height: image-height(sprite-file($sprites, $name));
+	width: image-width(sprite-file($sprites, $name));
+	background-position: sprite-position($sprites, $name);
+}
+
+// ノーマルcss sprite width&heightに!important付
+@mixin sprite_background_wh_important($name) {
+	background-image: $sprites-img!important;
+	background-repeat: no-repeat!important;
+	display: block!important;
+	height: image-height(sprite-file($sprites, $name))!important;
+	width: image-width(sprite-file($sprites, $name))!important;
+	background-position: sprite-position($sprites, $name)!important;
+}
+
+// リピートcss sprite
+$sprites_r: sprite-map("icons_r/*.png", $layout: diagonal);
+$sprites_r-img:sprite-url($sprites_r);
+
+@mixin sprite_background_r($name) {
+	background-image: $sprites_r-img;
+	background-repeat: repeat;
+	background-position: sprite-position($sprites_r, $name);
 }

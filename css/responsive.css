@@ -1,0 +1,56 @@
+@charset "UTF-8";
+/* ***************************************
+# Mixins 汎用mixin
+*************************************** */
+/* ******************************
+# テキスト非表示
+****************************** */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/suitosha_base_static_html\/sass\/_mixin_common\.scss}line{font-family:\0000311}}
+.text_indent_none {
+  text-indent: 100%;
+  white-space: nowrap;
+  display: block;
+  overflow: hidden; }
+
+/* *******************************
+# sprite用
+******************************* */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/suitosha_base_static_html\/sass\/responsive\.scss}line{font-family:\000036}}
+.pc {
+  display: block; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/suitosha_base_static_html\/sass\/responsive\.scss}line{font-family:\0000310}}
+.sp {
+  display: none; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/suitosha_base_static_html\/sass\/responsive\.scss}line{font-family:\0000315}}
+#responsive_flg {
+  display: none; }
+
+/* tablet 〜960
+------------------------------------------------------------*/
+@media only screen and (max-width: 960px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/suitosha_base_static_html\/sass\/_tablet\.scss}line{font-family:\000031}}
+  .pc {
+    display: none; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/suitosha_base_static_html\/sass\/_tablet\.scss}line{font-family:\000034}}
+  .sp {
+    display: block; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/suitosha_base_static_html\/sass\/_tablet\.scss}line{font-family:\000037}}
+  #responsive_flg {
+    display: block;
+    position: absolute;
+    left: -9999px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/suitosha_base_static_html\/sass\/_tablet\.scss}line{font-family:\0000312}}
+  body {
+    -webkit-text-size-adjust: none;
+    min-width: 320px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/suitosha_base_static_html\/sass\/_tablet\.scss}line{font-family:\0000317}}
+  body, div, p, h1, h2, h3, h4, h5, li, a, ul, li, dl, dt, dd, #wrap, header, footer, article, section, aside {
+    box-sizing: border-box; } }
+/* sp 〜640
+------------------------------------------------------------*/
