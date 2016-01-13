@@ -28,7 +28,7 @@
       "fonts": "fonts/*"
     },
     "lodash": {
-      "js": "lodash.min.js"
+      "js": "**/lodash.min.js"
     },
     "jquery": {
       "js": "**/jquery.min.js"
