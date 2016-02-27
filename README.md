@@ -16,19 +16,14 @@
 ##【コマンドラインからインストール】
 cloneしたフォルダにcdして
 
-npm install
+	npm install
+	grunt bower:install
 
-grunt bower:install
+して下さい。（権限で引っかかったらsudoで。。。）
+※bower.json内のfixheightのURL指定箇所は自身のアカウントが先頭にあるURLで差し替えて下さい。
+インストール後、上手く配置しきれなかった箇所を修正します。
 
-して下さい。権限で引っかかったらsudoで実行して下さい。
-
-bower.json内のfixheightのURL指定箇所は自身のアカウントが先頭にあるURLで差し替えて下さい。
-
-## ところでlodashってなんやねん？
-
-下記、underscore.jsの改良版でjavascriptの配列操作を強化し、且つ簡単に扱えるようにしてくれます。
-身も蓋もない言い方をすると、phpライクな強力な配列操作機能というか・・・
-一度なれるともう、地獄の便利さです。
+	grunt copy:bower_fix
 
 ### undescorejsの概要
 [http://www.tam-tam.co.jp/tipsnote/javascript/post3868.html](http://www.tam-tam.co.jp/tipsnote/javascript/post3868.html)
@@ -39,17 +34,13 @@ bower.json内のfixheightのURL指定箇所は自身のアカウントが先頭�
 ### lodashドキュメント
 [https://lodash.com/docs](https://lodash.com/docs)
 
-# 2015/09/01 jadeに対応しました。
+# jade
 
 node moduleのインストール時にjadeもインストールされます。
 jade_srcディレクトリ内の.jadeファイルが、distディレクトリにコンパイルされます。
 livereloadに渡すパラメータが通常のhtmlと異なるので、Gruntfile内のjsonを確認の上切り替えて下さい。
 
 livereload立ち上げ時に自動コンパイルされる他、grunt jade_con をしてもコンパイルされます。
-
-尚、livereloadはアップデートに伴い、組み込みサーバーのアクセス先が
-http://localhost:8000
-に変更になりました。
 
 ### jadeお役立ちリンク
 

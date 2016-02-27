@@ -4,18 +4,50 @@ var folderMount = function(connect, point) {
 	return connect.static(path.resolve(point));
 };
 
+var RE_USE_STRICT_STATEMENT = /(^|\n)[ \t]*'use strict';?\s*/g,
+	BANNER_TEMPLATE_STRING  = '/*! <%= pkg.name %> - v<%= pkg.version %> ( <%= grunt.template.today("yyyy-mm-dd") %> ) - <%= pkg.license %> */';
 module.exports = function(grunt) {
 
 	var pkg = grunt.file.readJSON('package.json');
-
 	grunt.initConfig({
+		pkg: grunt.file.readJSON('package.json'),
 		copy: {
 			dist: {
 				files: [{
-					　src: ['**/*.css','**/*.js','**/images/**','**/Templates/**','*.html','**/*.html','**/*.php','**/*.cgi','**/*.scss','**/config.rb','!**/node_modules/**','!Gruntfile.js'],
-					　dest: "build/",
-								dot: false
+					src: ['**/*.css','**/*.js','**/images/**','**/Templates/**','*.html','**/*.html','**/*.php','**/*.cgi','**/*.scss','**/config.rb','!bower_components/**', '!build/**','!node_modules/**','!Gruntfile.js'],
+					dest: "build/",
+					dot: false
 				}]
+			},
+			bower_fix:{
+				files: [{
+					expand: true,
+					cwd: 'lib/css/bxslider-4/',
+					src: ['bx_loader.gif','controls.png'],
+					dest: "lib/css/bxslider-4/images/"
+				},
+				{
+					expand: true,
+					cwd: 'lib/fonts/font-awesome/',
+					src: ['*.*'],
+					dest: "lib/css/fonts/"
+				}
+				]
+			},
+			bower_fix_build:{
+				files: [{
+					expand: true,
+					cwd: 'build/lib/css/bxslider-4/images/',
+					src: ['bx_loader.gif','controls.png'],
+					dest: "build/css/images/"
+				},
+				{
+					expand: true,
+					cwd: 'lib/fonts/font-awesome/',
+					src: ['*.*'],
+					dest: "build/css/fonts/"
+				}
+				]
 			}
 		},
 		bower: {
@@ -33,45 +65,60 @@ module.exports = function(grunt) {
 		cssmin: {
 			compress: {
 				files: {
-					'css/style.min.css': ['css/style.css']
+					'build/css/style.min.css':
+					[
+					// 環境によって変更
+					'lib/css/bxslider-4/*.css',
+					'lib/css/font-awesome/*.css',
+					'lib/css/jQuery.mmenu/*.css',
+					'css/style.css',
+					'css/responsive.css'
+					]
 				}
 			}
 		},
 		concat: {
-			　options: {
-				　// 結合したファイルの頭にコメント入れたいとき
-				　banner: "/* concat */\n"
-			　},
-			　dist: {
-				　// 出力元 結合対象のファイルを指定する
-				　src: [
-					　"build/js/base.js",
-					　"build/js/fixHeight.js"
-				　],
-				　// 出力先
-				　dest: "build/js/script.js"
-			　}
-		　},
+			options: {
+				stripBanners: false,
+				banner: [BANNER_TEMPLATE_STRING,'(function(window) {','','',''].join('\n'),
+				footer: ['','})(window);'].join('\n')
+			},
+			dist: {
+				// 出力元 結合対象のファイルを指定する
+				// 環境によって変更
+				src: [
+					'lib/js/jquery/*.js',
+					'lib/js/bxslider-4/*.js',
+					'lib/js/fixheight/*.js',
+					'lib/js/imagesloaded/*.js',
+					'lib/js/jquery.inview/*.js',
+					'lib/js/lodash/*.js',
+					"js/base.js"
+				],
+				// 出力先
+				dest: "build/js/script.js"
+			}
+		},
 		uglify: {//上記の結合スクリプトをminify
 			main: {
-				　src: "build/js/script.js",
-				　dest: "build/js/script.min.js"
+				src: "build/js/script.js",
+				dest: "build/js/script.min.js"
 			}
 		},
 		imagemin : {//png,jpgを最適化
 				dist : {
-						files : [
-								{
-										expand : true,
-										cwd    : 'build/',
-										src    : ['**/*.{png,jpg}'],
-										dest   : 'build/'
-								}
-						]
+					files : [
+						{
+							expand : true,
+							cwd    : 'build/',
+							src    : ['**/*.{png,jpg}'],
+							dest   : 'build/'
+						}
+					]
 				}
 		},
 		clean: {
-				contact: ['build/contact'],
+			folder: ['build/node_modules','build/build','build/dist','build/jade_src'],
 		},
 		connect: {
 			options: {
@@ -92,29 +139,50 @@ module.exports = function(grunt) {
 				options: {
 					livereload: '<%= connect.options.livereload %>'
 				},
-				files: ['**/!(_)*.jade', 'css/**/*.css']//コンパイルしたいファイルによって調整
+				files: ['**/*.jade', 'css/**/*.css']//コンパイルしたいファイルによって調整
 			},
 			html:{//jade無いときはコメントアウト
-				files: ['**/!(_)*.jade'],
-				tasks: ['jade']
-			},
-			styleguides:{
-				files: ['css/**/*.css'],
-				tasks: ['styledocco']
+				files: ['**/*.jade'],
+				tasks: ['jade:normal']
 			}
+			// ,
+			// styleguides:{
+			// 	files: ['css/**/*.css'],
+			// 	tasks: ['styledocco']
+			// }
 		},
 		// jade
 		jade: {
 			options: {
-				pretty: true,
-				data: grunt.file.readJSON('package.json')
+				pretty: true
 			},
-			source: {
-				expand: true,
-				cwd: 'jade_src',
-				src: '**/!(_)*.jade',
-				dest: 'dist',
-				ext: '.html'
+			normal:{
+				options:{
+					data: function(dest, src) {
+						return jade_build_options(dest, src,false);
+					}
+				},
+				files:[{
+					expand: true,
+					cwd: 'jade_src',
+					src: ['**/!(_)*.jade'],
+					dest: 'dist',
+					ext: '.html'
+				}]
+			},
+			rebuild:{
+				options:{
+					data: function(dest, src) {
+						return jade_build_options(dest, src,true);
+					}
+				},
+				files:[{
+					expand: true,
+					cwd: 'jade_src',
+					src: ['**/!(_)*.jade'],
+					dest: 'build',
+					ext: '.html'
+				}]
 			}
 		},
 		styledocco: {
@@ -131,6 +199,29 @@ module.exports = function(grunt) {
 		}
 	});
 
+	//jadeのコンパイルオプション
+	//is_buildを判定してassetパスの差替
+	function jade_build_options(dest, src , is_build) {
+		var depth = src[0].split('/').length;
+		var page_prefix = '';
+		var assets_prefix = '../';
+		if(is_build){
+			assets_prefix = '';
+		}
+		var filedepth = depth - 2;
+		for(var i = 0;i < filedepth;i++){
+			page_prefix += '../';
+			assets_prefix += '../';
+		}
+		return {
+			from: src,
+			to: dest,
+			page_prefix:page_prefix,
+			assets_prefix:assets_prefix,
+			is_build:is_build
+		};
+	}
+
 	// package.jsonに設定した各種packageを読み込み
 	var taskName;
 	for(taskName in pkg.devDependencies) {
@@ -141,7 +232,7 @@ module.exports = function(grunt) {
 	//デフォルトタスク
 	grunt.registerTask('default', ['connect:livereload','watch']);
 	//ビルド時のタスク
-	grunt.registerTask('build', ['copy']);
+	grunt.registerTask('build', ['copy:dist','cssmin','concat','uglify','imagemin','jade:rebuild','styledocco','copy:bower_fix_build','clean']);
 	//ビルドファイルの画像を圧縮
 	grunt.registerTask('imgmin', ['imagemin']);
 	//jadeコンパイル

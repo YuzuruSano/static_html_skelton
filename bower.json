@@ -1,6 +1,6 @@
 {
   "name": "y",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "authors": [
     "Yuzuru Sano"
   ],
@@ -34,7 +34,7 @@
       "js": "**/jquery.min.js"
     },
     "jQuery.mmenu": {
-      "js": "**/jquery.mmenu.min.all.js",
+      "js": "**/jquery.mmenu.all.min.js",
       "css": "**/jquery.mmenu.all.css"
     },
     "fixheight": {

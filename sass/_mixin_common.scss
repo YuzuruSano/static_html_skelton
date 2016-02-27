@@ -79,3 +79,93 @@ $sprites_r-img:sprite-url($sprites_r);
 	background-repeat: repeat;
 	background-position: sprite-position($sprites_r, $name);
 }
+
+/* ===============================================
+for bem
+=============================================== */
+//Element
+@mixin e($name) {
+  @at-root #{&}__#{$name} {
+	@content;
+  }
+}
+
+//Modifier
+@mixin m($name) {
+  @at-root #{&}--#{$name} {
+	@content;
+  }
+}
+/* ===============================================
+common parts
+=============================================== */
+//タグ
+@mixin tag($border,$color,$fontsize) {
+	display: inline-block;
+	padding: 6px 15px;
+	line-height: 1;
+	border:1px solid #{$border};
+	color: $color;
+	font-size: #{$fontsize}px;
+}
+//ボタン
+//a>spanでマークアップ
+@mixin btn($bd-color:#fff,$bg-color:#000,$text-color:#fff,$font-size:14px,$padding:"18px 78px",$img:null) {
+	padding: #{$padding};
+	line-height: 1;
+	border:1px solid #{$bd-color};
+	background-color: #{$bg-color};
+	color: #{$text-color};
+	font-size: #{$font-size}px;
+	@if $img {
+		span {
+			line-height: 1;
+			@include text_indent_none;
+			@include sprite_background_wh(#{$img});
+		}
+	}
+	display: inline-block;
+	&:hover {
+		opacity: 0.8;
+		filter: alpha(opacity=0.8);
+	}
+}
+//font-sizeとline-heightから比率を出力
+//数値はpxで「px」抜きで指定
+// adobeのWEBアプリでline-heightがpx指定で出力されるため
+@mixin fs_lh($font-size,$line-height) {
+	font-size: #{$font-size}px;
+	line-height: $line-height / $font-size;
+}
+//画像をマウスオーバーで拡大 imgに対して適用
+@mixin scale_img($ratio:1.04,$speed:0.3) {
+	-moz-transition: -moz-transform #{$speed}s linear;
+	-webkit-transition: -webkit-transform #{$speed}s linear;
+	-o-transition: -o-transform #{$speed}s linear;
+	-ms-transition: -ms-transform #{$speed}s linear;
+	transition: transform #{$speed}s linear;
+	&:hover {
+		-webkit-transform: scale($ratio);
+		-moz-transform: scale($ratio);
+		-o-transform: scale($ratio);
+		-ms-transform: scale($ratio);
+		transform: scale($ratio);
+	}
+}
+
+//画像をマウスオーバーで拡大 hover使用なし
+@mixin scale_img_hasnt_hover($ratio:1.04,$speed:0.3) {
+	-moz-transition: -moz-transform #{$speed}s linear;
+	-webkit-transition: -webkit-transform #{$speed}s linear;
+	-o-transition: -o-transform #{$speed}s linear;
+	-ms-transition: -ms-transform #{$speed}s linear;
+	transition: transform #{$speed}s linear;
+}
+
+@mixin opacity($opacity:0.8) {
+	opacity: $opacity;
+	-moz-opacity: $opacity; // Mozzila
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=#{$opacity * 100})";// ie 8
+	filter:  progid:DXImageTransform.Microsoft.Alpha(opacity=#{$opacity * 100});// ie lt 8
+	zoom:1; // for ie filter
+}
