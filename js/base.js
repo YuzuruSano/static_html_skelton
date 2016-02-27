@@ -1,5 +1,32 @@
 /* ===============================================
-不要なコメント、未使用の機能は納品時に削除すること
+const
+=============================================== */
+if (typeof BaseScript === "undefined"){
+	var BaseScript= {};
+}
+//global $(window);
+BaseScript.wobj = function($){
+	return $(window);
+};
+BaseScript.w = BaseScript.wobj(jQuery);
+//global is_responsive
+BaseScript.is_responsive;
+(function($) {
+$(function(){
+	var is_responsive_nome = function(){
+		if($('#responsive_flg').css('display') == 'block'){
+			return true;
+		}
+		return false;
+	};
+	//ブラウザの負荷を下げる
+	BaseScript.is_responsive = _.throttle(is_responsive_nome, 500);
+});
+})(jQuery);
+/* ===============================================
+mmenu
+sample code
+https://gist.github.com/YuzuruSano/e09cac18116aa79c65aa
 =============================================== */
 /* ===============================================
 viewportの動的切替
