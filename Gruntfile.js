@@ -93,6 +93,7 @@ module.exports = function(grunt) {
 					'lib/js/imagesloaded/*.js',
 					'lib/js/jquery.inview/*.js',
 					'lib/js/lodash/*.js',
+					'lib/js/iscroll/*.js',
 					"js/base.js"
 				],
 				// 出力先

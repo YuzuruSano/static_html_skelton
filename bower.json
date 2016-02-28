@@ -20,6 +20,7 @@
     "bxslider-4": null,
     "jquery.inview": null,
     "imagesloaded":null,
+    "iscroll":null,
     "fixheight": "https://sizennmod@bitbucket.org/suitoshainc/fixheight.git"
   },
   "exportsOverride": {
@@ -53,7 +54,9 @@
     },
     "jquery.inview":{
       "js":"jquery.inview.min.js"
+    },
+    "iscroll":{
+      "js":"build/iscroll.js"
     }
-
   }
 }
