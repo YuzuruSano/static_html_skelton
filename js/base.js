@@ -49,7 +49,7 @@ smooth scroll
 =============================================== */
 (function($){
 $(function(){
-   $('a[href^=#]').click(function(ev) {
+	$('a[href^="#"]').click(function(ev) {
 		ev.preventDefault();
 		var speed = 800; //移動スピード
 		var href= $(this).attr("href");
