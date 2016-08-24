@@ -65,7 +65,7 @@
 	.mr3 {
 		margin-right: 3px !important;
 	}
-	@for $i from 5 through 10 {
+	@for $i from 0 through 10 {
 	  .mr#{$i * 5} {
 	    margin-right:#{$i * 5}px !important;
 	  }
@@ -77,7 +77,7 @@
 	.pl3 {
 		padding-left: 3px !important;
 	}
-	@for $i from 5 through 10 {
+	@for $i from 0 through 10 {
 	  .pl#{$i * 5} {
 	    padding-left:#{$i * 5}px !important;
 	  }
@@ -87,7 +87,7 @@
 	.pr3 {
 		padding-right: 3px !important;
 	}
-	@for $i from 5 through 10 {
+	@for $i from 0 through 10 {
 	  .pr#{$i * 5} {
 	    padding-right:#{$i * 5}px !important;
 	  }
@@ -97,7 +97,7 @@
 	.pt3 {
 		padding-top: 3px !important;
 	}
-	@for $i from 5 through 10 {
+	@for $i from 0 through 10 {
 	  .pt#{$i * 5} {
 	    padding-top:#{$i * 5}px !important;
 	  }
@@ -107,7 +107,7 @@
 	.pb3 {
 		padding-bottom: 3px !important;
 	}
-	@for $i from 5 through 10 {
+	@for $i from 0 through 10 {
 	  .pb#{$i * 5} {
 	    padding-bottom:#{$i * 5}px !important;
 	  }

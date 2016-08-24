@@ -4,15 +4,14 @@
 下記のライブラリ群が一括でインストールできます。
 （依存関係のあるcssやfontファイルや画像も）
 
-* jquery
 * font-awesome
 * lodash
-* jquery.slidebars
-* jquery-lineup
+* jquery
+* jQuery.mmenu
+* fixheight
+* bxslider
 * imagesloaded
 * inview
-* bxslider
-* carouFredSel
 
 ##【コマンドラインからインストール】
 cloneしたフォルダにcdして
@@ -21,7 +20,7 @@ cloneしたフォルダにcdして
 	grunt bower:install
 
 して下さい。（権限で引っかかったらsudoで。。。）
-
+※bower.json内のfixheightのURL指定箇所は自身のアカウントが先頭にあるURLで差し替えて下さい。
 インストール後、上手く配置しきれなかった箇所を修正します。
 
 	grunt copy:bower_fix
@@ -34,6 +33,19 @@ cloneしたフォルダにcdして
 
 ### lodashドキュメント
 [https://lodash.com/docs](https://lodash.com/docs)
+
+# lineup.js
+
+http://mach3.github.io/jquery-lineup/
+
+http://www.webantena.net/javascriptjquery/jquery-plugin-lineup/
+
+# slidebars
+
+https://www.adchsm.com/slidebars/
+※初期化の方法は上記ページのコードかbase.jsのサンプルコードを参照
+
+http://tuono034s.com/web-entry/1791/
 
 # jade
 
