@@ -13,7 +13,6 @@
     "tests"
   ],
   "dependencies": {
-    "jQuery.mmenu": null,
     "font-awesome": null,
     "jquery": "1",
     "lodash": null,
@@ -21,7 +20,9 @@
     "jquery.inview": null,
     "imagesloaded":null,
     "iscroll":null,
-    "fixheight": "https://sizennmod@bitbucket.org/suitoshainc/fixheight.git"
+    "slidebars": null,
+    "jquery-lineup": null,
+    "gilbitron/carouFredSel": null
   },
   "exportsOverride": {
     "font-awesome": {
@@ -34,12 +35,8 @@
     "jquery": {
       "js": "**/jquery.min.js"
     },
-    "jQuery.mmenu": {
-      "js": "**/jquery.mmenu.all.min.js",
-      "css": "**/jquery.mmenu.all.css"
-    },
-    "fixheight": {
-      "js": "fixheight.js"
+    "jquery-lineup": {
+      "js": "**/jquery-lineup.min.js"
     },
     "bxslider-4": {
       "js": "**/jquery.bxSlider.min.js",
@@ -57,6 +54,13 @@
     },
     "iscroll":{
       "js":"build/iscroll.js"
+    },
+    "slidebars": {
+      "css": "dist/slidebars.min.css",
+      "js": "dist/slidebars.min.js"
+    },
+    "gilbitron/carouFredSel": {
+      "js": "**/jquery.carouFredSel-6.2.1-packed.js"
     }
   }
 }

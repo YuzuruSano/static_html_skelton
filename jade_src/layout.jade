@@ -17,6 +17,9 @@
 	}
 include _inc_mixins
 include _inc_conditional
+block slug
+	- var slug = ''
+	- var is_contact = false
 head
 	block meta_data
 		meta(http-equiv='X-UA-Compatible', content='IE=edge')
@@ -26,18 +29,44 @@ head
 		+ogp(ogp)
 	block css_scripts
 		include _inc_css_scripts
-body
-	block header
-		h1 hellow world test
-	block contents
-		p
-			| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			| tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			| quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			| cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			| proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	block footer
-	block flg
-		#responsive_flg
+body#top(class=slug)
+	div(canvas="container").canvas_container
+		header#spheader.spheader
+			a(href="#").logo_wrap
+				p.logo logo
+			.button.js-toggle-spnav-right.sp_menu
+				span.text Menu
+		block header
+			h1 hellow world test
+		block contents
+			p
+				| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				| tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				| quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				| cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				| proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		block footer
+		block flg
+			#responsive_flg
+	div(off-canvas="spnav-right right reveal")
+		.spnav_inner
+			div.nav_ttl
+				h3 Menu
+				a.btn--close(href="") close
+			ul.gnav
+				li
+					a(href="").exc parent
+					ul.child
+						li
+							a(href="") child_list
+						li
+							a(href="") child_list
+						li
+							a(href="") child_list
+	script(src='#{assets_prefix}lib/js/jquery/jquery.min.js')
+	script(src='#{assets_prefix}lib/js/lodash/lodash.min.js')
+	script(src='#{assets_prefix}lib/js/jquery-lineup/jquery-lineup.min.js')
+	script(src='#{assets_prefix}lib/js/slidebars/slidebars.min.js')
+	script(src='#{assets_prefix}js/base.js')
 </html>

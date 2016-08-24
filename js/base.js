@@ -24,26 +24,46 @@ $(function(){
 });
 })(jQuery);
 /* ===============================================
-mmenu
-sample code
-https://gist.github.com/YuzuruSano/e09cac18116aa79c65aa
+sp navi
 =============================================== */
-/* ===============================================
-viewportの動的切替
-=============================================== */
-//(function($) {
-////viewport切り替え
-//$(function(){
-//	$(window).on('load resize', function(){
-//		var w = $(window).width();
-//		if( w > 640 ){//ブレークポイント任意で
-//			$("#viewport").attr("content","width=1024");//width指定任意で
-//		}else{
-//			$("#viewport").attr("content","width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=5.0,user-scalable=1");
-//		}
-//	});
-//});
-//})(jQuery);
+(function($) {
+$(function(){
+	var controller = new slidebars();
+	controller.init();
+	//drower menu events
+	$( '.js-toggle-spnav-right' ).on( 'click', function ( event ) {
+		event.preventDefault();
+		event.stopPropagation();
+		$('body').addClass('canvas_ok');
+		controller.toggle( 'spnav-right' );
+	} );
+	$( document ).on( 'click touchstart', '.js-close-any,.btn--close', function ( event ) {
+		if ( controller.getActiveSlidebar() ) {
+			event.preventDefault();
+			event.stopPropagation();
+			controller.close();
+			$('body').removeClass('canvas_ok');
+			return false;
+		}
+	} );
+	$( controller.events).on( 'opening', function ( event ) {
+		$( '[canvas]' ).addClass( 'js-close-any' );
+		$( '[canvas]' ).on("touchmove._noscroll" , function(event) {
+			event.preventDefault();
+		});
+	} ).on( 'closed', function(){
+		$('body').removeClass('canvas_ok');
+		$( '[canvas]' ).removeClass( 'js-close-any' );
+		$( '[canvas]' ).off("touchmove._noscroll");
+	});
+	//resize fix
+	BaseScript.w.on('resize',function(){
+		if(!BaseScript.is_responsive()){
+			controller.close();
+		}
+	});
+});
+})(jQuery);
 /* ===============================================
 smooth scroll
 =============================================== */
