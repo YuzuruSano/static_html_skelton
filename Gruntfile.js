@@ -7,6 +7,24 @@ var folderMount = function(connect, point) {
 var RE_USE_STRICT_STATEMENT = /(^|\n)[ \t]*'use strict';?\s*/g,
 	BANNER_TEMPLATE_STRING  = '/*! <%= pkg.name %> - v<%= pkg.version %> ( <%= grunt.template.today("yyyy-mm-dd") %> ) - <%= pkg.license %> */';
 module.exports = function(grunt) {
+	// REQUIRE THE OS MODULE
+	var os          = require('os');
+	var ifaces      = os.networkInterfaces();
+
+	// THIS FUNCTION GETS YOUR LOCAL IP SO WE CAN SERVE THE BUILT SITE FROM IT
+	// No more having to keep swapping the IP
+	var lookupIpAddress = null;
+	for (var dev in ifaces) {
+		if(dev != "en1" && dev != "en0") {
+			continue;
+		}
+		ifaces[dev].forEach(function(details){
+			if (details.family=='IPv4') {
+				lookupIpAddress = details.address;
+			}
+		});
+	}
+	var ipAddress   = lookupIpAddress;
 
 	var pkg = grunt.file.readJSON('package.json');
 	grunt.initConfig({
@@ -125,7 +143,7 @@ module.exports = function(grunt) {
 			options: {
 				port: 1234,
 				livereload: 35729,
-				hostname: 'localhost'
+				hostname: ipAddress
 			},
 			livereload: {
 				options: {
