@@ -6,16 +6,10 @@ css_dir = "css"
 sass_dir = "sass"
 images_dir = "images"
 javascripts_dir = "js"
-output_style = :expanded
+output_style = :compressed
 line_comments = false
 relative_assets = true
-
-# 本番用css（debug code無し・圧縮）を生成する際は下記をコメントアウト
-# environment = :production
-
-output_style = (environment == :production)? :compressed: :nested
-line_comments = (environment == :production)? false: true
-sass_options = (environment == :production) ? { :debug_info => false } : { :debug_info => true }
+sourcemap = true
 
 asset_cache_buster do |http_path, real_path|
   nil
