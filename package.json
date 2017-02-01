@@ -1,12 +1,8 @@
 {
   "name": "suitosha_base_static_html",
-  "version": "1.0.0",
-  "description": "要grunt,bower,sassです。",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
+  "version": "2.0.0",
+  "description": "gulp他タスクランナーの依存パッケージ",
+  "author": "Yuzuru Sano",
   "license": "ISC",
   "devDependencies": {
     "babel-preset-es2015": "^6.22.0",
