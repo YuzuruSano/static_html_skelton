@@ -8,11 +8,14 @@ import path from 'path';
 import changed from 'gulp-changed';
 
 const DEST = './';
+
 /* ===============================================
 move bower components
 =============================================== */
 const components = 'bower_components';
 const lib = 'lib';
+/* bower_componentsから移動させたいファイルを記述
+----------------------- */
 const override =  new Map([
 	[ 'font-awesome', [
 			['css','css/*.css'],
@@ -66,14 +69,14 @@ gulp.task('bower_copy', () => {
 pug
 =============================================== */
 const pug_build_options = (dest, src , is_build) => {
-	var depth = src[0].split('/').length;
-	var page_prefix = './';
-	var assets_prefix = './';
+	let depth = src[0].split('/').length;
+	let page_prefix = './';
+	let assets_prefix = './';
 	if(is_build){
 		assets_prefix = '';
 	}
-	var filedepth = depth - 2;
-	for(var i = 0;i < filedepth;i++){
+	let filedepth = depth - 2;
+	for(let i = 0;i < filedepth;i++){
 		page_prefix += '../';
 		assets_prefix += '../';
 	}
@@ -87,7 +90,7 @@ const pug_build_options = (dest, src , is_build) => {
 };
 
 gulp.task('pug', () => {
-	var locals = {};
+	let locals = {};
 	gulp.src(['./pug/**/*.pug', '!./pug/**/_*.pug'])
 	.pipe(changed(DEST))
 	.pipe(plumber({
