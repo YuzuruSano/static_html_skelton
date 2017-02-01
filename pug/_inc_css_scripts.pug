@@ -1,0 +1,8 @@
+//- if is_build === true//build時の指定 圧縮ファイルを読込
+//- 	link(rel='stylesheet', href='#{assets_prefix}css/style.min.css')
+//- 	script(src='#{assets_prefix}js/script.min.js')
+//- else
+link(rel='stylesheet', href=`${assets_prefix}lib/css/bxslider-4/jquery.bxslider.css`)
+link(rel='stylesheet', href=`${assets_prefix}lib/css/font-awesome/font-awesome.min.css`)
+link(rel='stylesheet', href=`${assets_prefix}lib/css/slidebars/slidebars.min.css`)
+link(rel='stylesheet', href=`${assets_prefix}css/style.min.css`)

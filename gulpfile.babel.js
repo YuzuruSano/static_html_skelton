@@ -1,6 +1,10 @@
-require('babel-register');
 import gulp from 'gulp';
+import pug from 'gulp-pug';
+import plumber from 'gulp-plumber';
 import browserSync from 'browser-sync';
+import notify from 'gulp-notify';
+import data from 'gulp-data';
+import path from 'path';
 /* ===============================================
 move bower components
 =============================================== */
@@ -56,25 +60,70 @@ gulp.task('bower_copy', function() {
 	});
 });
 /* ===============================================
+pug
+=============================================== */
+const pug_build_options = (dest, src , is_build)=>{
+	var depth = src[0].split('/').length;
+	var page_prefix = './';
+	var assets_prefix = './';
+	if(is_build){
+		assets_prefix = '';
+	}
+	var filedepth = depth - 2;
+	for(var i = 0;i < filedepth;i++){
+		page_prefix += '../';
+		assets_prefix += '../';
+	}
+	return {
+		from: src,
+		to: dest,
+		page_prefix:page_prefix,
+		assets_prefix:assets_prefix,
+		is_build:is_build
+	};
+};
+
+gulp.task('pug', () => {
+	var locals = {};
+	gulp.src(['./pug/**/*.pug', '!./pug/**/_*.pug'])
+	.pipe(plumber({
+		errorHandler: notify.onError("Error: <%= error.message %>")
+	}))
+	.pipe(data(function(file) {
+		locals = pug_build_options(file.path.replace(/.pug$/, '.html'),file.path);
+		return locals;
+	}))
+	.pipe(pug({
+		locals: locals,
+		pretty: true
+	}))
+	.pipe(gulp.dest("./"));
+});
+gulp.task('watch', () => {
+	gulp.watch(['./pug/**/*.pug', '!./pug/**/_*.pug'], () => {
+		gulp.start(['pug']);
+	});
+});
+/* ===============================================
 borwser-sync
 =============================================== */
-gulp.task('browser-sync', function() {
-	browserSync.init({
+gulp.task('browser-sync', () => {
+	browserSync({
 		server: {
 			baseDir: "./",
 			index: "index.html"
 		}
 	});
+	//ファイルの監視
+	//以下のファイルが変わったらリロードする
+	gulp.watch("*.html", ['bs-reload']);
+	gulp.watch("dist/**/*.html", ['bs-reload']);
+	gulp.watch("js/*.js", ['bs-reload']);
+	gulp.watch("css/**/*.css", ['bs-reload']);
 });
 
 gulp.task('bs-reload', function () {
 	browserSync.reload();
 });
 
-// src 配下の *.html, *.css ファイルが変更されたリロード。
-gulp.task('default', ['browser-sync'], function () {
-	gulp.watch("*.html", ['bs-reload']);
-	gulp.watch("dist/**/*.html", ['bs-reload']);
-	gulp.watch("js/*.js", ['bs-reload']);
-	gulp.watch("css/**/*.css", ['bs-reload']);
-});
+gulp.task('default', ['browser-sync', 'pug', 'watch']);
