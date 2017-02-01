@@ -53,7 +53,7 @@ const override =  new Map([
 	]
 ]);
 
-gulp.task('bower_copy', function() {
+gulp.task('bower_copy', () => {
 	override.forEach((assets, plugin) => {
 		var plugin = plugin;
 		assets.forEach((target) => {
@@ -65,7 +65,7 @@ gulp.task('bower_copy', function() {
 /* ===============================================
 pug
 =============================================== */
-const pug_build_options = (dest, src , is_build)=>{
+const pug_build_options = (dest, src , is_build) => {
 	var depth = src[0].split('/').length;
 	var page_prefix = './';
 	var assets_prefix = './';
@@ -126,7 +126,7 @@ gulp.task('browser-sync', () => {
 	gulp.watch("css/**/*.css", ['bs-reload']);
 });
 
-gulp.task('bs-reload', function () {
+gulp.task('bs-reload', () => {
 	browserSync.reload();
 });
 
