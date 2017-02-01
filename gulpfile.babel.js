@@ -5,6 +5,9 @@ import browserSync from 'browser-sync';
 import notify from 'gulp-notify';
 import data from 'gulp-data';
 import path from 'path';
+import changed from 'gulp-changed';
+
+const DEST = './';
 /* ===============================================
 move bower components
 =============================================== */
@@ -51,9 +54,9 @@ const override =  new Map([
 ]);
 
 gulp.task('bower_copy', function() {
-	override.forEach(function (assets, plugin) {
+	override.forEach((assets, plugin) => {
 		var plugin = plugin;
-		assets.forEach(function(target){
+		assets.forEach((target) => {
 			gulp.src(components + `/${plugin}/${target[1]}`)
 			.pipe(gulp.dest(lib + `/${target[0]}/${plugin}/`));
 		});
@@ -86,6 +89,7 @@ const pug_build_options = (dest, src , is_build)=>{
 gulp.task('pug', () => {
 	var locals = {};
 	gulp.src(['./pug/**/*.pug', '!./pug/**/_*.pug'])
+	.pipe(changed(DEST))
 	.pipe(plumber({
 		errorHandler: notify.onError("Error: <%= error.message %>")
 	}))
