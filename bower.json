@@ -21,46 +21,6 @@
     "imagesloaded":null,
     "iscroll":null,
     "slidebars": null,
-    "jquery-lineup": null,
-    "gilbitron/carouFredSel": null
-  },
-  "exportsOverride": {
-    "font-awesome": {
-      "css": "css/*.css",
-      "fonts": "fonts/*"
-    },
-    "lodash": {
-      "js": "**/lodash.min.js"
-    },
-    "jquery": {
-      "js": "**/jquery.min.js"
-    },
-    "jquery-lineup": {
-      "js": "**/jquery-lineup.min.js"
-    },
-    "bxslider-4": {
-      "js": "**/jquery.bxSlider.min.js",
-      "css": [
-        "**/jquery.bxslider.css",
-        "dist/images/bx_loader.gif",
-        "dist/images/controls.png"
-        ]
-    },
-    "imagesloaded":{
-      "js":"imagesloaded.pkgd.min.js"
-    },
-    "jquery.inview":{
-      "js":"jquery.inview.min.js"
-    },
-    "iscroll":{
-      "js":"build/iscroll.js"
-    },
-    "slidebars": {
-      "css": "dist/slidebars.min.css",
-      "js": "dist/slidebars.min.js"
-    },
-    "gilbitron/carouFredSel": {
-      "js": "**/jquery.carouFredSel-6.2.1-packed.js"
-    }
+    "jquery-lineup": null
   }
 }
