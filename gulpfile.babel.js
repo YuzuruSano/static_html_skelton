@@ -6,6 +6,8 @@ import notify from 'gulp-notify';
 import data from 'gulp-data';
 import path from 'path';
 import changed from 'gulp-changed';
+import concat from 'gulp-concat';
+import compass from 'gulp-compass';
 
 const DEST = './';
 
@@ -106,10 +108,17 @@ gulp.task('pug', () => {
 	}))
 	.pipe(gulp.dest("./"));
 });
-gulp.task('watch', () => {
-	gulp.watch(['./pug/**/*.pug', '!./pug/**/_*.pug'], () => {
-		gulp.start(['pug']);
-	});
+/* ===============================================
+compass
+=============================================== */
+gulp.task('compass', () => {
+	gulp.src('scss/**/*.scss')
+	.pipe(changed(DEST))
+	.pipe(plumber({
+		errorHandler: notify.onError("Error: <%= error.message %>")
+	}))
+    .pipe(compass())
+    .pipe(gulp.dest('css'));
 });
 /* ===============================================
 borwser-sync
@@ -132,5 +141,15 @@ gulp.task('browser-sync', () => {
 gulp.task('bs-reload', () => {
 	browserSync.reload();
 });
-
-gulp.task('default', ['browser-sync', 'pug', 'watch']);
+/* ===============================================
+watch
+=============================================== */
+gulp.task('watch', () => {
+	gulp.watch(['./pug/**/*.pug', '!./pug/**/_*.pug'], () => {
+		gulp.start(['pug']);
+	});
+	gulp.watch(['sass/**/*.scss'], () => {
+		gulp.start(['compass']);
+	});
+});
+gulp.task('default', ['browser-sync','compass', 'pug', 'watch']);
