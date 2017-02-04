@@ -7,6 +7,7 @@ import data from 'gulp-data';
 import path from 'path';
 import changed from 'gulp-changed';
 import concat from 'gulp-concat';
+import rename from 'gulp-rename';
 
 const DEST = './';
 
@@ -90,9 +91,19 @@ const pug_build_options = (dest, src , is_build) => {
 	};
 };
 
+gulp.task('jade_to_pug', () => {
+	gulp.src(['./pug/**/*.jade', './pug/**/_*.jade'])
+	.pipe(changed(DEST))
+	.pipe(plumber({
+		errorHandler: notify.onError("Error: <%= error.message %>")
+	}))
+	.pipe(rename({extname: '.pug'}))
+	.pipe(gulp.dest('tmp'));
+});
+
 gulp.task('pug', () => {
 	let locals = {};
-	gulp.src(['./pug/**/*.pug', '!./pug/**/_*.pug'])
+	gulp.src(['./tmp/**/*.pug', '!./tmp/**/_*.pug'])
 	.pipe(changed(DEST))
 	.pipe(plumber({
 		errorHandler: notify.onError("Error: <%= error.message %>")
@@ -132,7 +143,10 @@ gulp.task('bs-reload', () => {
 watch
 =============================================== */
 gulp.task('watch', () => {
-	gulp.watch(['./pug/**/*.pug', '!./pug/**/_*.pug'], () => {
+	gulp.watch(['./pug/**/*.jade', '!./pug/**/_*.jade'], () => {
+		gulp.start(['jade_to_pug']);
+	});
+	gulp.watch(['./tmp/**/*.pug', '!./pug/**/_*.pug'], () => {
 		gulp.start(['pug']);
 	});
 });

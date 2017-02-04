@@ -1,0 +1,7 @@
+//- if is_build === true//build時の指定 圧縮ファイルを読込
+//- 	link(rel='stylesheet', href='#{assets_prefix}css/style.min.css')
+//- 	script(src='#{assets_prefix}js/script.min.js')
+//- else
+script(src=`${assets_prefix}lib/js/jquery/jquery.min.js`)
+script(src=`${assets_prefix}lib/js/lodash/lodash.min.js`)
+script(src=`${assets_prefix}js/bundle.js`)

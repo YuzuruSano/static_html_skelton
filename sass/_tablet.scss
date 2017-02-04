@@ -17,3 +17,45 @@ body {
 body,div,p,h1,h2,h3,h4,h5,li,a,ul,li,dl,dt,dd,#wrap,header,footer,article,section,aside{
 	box-sizing:border-box;
 }
+
+/* ===============================================
+spnav
+=============================================== */
+#spnavi {
+	overflow: hidden;
+	background: #fff;
+	width: 100%;
+	position: absolute;
+	z-index: 2;
+	top: 0;
+	left:0;
+	display:none;
+}
+.btn_sp_navi,.btn_sp_navi_wrap {
+	display: inline-block;
+}
+.btn_sp_navi_wrap {
+	position: absolute;
+	top: -8px;
+	right: 5px;
+	text-align: center;
+	a {
+		text-decoration: none;
+	}
+	.fa-bars {
+		display: inline-block;
+		font-size: 38px;
+		color: #009745;
+	}
+	span {
+		display: block;
+		font-size: 10px;
+		text-decoration: none;
+		top:-2px;
+		position: relative;
+		color: #009745;
+	}
+}
+#scroller {
+	padding-bottom: 80px;
+}
