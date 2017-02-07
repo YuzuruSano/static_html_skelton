@@ -4,6 +4,7 @@ import Accordion from './Accordion';
 import Tab from './Tab';
 import SpNavi from './SpNavi';
 import ToTop from './ToTop';
+import DropDownMenu from './DropDownMenu';
 
 /* ===============================================
 Check responsive state
@@ -11,8 +12,11 @@ Check responsive state
 // const r = new Responsive();
 
 // $(window).on('resize',function(){
+// check is responsive;
 // 	console.log(r.state()());
 // });
+// check is mobile;
+// alert(r.isPhone());
 /* ===============================================
 SP Navi
 =============================================== */
@@ -35,6 +39,35 @@ show/hide toggle
 =============================================== */
 const totop = new ToTop('#totop',100,400);
 totop.exec();
+/* ===============================================
+DropDown
+
+markp:
+<ul>
+	<li>
+		<a href=""></a>
+		<ul class="child">
+			<li>
+				<a href=""></a>
+			</li>
+			<li>
+				<a href=""></a>
+			</li>
+			<li>
+				<a href=""></a>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href=""></a>
+	</li>
+	<li>
+		<a href=""></a>
+	</li>
+</ul>
+=============================================== */
+// const dd = new DropDownMenu('ul li','.child',200);
+// dd.exec();
 /* ===============================================
 Accordion
 
