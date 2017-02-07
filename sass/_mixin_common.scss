@@ -169,3 +169,14 @@ common parts
 	filter:  progid:DXImageTransform.Microsoft.Alpha(opacity=#{$opacity * 100});// ie lt 8
 	zoom:1; // for ie filter
 }
+
+@mixin opacity--anim($opacity:0.8) {
+	transition:opacity 0.6s;
+	&:hover {
+		opacity: $opacity;
+		-moz-opacity: $opacity; // Mozzila
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=#{$opacity * 100})";// ie 8
+		filter:  progid:DXImageTransform.Microsoft.Alpha(opacity=#{$opacity * 100});// ie lt 8
+		zoom:1; // for ie filter
+	}
+}

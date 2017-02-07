@@ -1,0 +1,60 @@
+@import "compass";
+/* ===============================================
+font-face定義例
+=============================================== */
+// @font-face {
+// 	font-family: 'Noto Sans Japanese';
+// 	font-style: normal;
+// 	font-weight: 100;
+// 	src: url('../font/NotoSansCJKjp-Thin.eot'); /* IE9 Compat Modes */
+// 	src: url('../font/NotoSansCJKjp-Thin.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+// 	url('../font/NotoSansCJKjp-Thin.woff') format('woff'), /* Modern Browsers */
+// 	url('../font/NotoSansCJKjp-Thin.ttf')  format('truetype'); /* Safari, Android, iOS */
+// }
+
+body {
+	font-family:"游ゴシック体", "Yu Gothic", YuGothic,"Helvetica Neue",Helvetica,Arial,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
+	-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%;
+	-webkit-text-size-adjust: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+/* ===============================================
+mixinの指定例
+=============================================== */
+// %font--noto_sans {
+// 	font-family: 'Noto Sans Japanese', serif;
+// }
+
+// .font--noto_thin {
+// 	@extend %font--noto_sans;
+// 	font-weight: 100;
+// }
+// .font--noto_light {
+// 	@extend %font--noto_sans;
+// 	font-weight: 200;
+// }
+// .font--noto_demiLight {
+// 	@extend %font--noto_sans;
+// 	font-weight: 300;
+// }
+// .font--noto_regular {
+// 	@extend %font--noto_sans;
+// 	font-weight: 400;
+// }
+// .font--noto_medium {
+// 	@extend %font--noto_sans;
+// 	font-weight: 500;
+// }
+// .font--noto_bold {
+// 	@extend %font--noto_sans;
+// 	font-weight: 700;
+// }
+// .font--noto_black {
+// 	@extend %font--noto_sans;
+// 	font-weight: 900;
+// }
+
+.font--yu_mincho {
+	font-family: YuMincho,"Yu Mincho","游明朝体","游明朝","ヒラギノ明朝 ProN W3","Hiragino Mincho ProN","ＭＳ ゴシック","MS Gothic","メイリオ",Meiryo,serif;
+}

@@ -13,7 +13,6 @@
 		font-size: $base_font_size;
 		color:$font_color;
 		line-height:$line_height;
-		font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"ＭＳ Ｐゴシック",sans-serif;
 		@if $-webkit-text-size-adjust == false {-webkit-text-size-adjust: none;}
 	}
 
