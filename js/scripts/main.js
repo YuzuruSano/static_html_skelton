@@ -5,7 +5,7 @@ import Tab from './Tab';
 import SpNavi from './SpNavi';
 import ToTop from './ToTop';
 import DropDownMenu from './DropDownMenu';
-
+import BlockLink from './BlockLink';
 /* ===============================================
 Check responsive state
 =============================================== */
@@ -28,6 +28,11 @@ let param = {
 };
 const spnavi = new SpNavi(param);
 spnavi.exec();
+/* ===============================================
+box link
+=============================================== */
+// let box_link = new BlockLink();
+// box_link.exec('.box_link');
 /* ===============================================
 Smooth Scroll
 =============================================== */
