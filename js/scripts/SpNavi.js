@@ -13,7 +13,7 @@ class SpNavi{
 	}
 
 	exec(){
-		const [target,_touches] = [this.target , _touches];
+		const [target,_touches] = [this.target , this.touches];
 		let th = 0;
 
 		//set height
@@ -23,7 +23,7 @@ class SpNavi{
 			th = $(window).height();
 		}
 
-		$(target).height(th).find('ul').css({'padding-bottom':this.fixer});//padding-bottomhは環境に合わせて調整
+		$(target).height(th).find('#scroller > ul').css({'padding-bottom':this.fixer});//padding-bottomhは環境に合わせて調整
 
 		//set click event
 		$(this.trigger).on('click',function(ev){
@@ -35,6 +35,7 @@ class SpNavi{
 				$(target).fadeOut(this.speed);
 				$(this.filter).fadeOut(this.speed);
 				$(window).off("touchmove._noscroll");
+				$(this).removeClass('active');
 			}else{
 				$(target).fadeIn(this.speed);
 				$(this.filter).fadeIn(this.speed);
@@ -47,6 +48,7 @@ class SpNavi{
 						event.preventDefault();
 					});
 				}
+				$(this).addClass('active');
 			}
 		});
 	}
