@@ -3,7 +3,7 @@ class Gmap{
 		target = 'map',
 		styles = [{"stylers": [{ "visibility": "on" },{ "saturation": -100 },{ "lightness": 28 },{ "gamma": 0.98 }]}],
 		center =  {lat:35.010824 , lng:135.759710},
-		pins = [{lat:35.010824 , lng:135.759710}],
+		pins = {lat:35.010824 , lng:135.759710},
 		settings = {
 			zoom:17,
 			icon:'',
@@ -13,7 +13,7 @@ class Gmap{
 		this.target = target;
 		this.styles = styles;
 		this.center = center;
-		this.pins = pins;
+		this.pins = [pins];
 		this.settings = settings;
 	}
 
