@@ -1,8 +1,8 @@
+import Responsive from './Responsive';
 var IScroll = require('../../lib/js/iscroll/iscroll.js');
 
 class SpNavi{
 	constructor(param) {
-		console.log(param);
 		this.touches = typeof document.ontouchstart != "undefined",
 		this.target = param.target;
 		this.trigger = param.trigger;
@@ -51,6 +51,15 @@ class SpNavi{
 				$(this).addClass('active');
 			}
 		});
+
+		const r = new Responsive();
+
+		$(window).on('load resize',function(){
+			if(r.state()() === false){
+				$(target).hide();
+			}
+		});
+
 	}
 }
 module.exports = SpNavi;

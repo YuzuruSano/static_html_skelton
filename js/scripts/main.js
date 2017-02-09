@@ -6,6 +6,7 @@ import SpNavi from './SpNavi';
 import ToTop from './ToTop';
 import DropDownMenu from './DropDownMenu';
 import BlockLink from './BlockLink';
+import Gmap from './Gmap';
 /* ===============================================
 Check responsive state
 =============================================== */
@@ -111,3 +112,10 @@ markup:
 =============================================== */
 // const tab = new Tab('.tc li','.tc .tc_content');
 // tab.exec();
+
+// /* gmap
+// ----------------------- */
+// let gmap = new Gmap();
+// $(window).on('load',function(){
+// 	gmap.exec();
+// });
