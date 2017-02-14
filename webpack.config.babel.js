@@ -19,6 +19,13 @@ module.exports = {
 				test: /\.js$/, // 対象となるファイルの拡張子（正規表現可）
 				exclude: /node_modules/, // 除外するファイル/ディレクトリ（正規表現可）
 				loader : 'babel-loader'
+			},
+			{
+				test: /\.(gif|png|jpg|eot|wof|woff|ttf|svg)$/, loader: 'url-loader'
+			},
+			{
+				test: /\.css$/,
+				loaders: ["style-loader", "css-loader"]
 			}
 		]
 	},
