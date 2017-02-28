@@ -10,6 +10,7 @@ import concat from 'gulp-concat';
 import rename from 'gulp-rename';
 import imagemin from 'gulp-imagemin'
 import runSequence from 'run-sequence';
+import zip from 'gulp-zip';
 const del = require('del');
 
 const DEST = './';
@@ -179,6 +180,14 @@ gulp.task('imgmin', () => {
 	.pipe(gulp.dest('./build/images'));
 });
 /* ===============================================
+zip
+=============================================== */
+gulp.task('zip', () => {
+	return gulp.src('build/**/*')
+	.pipe(zip('build.zip'))
+	.pipe(gulp.dest('./'));
+});
+/* ===============================================
 watch jade,pug
 =============================================== */
 gulp.task('watch', () => {
@@ -197,6 +206,7 @@ gulp.task('build', ()=>{
 	return runSequence(
 		'clean',
 		'copy',
-		'imgmin'
+		'imgmin',
+		'zip'
 	);
 });
