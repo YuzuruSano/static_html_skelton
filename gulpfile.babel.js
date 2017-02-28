@@ -8,6 +8,9 @@ import path from 'path';
 import changed from 'gulp-changed';
 import concat from 'gulp-concat';
 import rename from 'gulp-rename';
+import imagemin from 'gulp-imagemin'
+import runSequence from 'run-sequence';
+const del = require('del');
 
 const DEST = './';
 
@@ -130,24 +133,70 @@ gulp.task('browser-sync', () => {
 	});
 	//ファイルの監視
 	//以下のファイルが変わったらリロードする
-	gulp.watch("*.html", ['bs-reload']);
-	gulp.watch("dist/**/*.html", ['bs-reload']);
-	gulp.watch("js/*.js", ['bs-reload']);
-	gulp.watch("css/**/*.css", ['bs-reload']);
+	gulp.watch(['**/*.html','!node_modules/**/*.html','!bower_components/**/*.html'], ['bs-reload']);
+	gulp.watch("./js/*.js", ['bs-reload']);
+	gulp.watch("./css/**/*.css", ['bs-reload']);
 });
 
 gulp.task('bs-reload', () => {
 	browserSync.reload();
 });
 /* ===============================================
-watch
+clean
+=============================================== */
+gulp.task('clean', () => {
+	return del(['build']);
+});
+/* ===============================================
+copy
+=============================================== */
+const copy = new Map([
+	[ '',
+		['**/*.html','!node_modules/**/*.html','!bower_components/**/*.html']
+	],
+	[ 'css',
+		['css/style.min.css','css/style.min.css.map']
+	],
+	[ 'js',
+		['js/bundle.js','js/bundle.js.map']
+	],
+	[ 'lib',
+		['lib/js/bxslider-4/jquery.bxSlider.min.js','lib/css/bxslider-4/jquery.bxslider.css']
+	]
+]);
+gulp.task('copy', () => {
+	return copy.forEach((assets, dir) => {
+		gulp.src(assets,{ base: dir })
+		.pipe(gulp.dest('build/' + dir));
+	});
+});
+/* ===============================================
+imgmin
+=============================================== */
+gulp.task('imgmin', () => {
+	return gulp.src('images/**/*')
+	.pipe(imagemin())
+	.pipe(gulp.dest('./build/images'));
+});
+/* ===============================================
+watch jade,pug
 =============================================== */
 gulp.task('watch', () => {
 	gulp.watch(['./pug/**/*.jade', '!./pug/**/_*.jade'], () => {
 		gulp.start(['jade_to_pug']);
 	});
-	gulp.watch(['./tmp/**/*.pug', '!./pug/**/_*.pug'], () => {
+	gulp.watch(['./tmp/**/*.pug', '!./tmp/**/_*.pug'], () => {
 		gulp.start(['pug']);
 	});
 });
+/* ===============================================
+task
+=============================================== */
 gulp.task('default', ['browser-sync', 'pug', 'watch']);
+gulp.task('build', ()=>{
+	return runSequence(
+		'clean',
+		'copy',
+		'imgmin'
+	);
+});
