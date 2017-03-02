@@ -11,6 +11,7 @@ module.exports = {
 		path: './js', // 出力先のパス
 		filename: 'bundle.js' // 出力先のファイル名
 	},
+	cache: true,
 	devtool: 'source-map',
 	module: {
 		/* loaderの設定 */
