@@ -8,7 +8,7 @@ module.exports = {
 	entry: ['babel-polyfill', './js/scripts/main.js'],
 	/* 出力されるファイルの設定 */
 	output: {
-		path: './js', // 出力先のパス
+		path: __dirname + '/js', // 出力先のパス
 		filename: 'bundle.js' // 出力先のファイル名
 	},
 	cache: true,

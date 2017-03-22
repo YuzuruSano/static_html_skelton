@@ -1,36 +1,23 @@
-mixin link(href, name)
-	a(href=href)&attributes(attributes)= name
-
-mixin fl(left,right,right_padding)
-	.clearfix
-		.fl(style='padding-right:#{right_padding}') #{left}
-		.oh #{right}
-
-mixin fr(left,right,left_padding)
-	.clearfix
-		.fr(style='padding-left:#{left_padding}') #{right}
-		.oh #{left}
-
 mixin base_meta(meta)
-	title=meta.title
-	meta(name='description', content=meta.desc)
-	meta(name='keywords', content=meta.key)
+	title=`${meta.title}`
+	meta(name='description', content=`${meta.desc}`)
+	meta(name='keywords', content=`${meta.key}`)
 
 mixin ogp(ogpData)
 	// ogp tags
-	meta(property="og:title", content=ogpData.title)
+	meta(property="og:title", content=`${ogpData.title}`)
 	//- トップページはwebsite、個別ページはarticle
 	meta(property="og:type", content="article")
 	//- 記事の説明
-	meta(property="og:description", content=ogpData.description)
+	meta(property="og:description", content=`${ogpData.description}`)
 	//- 記事の URL
-	meta(property="og:url", content=ogpData.url)
+	meta(property="og:url", content=`${ogpData.url}`)
 	//- 記事用の画像
-	meta(property="og:image", content=ogpData.image)
+	meta(property="og:image", content=`${ogpData.image}`)
 	//- サイト名
-	meta(property="og:site_name", content=ogpData.siteName)
+	meta(property="og:site_name", content=`${ogpData.siteName}`)
 	//- 言語
-	meta(property="og:locale", content=ogpData.lang)
+	meta(property="og:locale", content=`${ogpData.lang}`)
 	//- できればfb:app_idを利用
-	meta(property="fb:admins", content=ogpData.fbid)
-	meta(property="fb:app_id", content=ogpData.fbid)
+	meta(property="fb:admins", content=`${ogpData.fbid}`)
+	meta(property="fb:app_id", content=`${ogpData.fbid}`)
