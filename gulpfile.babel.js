@@ -15,6 +15,8 @@ const del = require('del');
 
 const DEST = './';
 
+const reload = browserSync.reload;
+
 /* ===============================================
 move bower components
 =============================================== */
@@ -75,13 +77,17 @@ gulp.task('bower_copy', () => {
 pug
 =============================================== */
 const pug_build_options = (dest, src , is_build) => {
-	let depth = src[0].split('/').length;
+	let depth = src.split('/').length;
 	let page_prefix = './';
 	let assets_prefix = './';
 	if(is_build){
 		assets_prefix = '';
 	}
-	let filedepth = depth - 2;
+	let filedepth = depth - 7;
+	if(filedepth > 0){
+		page_prefix = '';
+		assets_prefix = '';
+	}
 	for(let i = 0;i < filedepth;i++){
 		page_prefix += '../';
 		assets_prefix += '../';
@@ -102,7 +108,10 @@ gulp.task('jade_to_pug', () => {
 		errorHandler: notify.onError("Error: <%= error.message %>")
 	}))
 	.pipe(rename({extname: '.pug'}))
-	.pipe(gulp.dest('tmp'));
+	.pipe(gulp.dest('tmp'))
+	.on('end',()=>{
+		gulp.start(['pug']);
+	});
 });
 
 gulp.task('pug', () => {
@@ -120,7 +129,8 @@ gulp.task('pug', () => {
 		locals: locals,
 		pretty: true
 	}))
-	.pipe(gulp.dest("./"));
+	.pipe(gulp.dest("./"))
+	.on('end', reload);
 });
 /* ===============================================
 borwser-sync
@@ -134,7 +144,7 @@ gulp.task('browser-sync', () => {
 	});
 	//ファイルの監視
 	//以下のファイルが変わったらリロードする
-	gulp.watch(['**/*.html','!node_modules/**/*.html','!bower_components/**/*.html'], ['bs-reload']);
+	//gulp.watch(['**/*.html','!node_modules/**/*.html','!bower_components/**/*.html'], ['bs-reload']);
 	gulp.watch("./js/*.js", ['bs-reload']);
 	gulp.watch("./css/**/*.css", ['bs-reload']);
 });
@@ -156,10 +166,10 @@ const copy = new Map([
 		['**/*.html','!node_modules/**/*.html','!bower_components/**/*.html']
 	],
 	[ 'css',
-		['css/style.min.css','css/style.min.css.map']
+		['css/sfc_style.min.css','css/sfc_style.min.css.map']
 	],
 	[ 'js',
-		['js/bundle.js','js/bundle.js.map']
+		['js/sfc_style.js','js/sfc_style.js.map']
 	],
 	[ 'lib',
 		['lib/js/bxslider-4/jquery.bxSlider.min.js','lib/css/bxslider-4/jquery.bxslider.css']
@@ -193,9 +203,6 @@ watch jade,pug
 gulp.task('watch', () => {
 	gulp.watch(['./pug/**/*.jade', '!./pug/**/_*.jade'], () => {
 		gulp.start(['jade_to_pug']);
-	});
-	gulp.watch(['./tmp/**/*.pug', '!./tmp/**/_*.pug'], () => {
-		gulp.start(['pug']);
 	});
 });
 /* ===============================================
