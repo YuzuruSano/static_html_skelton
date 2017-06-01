@@ -5,7 +5,7 @@ const webpack = require('webpack');
 
 module.exports = {
 	/* ビルドの起点となるファイルの設定 */
-	entry: ['babel-polyfill', './js/scripts/main.js'],
+	entry: ['./js/scripts/main.js'],
 	/* 出力されるファイルの設定 */
 	output: {
 		path: __dirname + '/js', // 出力先のパス
@@ -18,7 +18,7 @@ module.exports = {
 		loaders: [
 			{
 				test: /\.js$/, // 対象となるファイルの拡張子（正規表現可）
-				exclude: /node_modules/, // 除外するファイル/ディレクトリ（正規表現可）
+				exclude: /(node_modules|bower_components)/, // 除外するファイル/ディレクトリ（正規表現可）
 				loader : 'babel-loader'
 			}
 			//,{ test: /\.html$/, loader: 'html-loader' }//lodash使うときはコメントアウト
