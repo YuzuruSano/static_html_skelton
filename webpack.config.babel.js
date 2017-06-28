@@ -1,7 +1,7 @@
 const path = require("path");
 const current = process.cwd();
-
 const webpack = require('webpack');
+const WebpackNotifierPlugin = require('webpack-notifier');
 
 module.exports = [{
 	/* ビルドの起点となるファイルの設定 */
@@ -41,7 +41,8 @@ module.exports = [{
 			$: 'jquery',
 			jQuery: 'jquery',
 			'window.jQuery': 'jquery'
-		})
+		}),
+		new WebpackNotifierPlugin()
 	]
 },
 {
