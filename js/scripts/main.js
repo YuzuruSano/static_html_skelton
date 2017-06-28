@@ -7,6 +7,7 @@ import ToTop from './ToTop';
 import DropDownMenu from './DropDownMenu';
 import BlockLink from './BlockLink';
 import Gmap from './Gmap';
+
 /* ===============================================
 Check responsive state
 =============================================== */
@@ -18,6 +19,7 @@ Check responsive state
 // });
 // check is mobile;
 // alert(r.isPhone());
+alert('testtdddest');
 /* ===============================================
 SP Navi
 =============================================== */

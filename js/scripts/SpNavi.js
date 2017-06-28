@@ -1,5 +1,5 @@
 import Responsive from './Responsive';
-var IScroll = require('../../lib/js/iscroll/iscroll.js');
+import IScroll from 'iscroll';
 
 class SpNavi{
 	constructor(param) {

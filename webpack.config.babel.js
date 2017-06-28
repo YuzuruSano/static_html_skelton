@@ -3,7 +3,7 @@ const current = process.cwd();
 
 const webpack = require('webpack');
 
-module.exports = {
+module.exports = [{
 	/* ビルドの起点となるファイルの設定 */
 	entry:{
 		main:['./js/scripts/main.js']
@@ -13,7 +13,7 @@ module.exports = {
 	/* 出力されるファイルの設定 */
 	output: {
 		path: __dirname + '/js', // 出力先のパス
-		filename: 'bundle.js' // 出力先のファイル名
+		filename: '[name].js' // 出力先のファイル名
 	},
 	cache: true,
 	devtool: 'source-map',
@@ -43,4 +43,24 @@ module.exports = {
 			'window.jQuery': 'jquery'
 		})
 	]
-};
+},
+{
+	/* ビルドの起点となるファイルの設定 */
+	entry: 'babel-polyfill',
+	/* 出力されるファイルの設定 */
+	output: {
+		path: __dirname + '/js', // 出力先のパス
+		filename: 'vendor.js', // 出力先のファイル名
+		jsonpFunction: 'vendor'
+	},
+	cache: true,
+	plugins: [
+		new webpack.optimize.UglifyJsPlugin(
+		{
+			compress: {warnings: false},
+			output: {comments: false},
+			sourceMap: false
+		}
+		)
+	]
+}];

@@ -1,6 +1,7 @@
 import gulp from 'gulp';
 import pug from 'gulp-pug';
 import plumber from 'gulp-plumber';
+import watch from 'gulp-watch';
 import browserSync from 'browser-sync';
 import notify from 'gulp-notify';
 import data from 'gulp-data';
@@ -17,62 +18,6 @@ const DEST = './';
 
 const reload = browserSync.reload;
 
-/* ===============================================
-move bower components
-=============================================== */
-const components = 'bower_components';
-const lib = 'lib';
-/* bower_componentsから移動させたいファイルを記述
------------------------ */
-const override =  new Map([
-	[ 'font-awesome', [
-			['css','css/*.css'],
-			['fonts','fonts/*'],
-		]
-	],
-	[ "lodash",[
-			["js", "dist/lodash.min.js"]
-		]
-	],
-	[ "jquery",[
-			["js", "dist/jquery.min.js"]
-		]
-	],
-	[ "bxslider-4",[
-			['js', "dist/jquery.bxSlider.min.js"],
-			["css","dist/jquery.bxslider.css"],
-			["css","dist/images/bx_loader.gif"],
-			["css","dist/images/controls.png"]
-		]
-	],
-	[ "imagesloaded",[
-			[ "js","imagesloaded.pkgd.min.js"]
-		]
-	],
-	[ "jquery.inview",[
-			[ "js","jquery.inview.min.js"]
-		]
-	],
-	[ "iscroll",[
-			[ "js","build/iscroll.js"]
-		]
-	],
-	[ "slidebars",[
-			["css", "dist/slidebars.min.css"],
-			["js", "dist/slidebars.min.js"]
-		]
-	]
-]);
-
-gulp.task('bower_copy', () => {
-	override.forEach((assets, plugin) => {
-		var plugin = plugin;
-		assets.forEach((target) => {
-			gulp.src(components + `/${plugin}/${target[1]}`)
-			.pipe(gulp.dest(lib + `/${target[0]}/${plugin}/`));
-		});
-	});
-});
 /* ===============================================
 pug
 =============================================== */
@@ -141,8 +86,18 @@ gulp.task('browser-sync', () => {
 	//ファイルの監視
 	//以下のファイルが変わったらリロードする
 	//gulp.watch(['**/*.html','!node_modules/**/*.html','!bower_components/**/*.html'], ['bs-reload']);
-	gulp.watch("./js/*.js", ['bs-reload']);
-	gulp.watch("./css/**/*.css", ['bs-reload']);
+	// gulp.watch("build/js/*.js", ['bs-reload']);
+	// gulp.watch("build/css/**/*.css", ['bs-reload']);
+	// gulp.watch("build/images/**/*.*", ['bs-reload']);
+	watch("build/js/*.js", function() {
+		gulp.start('bs-reload');
+	});
+	watch("build/css/**/*.css", function() {
+		gulp.start('bs-reload');
+	});
+	watch("build/images/**/*.*", function() {
+		gulp.start('bs-reload');
+	});
 });
 
 gulp.task('bs-reload', () => {
@@ -158,17 +113,11 @@ gulp.task('clean', () => {
 copy
 =============================================== */
 const copy = new Map([
-	[ '',
-		['**/*.html','!node_modules/**/*.html','!bower_components/**/*.html']
-	],
 	[ 'css',
-		['css/sfc_style.min.css','css/sfc_style.min.css.map']
+		['css/style.min.css','css/style.min.css.map']
 	],
 	[ 'js',
-		['js/sfc_style.js','js/sfc_style.js.map']
-	],
-	[ 'lib',
-		['lib/js/bxslider-4/jquery.bxSlider.min.js','lib/css/bxslider-4/jquery.bxslider.css']
+		['js/*.js','js/*.js.map']
 	]
 ]);
 gulp.task('copy', () => {
@@ -200,16 +149,29 @@ gulp.task('watch', () => {
 	gulp.watch(['./pug/**/*.jade', '!./pug/**/_*.jade'], () => {
 		gulp.start(['jade_to_pug']);
 	});
+
+	watch("js/*.js", function() {
+		gulp.start('build');
+	});
+	watch("css/**/*.css", function() {
+		gulp.start('build');
+	});
+	watch("images/**/*.*", function() {
+		gulp.start('build');
+	});
+	// gulp.watch("js/*.js", ['build']);
+	// gulp.watch("css/**/*.css", ['build']);
+	// gulp.watch("images/**/*.*", ['build']);
 });
 /* ===============================================
 task
 =============================================== */
-gulp.task('default', ['browser-sync', 'pug', 'watch']);
+gulp.task('default', ['browser-sync', 'pug', 'build','watch']);
 gulp.task('build', ()=>{
 	return runSequence(
 		'clean',
 		'copy',
-		'imgmin',
-		'zip'
+		'imgmin'
+		//'zip'
 	);
 });
