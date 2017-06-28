@@ -77,17 +77,13 @@ gulp.task('bower_copy', () => {
 pug
 =============================================== */
 const pug_build_options = (dest, src , is_build) => {
-	let depth = src.split('/').length;
+	let depth = src[0].split('/').length;
 	let page_prefix = './';
 	let assets_prefix = './';
 	if(is_build){
 		assets_prefix = '';
 	}
-	let filedepth = depth - 7;
-	if(filedepth > 0){
-		page_prefix = '';
-		assets_prefix = '';
-	}
+	let filedepth = depth - 2;
 	for(let i = 0;i < filedepth;i++){
 		page_prefix += '../';
 		assets_prefix += '../';
