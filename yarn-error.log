@@ -1,0 +1,64 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn install
+
+PATH: 
+  /Applications/MAMP/bin/php/php5.6.10/bin:/Users/size-nn-mod/.rbenv/shims:/usr/local/bin:/usr/local/sbin:/Applications/MAMP/bin/php/php5.5.14/bin:/usr/local/share/npm/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  0.24.5
+
+Node version: 
+  8.1.2
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "suitosha_base_static_html",
+    "version": "2.0.0",
+    "description": "gulp他タスクランナーの依存パッケージ",
+    "author": "Yuzuru Sano",
+    "license": "ISC",
+    "devDependencies": {
+      "babel-core": "^6.22.1",
+      "babel-loader": "^6.2.10",
+      "babel-polyfill": "^6.22.0",
+      "babel-preset-es2015": "^6.22.0",
+      "babel-register": "^6.22.0",
+      "bowser": "^1.6.0",
+      "browser-sync": "^2.18.7",
+      "css-loader": "^0.26.1",
+      "del": "^2.2.2",
+      "file-loader": "^0.10.0",
+      "gulp": "^3.9.1",
+      "gulp-changed": "^1.3.2",
+      "gulp-clean": "^0.3.2",
+      "gulp-concat": "^2.6.1",
+      "gulp-data": "^1.2.1",
+      "gulp-imagemin": "^3.1.1",
+      "gulp-notify": "^3.0.0",
+      "gulp-plumber": "^1.1.0",
+      "gulp-pug": "^3.2.0",
+      "gulp-rename": "^1.2.2",
+      "gulp-sass": "^3.1.0",
+      "gulp-zip": "^4.0.0",
+      "html-loader": "^0.4.4",
+      "lodash": "^4.17.4",
+      "path": "^0.12.7",
+      "run-sequence": "^1.2.2",
+      "style-loader": "^0.13.1",
+      "url-loader": "^0.5.7",
+      "webpack": "^2.2.1"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: EACCES: permission denied, mkdir '/Applications/MAMP/htdocs/suitosha_base_static_html/node_modules/engine.io-client/node_modules/ms'

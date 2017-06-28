@@ -5,7 +5,11 @@ const webpack = require('webpack');
 
 module.exports = {
 	/* ビルドの起点となるファイルの設定 */
-	entry: ['./js/scripts/main.js'],
+	entry:{
+		main:['./js/scripts/main.js']
+		//複数連結
+		//home:['./js/scripts/main.js','./js/scripts/home.js']
+	},
 	/* 出力されるファイルの設定 */
 	output: {
 		path: __dirname + '/js', // 出力先のパス
@@ -28,12 +32,15 @@ module.exports = {
 		jquery: 'jQuery'
 	},
 	plugins: [
-		new webpack.optimize.UglifyJsPlugin(
-		{
+		new webpack.optimize.UglifyJsPlugin({
 			compress: {warnings: false},
 			output: {comments: false},
 			sourceMap: true
-		}
-		)
+		}),
+		new webpack.ProvidePlugin({
+			$: 'jquery',
+			jQuery: 'jquery',
+			'window.jQuery': 'jquery'
+		})
 	]
 };
