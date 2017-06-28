@@ -2,6 +2,14 @@ const path = require("path");
 const current = process.cwd();
 const webpack = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const supported = [
+   'IE 9',
+   'IE 10',
+   'IE 11',
+   'last 4 versions'
+];
 
 module.exports = [{
 	/* ビルドの起点となるファイルの設定 */
@@ -64,4 +72,53 @@ module.exports = [{
 		}
 		)
 	]
-}];
+},
+{
+	devtool: "source-map",
+	entry: {
+		style: './sass/style.scss',
+	},
+	output: {
+		path: path.join(__dirname, './css'),
+		filename: '[name].css'
+	},
+	module: {
+		rules: [
+			{
+				test: /\.scss$/,
+				use: ExtractTextPlugin.extract({
+					fallback: "style-loader",
+					use: [
+						{
+							loader: "css-loader",
+							options: {
+								sourceMap: true
+							}
+						},
+						{
+							loader: 'postcss-loader',
+							options: {
+								sourceMap: true,
+								plugins: [
+									require('cssnano')({
+										autoprefixer: {browsers: supported, add: true}
+									})
+								]
+							}
+						},
+						{
+							loader: "sass-loader", options: {
+								sourceMap: true
+							}
+						}
+					]
+				})
+			}
+		]
+	},
+	plugins: [
+		new ExtractTextPlugin({filename:'[name].css', disable: false, allChunks: true }),
+		new WebpackNotifierPlugin()
+	]
+}
+];

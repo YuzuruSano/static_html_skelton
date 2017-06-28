@@ -28,6 +28,9 @@ http://qiita.com/naru0504/items/5427f3795171c540ed91
 /* page
 ----------------------- */
 //@import 'page/xxx.scss';
-
 @import 'helper/shorthands.scss';
 
+.test {
+	display: flex;
+	color: #000;
+}

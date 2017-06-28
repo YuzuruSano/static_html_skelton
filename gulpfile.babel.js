@@ -114,7 +114,7 @@ copy
 =============================================== */
 const copy = new Map([
 	[ 'css',
-		['css/style.min.css','css/style.min.css.map']
+		['css/style.css','css/style.css.map']
 	],
 	[ 'js',
 		['js/*.js','js/*.js.map']
