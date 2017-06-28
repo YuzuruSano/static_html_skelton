@@ -19,6 +19,7 @@ Check responsive state
 // });
 // check is mobile;
 // alert(r.isPhone());
+console.log('test');
 /* ===============================================
 SP Navi
 =============================================== */

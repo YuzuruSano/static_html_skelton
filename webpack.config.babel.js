@@ -50,7 +50,11 @@ module.exports = [{
 			jQuery: 'jquery',
 			'window.jQuery': 'jquery'
 		}),
-		new WebpackNotifierPlugin()
+		new WebpackNotifierPlugin({
+			title: 'JSのコンパイルっすわ',
+			contentImage: path.join(__dirname, 'js/icons/shibasaki_ko.jpg'),
+			alwaysNotify: true
+		})
 	]
 },
 {
@@ -118,7 +122,11 @@ module.exports = [{
 	},
 	plugins: [
 		new ExtractTextPlugin({filename:'[name].css', disable: false, allChunks: true }),
-		new WebpackNotifierPlugin()
+		new WebpackNotifierPlugin({
+			title: 'SASSのコンパイルっすわ',
+			contentImage: path.join(__dirname, 'js/icons/yoshioka_riho.png'),
+			alwaysNotify: true
+		}),
 	]
 }
 ];

@@ -1,6 +1,27 @@
 /* ***************************************
 # Mixins 汎用mixin
 *************************************** */
+// RESPONSIVE
+// @include breakpoint(sp) { ... }
+// @include breakpoint(tb) { ... }
+// --------------------
+@mixin breakpoint($size){
+  $flg: false;
+  @each $breakpoint,$value in $breakpoints{
+    @if $size == $breakpoint {
+      $flg: true;
+      @media only screen and ( max-width: map-get($breakpoints, $breakpoint)){
+        @content;
+      }
+    }
+  }
+  @if $flg == false {
+    @media only screen and ( $size ){
+      @content;
+    }
+  }
+}
+
 @mixin clearfix{
 	&:after{
 		content:".";
