@@ -106,6 +106,9 @@ module.exports = [{
 								plugins: [
 									require('cssnano')({
 										autoprefixer: {browsers: supported, add: true}
+									}),
+									require('postcss-assets')({
+										loadPaths: ['images/']
 									})
 								]
 							}
