@@ -43,13 +43,13 @@ const pug_build_options = (dest, src , is_build) => {
 };
 
 gulp.task('jade_to_pug', () => {
-	gulp.src(['./pug/**/*.jade', './pug/**/_*.jade'])
+	gulp.src(['./dev/pug/**/*.jade', './dev/pug/**/_*.jade'])
 	.pipe(changed(DEST))
 	.pipe(plumber({
 		errorHandler: notify.onError("Error: <%= error.message %>")
 	}))
 	.pipe(rename({extname: '.pug'}))
-	.pipe(gulp.dest('tmp'))
+	.pipe(gulp.dest('dev/tmp'))
 	.on('end',()=>{
 		gulp.start(['pug']);
 	});
@@ -57,7 +57,7 @@ gulp.task('jade_to_pug', () => {
 
 gulp.task('pug', () => {
 	let locals = {};
-	gulp.src(['./tmp/**/*.pug', '!./tmp/**/_*.pug'])
+	gulp.src(['./dev/tmp/**/*.pug', '!./dev/tmp/**/_*.pug'])
 	.pipe(changed(DEST))
 	.pipe(plumber({
 		errorHandler: notify.onError("Error: <%= error.message %>")
@@ -71,6 +71,7 @@ gulp.task('pug', () => {
 		pretty: true
 	}))
 	.pipe(gulp.dest("./"))
+	.pipe(notify('pugのコンパイルっすわ'))
 	.on('end', reload);
 });
 /* ===============================================
@@ -85,10 +86,6 @@ gulp.task('browser-sync', () => {
 	});
 	//ファイルの監視
 	//以下のファイルが変わったらリロードする
-	//gulp.watch(['**/*.html','!node_modules/**/*.html','!bower_components/**/*.html'], ['bs-reload']);
-	// gulp.watch("build/js/*.js", ['bs-reload']);
-	// gulp.watch("build/css/**/*.css", ['bs-reload']);
-	// gulp.watch("build/images/**/*.*", ['bs-reload']);
 	watch("build/js/*.js", function() {
 		gulp.start('bs-reload');
 	});
@@ -103,34 +100,12 @@ gulp.task('browser-sync', () => {
 gulp.task('bs-reload', () => {
 	browserSync.reload();
 });
-/* ===============================================
-clean
-=============================================== */
-gulp.task('clean', () => {
-	return del(['build']);
-});
-/* ===============================================
-copy
-=============================================== */
-const copy = new Map([
-	[ 'css',
-		['css/style.css','css/style.css.map']
-	],
-	[ 'js',
-		['js/*.js','js/*.js.map']
-	]
-]);
-gulp.task('copy', () => {
-	return copy.forEach((assets, dir) => {
-		gulp.src(assets,{ base: dir })
-		.pipe(gulp.dest('build/' + dir));
-	});
-});
+
 /* ===============================================
 imgmin
 =============================================== */
 gulp.task('imgmin', () => {
-	return gulp.src('images/**/*')
+	return gulp.src('./build/images/**/*')
 	.pipe(imagemin())
 	.pipe(gulp.dest('./build/images'));
 });
@@ -146,32 +121,12 @@ gulp.task('zip', () => {
 watch jade,pug
 =============================================== */
 gulp.task('watch', () => {
-	gulp.watch(['./pug/**/*.jade', '!./pug/**/_*.jade'], () => {
+	gulp.watch(['./dev/pug/**/*.jade', '!./dev/pug/**/_*.jade'], () => {
 		gulp.start(['jade_to_pug']);
 	});
-
-	watch("js/*.js", function() {
-		gulp.start('build');
-	});
-	watch("css/**/*.css", function() {
-		gulp.start('build');
-	});
-	watch("images/**/*.*", function() {
-		gulp.start('build');
-	});
-	// gulp.watch("js/*.js", ['build']);
-	// gulp.watch("css/**/*.css", ['build']);
-	// gulp.watch("images/**/*.*", ['build']);
 });
 /* ===============================================
 task
 =============================================== */
-gulp.task('default', ['browser-sync', 'pug', 'build','watch']);
-gulp.task('build', ()=>{
-	return runSequence(
-		'clean',
-		'copy',
-		'imgmin'
-		//'zip'
-	);
-});
+gulp.task('default', ['browser-sync', 'pug', 'watch']);
+

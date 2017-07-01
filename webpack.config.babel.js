@@ -14,20 +14,20 @@ const supported = [
 module.exports = [{
 	/* ビルドの起点となるファイルの設定 */
 	entry:{
-		main:['./js/scripts/main.js']
+		main:['./dev/js/scripts/main.js']
 		//複数連結
 		//home:['./js/scripts/main.js','./js/scripts/home.js']
 	},
 	/* 出力されるファイルの設定 */
 	output: {
-		path: __dirname + '/js', // 出力先のパス
+		path: __dirname + '/build/js', // 出力先のパス
 		filename: '[name].js' // 出力先のファイル名
 	},
 	cache: true,
 	devtool: 'source-map',
 	module: {
 		/* loaderの設定 */
-		loaders: [
+		rules: [
 			{
 				test: /\.js$/, // 対象となるファイルの拡張子（正規表現可）
 				exclude: /(node_modules|bower_components)/, // 除外するファイル/ディレクトリ（正規表現可）
@@ -52,7 +52,7 @@ module.exports = [{
 		}),
 		new WebpackNotifierPlugin({
 			title: 'JSのコンパイルっすわ',
-			contentImage: path.join(__dirname, 'js/icons/shibasaki_ko.jpg'),
+			contentImage: path.join(__dirname, 'dev/js/icons/shibasaki_ko.jpg'),
 			alwaysNotify: true
 		})
 	]
@@ -62,7 +62,7 @@ module.exports = [{
 	entry: 'babel-polyfill',
 	/* 出力されるファイルの設定 */
 	output: {
-		path: __dirname + '/js', // 出力先のパス
+		path: __dirname + '/build/js', // 出力先のパス
 		filename: 'vendor.js', // 出力先のファイル名
 		jsonpFunction: 'vendor'
 	},
@@ -80,10 +80,10 @@ module.exports = [{
 {
 	devtool: "source-map",
 	entry: {
-		style: './sass/style.scss',
+		style: './dev/sass/style.scss',
 	},
 	output: {
-		path: path.join(__dirname, './css'),
+		path: path.join(__dirname, './build/css'),
 		filename: '[name].css'
 	},
 	module: {
@@ -106,9 +106,6 @@ module.exports = [{
 								plugins: [
 									require('cssnano')({
 										autoprefixer: {browsers: supported, add: true}
-									}),
-									require('postcss-assets')({
-										loadPaths: ['images/']
 									})
 								]
 							}
@@ -127,7 +124,7 @@ module.exports = [{
 		new ExtractTextPlugin({filename:'[name].css', disable: false, allChunks: true }),
 		new WebpackNotifierPlugin({
 			title: 'SASSのコンパイルっすわ',
-			contentImage: path.join(__dirname, 'js/icons/yoshioka_riho.png'),
+			contentImage: path.join(__dirname, 'dev/js/icons/yoshioka_riho.png'),
 			alwaysNotify: true
 		}),
 	]

@@ -31,23 +31,21 @@ head
 		include _inc_css
 body#top(class=slug)
 	#wrap
-		nav#spnavi.spnavi.sp
-			#scroller
-				ul
-					li
-						a(href="") nav1
-					li
-						a(href="") nav2
-					li
-						a(href="") nav3
-
-		.btn_sp_navi_wrap
-			a.btn_sp_navi.nosc.nosms(href='#sp')
-				i.fa.fa-bars(aria-hidden='true')
-				br
-				span MENU
 		block header
-			h1 hellow world
+			header.global_header
+				h1.global_header-sitelogo
+					a(href="") dubleve
+				p test
+				nav.gnavi
+					ul
+						li
+							a(href="") About Dublevé
+						li
+							a(href="") Collection
+						li
+							a(href="") Shop List
+						li
+							a(href="") Catalogue
 		block contents
 			p
 				| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -57,6 +55,11 @@ body#top(class=slug)
 				| cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 				| proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 		block footer
+			footer#footer.footer
+				.footer-inner
+					.footer-col
+					.footer-col
+
 		block flg
 			#responsive_flg
 		#totop

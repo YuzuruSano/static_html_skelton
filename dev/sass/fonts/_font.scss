@@ -54,6 +54,10 @@ mixinの指定例
 // 	font-weight: 900;
 // }
 
-.font--yu_mincho {
+.font-yu_mincho {
 	font-family: YuMincho,"Yu Mincho","游明朝体","游明朝","ヒラギノ明朝 ProN W3","Hiragino Mincho ProN","ＭＳ ゴシック","MS Gothic","メイリオ",Meiryo,serif;
+}
+
+.font-opensans {
+	font-family: 'Open Sans', sans-serif;;
 }

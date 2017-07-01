@@ -1,7 +1,4 @@
-bower_components/*
 node_modules/*
-lib/*
 .sass-cache/*
-dist/*
-styleguide/*
-tmp
+build/*
+dev/tmp

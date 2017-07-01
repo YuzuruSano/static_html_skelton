@@ -102,3 +102,26 @@ common parts
 		opacity: $opacity;
 	}
 }
+
+/* ===============================================
+postcss assets
+=============================================== */
+// @function resolve($url,$ratio = 1) {
+//   @return unquote("resolve(#{$url},#{$ratio})");
+// }
+
+// @function width($url,$ratio = 1) {
+//   @return unquote("width(#{$url},#{$ratio})");
+// }
+
+// @function height($url,$ratio = 1) {
+//   @return unquote("height(#{$url},#{$ratio})");
+// }
+
+// @function size($url,$ratio = 1) {
+//   @return unquote("size(#{$url},#{$ratio})");
+// }
+
+// @function inline($url,$ratio = 1) {
+//   @return unquote("inline(#{$url},#{$ratio})");
+// }

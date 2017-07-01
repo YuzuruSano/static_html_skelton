@@ -39,18 +39,33 @@
   "dependencies": {
     "autoprefixer": "^7.1.1",
     "bxslider": "^4.2.11",
+    "cpx": "^1.5.0",
     "extract-text-webpack-plugin": "^2.1.2",
+    "gsap": "^1.20.0",
     "gulp-watch": "^4.3.11",
     "imagesloaded": "^4.1.3",
     "iscroll": "^5.2.0",
     "jquery-inview": "^1.1.2",
     "jquery-lineup": "^1.1.2",
     "node-sass": "^4.5.3",
+    "npm-run-all": "^4.0.2",
     "postcss": "^6.0.3",
     "postcss-assets": "^4.1.0",
     "postcss-loader": "^2.0.6",
+    "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
     "swiper": "^3.4.2",
+    "watch": "^1.0.2",
     "webpack-notifier": "^1.5.0"
+  },
+  "scripts": {
+    "img-even": "evenizer -i ./build/images/*.*",
+    "watch:img": "watch --wait 20 'npm-run-all gulp:imgmin img-even' build/images/",
+    "copy-img": "cpx \"./dev/images/*.*\" ./build/images --watch",
+    "webpack": "webpack --watch",
+    "gulp:run": "gulp",
+    "gulp:imgmin": "gulp.imgmin",
+    "test":"npm-run-all --parallel webpack gulp:run copy-img",
+    "start": "npm-run-all test watch:*"
   }
 }

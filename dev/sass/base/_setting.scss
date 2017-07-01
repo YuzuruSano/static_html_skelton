@@ -1,0 +1,29 @@
+// # text adjust
+$-webkit-text-size-adjust : false;
+
+// # text
+$base_font_size:16px;
+//$font_size:100%;
+$line_height:1.5;
+$font_color:#555555;
+
+$black:#221815;
+$green:#0b6c7a;
+
+// link
+$link_color:#0b6c7a;
+$link_hover_color:#0b6c7a;
+
+// BREAKPOINT
+// --------------------
+$breakpoints:(
+    sp: 768px,
+    tb: 960px,
+);
+
+/* ===============================================
+garamond typekit font
+.font-garamond
+or
+.tk-adobe-garamond-pro
+=============================================== */
