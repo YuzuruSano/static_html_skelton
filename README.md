@@ -1,4 +1,5 @@
-グローバルにyarn・webpack・babel・gulpインストールしておいてね
+グローバルにevenizer・yarn・webpack・babel・gulpインストールしておいてね
+※evenizer：https://www.npmjs.com/package/evenizer
 
 ```
 yarn install
