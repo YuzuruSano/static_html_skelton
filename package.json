@@ -65,7 +65,7 @@
     "webpack": "webpack --watch",
     "gulp:run": "gulp",
     "gulp:imgmin": "gulp.imgmin",
-    "test":"npm-run-all --parallel webpack gulp:run copy-img",
+    "test": "npm-run-all --parallel webpack gulp:run copy-img",
     "start": "npm-run-all test watch:*"
   }
 }
