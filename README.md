@@ -4,16 +4,11 @@
 yarn install
 ```
 
-実行 ブラウザが立ち上がればOK
-html、css、jsの変更時にブラウザが自動更新、IPでのアクセスもOK
-
 ```
-gulp
+yarn start
 ```
+下記を自動実行
 
-webpackの起動 js・sassを監視してpostCSS通してコンパイルしてくれる
-
-```
-webpack --watch
-```
-
+* js/sass/pugのコンパイル
+* オートリロード
+* 画像圧縮/奇数サイズは偶数サイズに変更
