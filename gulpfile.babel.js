@@ -91,9 +91,9 @@ gulp.task('browser-sync', () => {
 	watch("build/js/*.js", function() {
 		gulp.start('bs-reload');
 	});
-	// watch("build/css/**/*.css", function() {
-	// 	gulp.start('bs-reload');
-	// });
+	watch("build/css/**/*.css", function() {
+		gulp.start('bs-reload');
+	});
 	watch("build/images/**/*.*", function() {
 		gulp.start('bs-reload');
 	});
@@ -146,6 +146,5 @@ gulp.task('postcss', () => {
 	)
 	.pipe(insert.append('/*# sourceMappingURL=style.css.map*/'))
     .pipe(gulp.dest('build/css/'))
-    .on('end', reload);
 });
 
