@@ -34,7 +34,12 @@ http://qiita.com/naru0504/items/5427f3795171c540ed91
 @include breakpoint(sp){
 	.test {
 		display: flex;
+		transition:(opacty .6s);
 		color: #000;
 	}
-}
+	background:resolve('eveniser.jpg') no-repeat left top;
+	background-size: size('eveniser.jpg');//retinaは第二引数に2
+	width:width('eveniser.jpg');
+	height:height('eveniser.jpg');
 
+}

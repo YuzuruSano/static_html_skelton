@@ -4,12 +4,7 @@ const webpack = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const supported = [
-   'IE 9',
-   'IE 10',
-   'IE 11',
-   'last 4 versions'
-];
+const supported = ['IE 9','IE 10','IE 11','last 4 versions'];
 
 module.exports = [{
 	/* ビルドの起点となるファイルの設定 */
@@ -83,7 +78,7 @@ module.exports = [{
 		style: './dev/sass/style.scss',
 	},
 	output: {
-		path: path.join(__dirname, './build/css'),
+		path: path.join(__dirname, './dev/css'),
 		filename: '[name].css'
 	},
 	module: {
@@ -96,7 +91,9 @@ module.exports = [{
 						{
 							loader: "css-loader",
 							options: {
-								sourceMap: true
+								sourceMap: true,
+								importLoaders: 1,
+								url: false
 							}
 						},
 						{
@@ -121,7 +118,7 @@ module.exports = [{
 		]
 	},
 	plugins: [
-		new ExtractTextPlugin({filename:'[name].css', disable: false, allChunks: true }),
+		new ExtractTextPlugin({filename:'[name].css', allChunks: true }),
 		new WebpackNotifierPlugin({
 			title: 'SASSのコンパイルっすわ',
 			contentImage: path.join(__dirname, 'dev/js/icons/yoshioka_riho.png'),

@@ -12,10 +12,12 @@ import rename from 'gulp-rename';
 import imagemin from 'gulp-imagemin'
 import runSequence from 'run-sequence';
 import zip from 'gulp-zip';
+import postcss from 'gulp-postcss';
+import postcss_assets from 'postcss-assets';
+import insert from 'gulp-insert';
+
 const del = require('del');
-
 const DEST = './';
-
 const reload = browserSync.reload;
 
 /* ===============================================
@@ -89,9 +91,9 @@ gulp.task('browser-sync', () => {
 	watch("build/js/*.js", function() {
 		gulp.start('bs-reload');
 	});
-	watch("build/css/**/*.css", function() {
-		gulp.start('bs-reload');
-	});
+	// watch("build/css/**/*.css", function() {
+	// 	gulp.start('bs-reload');
+	// });
 	watch("build/images/**/*.*", function() {
 		gulp.start('bs-reload');
 	});
@@ -105,7 +107,7 @@ gulp.task('bs-reload', () => {
 imgmin
 =============================================== */
 gulp.task('imgmin', () => {
-	return gulp.src('./build/images/**/*')
+	return gulp.src('./dev/images/**/*')
 	.pipe(imagemin())
 	.pipe(gulp.dest('./build/images'));
 });
@@ -129,4 +131,21 @@ gulp.task('watch', () => {
 task
 =============================================== */
 gulp.task('default', ['browser-sync', 'pug', 'watch']);
+
+
+gulp.task('postcss', () => {
+	return gulp.src('dev/css/*.css')
+    .pipe(
+    	postcss([
+	    	require("postcss-assets")({
+	      		loadPaths: ['build/images/'],
+	      		relative:true,
+	      		relative: './build/css'
+	    	})
+	    ])
+	)
+	.pipe(insert.append('/*# sourceMappingURL=style.css.map*/'))
+    .pipe(gulp.dest('build/css/'))
+    .on('end', reload);
+});
 
