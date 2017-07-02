@@ -25,10 +25,10 @@ module.exports = [{
 		rules: [
 			{
 				test: /\.js$/, // 対象となるファイルの拡張子（正規表現可）
-				exclude: /(node_modules|bower_components)/, // 除外するファイル/ディレクトリ（正規表現可）
+				exclude: /(node_modules)/, // 除外するファイル/ディレクトリ（正規表現可）
 				loader : 'babel-loader'
 			}
-			//,{ test: /\.html$/, loader: 'html-loader' }//lodash使うときはコメントアウト
+			,{ test: /\.html$/, loader: 'html-loader' }
 		]
 	},
 	externals: {
