@@ -61,13 +61,11 @@
   },
   "scripts": {
 	"img-even": "evenizer -i ./dev/images/*.*",
-	"watch:css": "watch 'npm-run-all gulp:postcss' dev/css/",
 	"copy-img": "cpx \"./dev/images/*.*\" ./build/images --watch",
 	"webpack": "webpack --watch",
 	"gulp:run": "gulp",
 	"gulp:postcss": "gulp postcss",
 	"imgmin": "gulp imgmin",
 	"start": "npm-run-all --parallel webpack gulp:run copy-img",
-	"watcher": "npm-run-all --parallel watch:*"
   }
 }

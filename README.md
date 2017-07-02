@@ -12,3 +12,9 @@ yarn start
 
 * js/sass with postcss/pugのコンパイル
 * オートリロード
+
+```
+yarn img-even
+```
+
+で画像をまとめてサイズ偶数化
