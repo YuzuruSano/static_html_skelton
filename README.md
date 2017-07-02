@@ -10,6 +10,5 @@ yarn start
 ```
 下記を自動実行
 
-* js/sass/pugのコンパイル
+* js/sass with postcss/pugのコンパイル
 * オートリロード
-* 画像圧縮/奇数サイズは偶数サイズに変更

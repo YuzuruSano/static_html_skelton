@@ -60,8 +60,7 @@
 	"webpack-notifier": "^1.5.0"
   },
   "scripts": {
-	"img-even": "evenizer -i ./build/images/*.*",
-	"watch:img": "watch 'npm-run-all img-even' build/images/",
+	"img-even": "evenizer -i ./dev/images/*.*",
 	"watch:css": "watch 'npm-run-all gulp:postcss' dev/css/",
 	"copy-img": "cpx \"./dev/images/*.*\" ./build/images --watch",
 	"webpack": "webpack --watch",

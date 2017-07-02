@@ -59,7 +59,7 @@ gulp.task('jade_to_pug', () => {
 
 gulp.task('pug', () => {
 	let locals = {};
-	gulp.src(['./dev/tmp/**/*.pug', '!./dev/tmp/**/_*.pug'])
+	return gulp.src(['./dev/tmp/**/*.pug', '!./dev/tmp/**/_*.pug'])
 	.pipe(changed(DEST))
 	.pipe(plumber({
 		errorHandler: notify.onError("Error: <%= error.message %>")
@@ -73,8 +73,10 @@ gulp.task('pug', () => {
 		pretty: true
 	}))
 	.pipe(gulp.dest("./"))
-	.pipe(notify('pugのコンパイルっすわ'))
-	.on('end', reload);
+	.on('end', ()=>{
+		gulp.start(['bs-reload']);
+	})
+	.pipe(notify('compiled pug'));
 });
 /* ===============================================
 borwser-sync
@@ -120,31 +122,51 @@ gulp.task('zip', () => {
 	.pipe(gulp.dest('./'));
 });
 /* ===============================================
-watch jade,pug
+watch jade,pug postcss
 =============================================== */
 gulp.task('watch', () => {
 	gulp.watch(['./dev/pug/**/*.jade', '!./dev/pug/**/_*.jade'], () => {
 		gulp.start(['jade_to_pug']);
 	});
+
+	gulp.watch(['dev/css/*.css'], () => {
+		gulp.start(['postcss']);
+	});
 });
 /* ===============================================
-task
+postcss
 =============================================== */
-gulp.task('default', ['browser-sync', 'pug', 'watch']);
-
-
 gulp.task('postcss', () => {
 	return gulp.src('dev/css/*.css')
-    .pipe(
-    	postcss([
-	    	require("postcss-assets")({
-	      		loadPaths: ['build/images/'],
-	      		relative:true,
-	      		relative: './build/css'
-	    	})
-	    ])
+	.pipe(
+		postcss([
+			require("postcss-assets")({
+				loadPaths: ['build/images/'],
+				relative:true,
+				relative: './build/css'
+			})
+		])
 	)
+	.pipe(plumber({
+		errorHandler: notify.onError("Error: <%= error.message %>")
+	}))
 	.pipe(insert.append('/*# sourceMappingURL=style.css.map*/'))
-    .pipe(gulp.dest('build/css/'))
+	.pipe(gulp.dest('build/css/'))
+	.on('end',()=>{
+		gulp.start(['copy_css_map']);
+	});
 });
 
+gulp.task('copy_css_map', () => {
+	gulp.src('dev/css/style.css.map')
+	.pipe(plumber({
+		errorHandler: notify.onError("Error: <%= error.message %>")
+	}))
+	.pipe(gulp.dest('build/css/'))
+	.pipe(notify('postcss done'));
+});
+
+/* ===============================================
+default
+=============================================== */
+gulp.task('default', ['browser-sync', 'pug', 'watch']);

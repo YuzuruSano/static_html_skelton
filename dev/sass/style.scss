@@ -30,7 +30,7 @@ http://qiita.com/naru0504/items/5427f3795171c540ed91
 ----------------------- */
 //@import 'page/xxx.scss';
 @import 'helper/shorthands.scss';
-
+//test run
 @include breakpoint(sp){
 	.test {
 		display: flex;
@@ -41,5 +41,4 @@ http://qiita.com/naru0504/items/5427f3795171c540ed91
 	background-size: size('eveniser.jpg');//retinaは第二引数に2
 	width:width('eveniser.jpg');
 	height:height('eveniser.jpg');
-
 }
