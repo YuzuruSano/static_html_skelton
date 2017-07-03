@@ -66,6 +66,6 @@
 	"gulp:run": "gulp",
 	"gulp:postcss": "gulp postcss",
 	"imgmin": "gulp imgmin",
-	"start": "npm-run-all --parallel webpack gulp:run copy-img",
+	"start": "npm-run-all --parallel webpack gulp:run copy-img"
   }
 }
