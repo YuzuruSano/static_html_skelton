@@ -138,6 +138,9 @@ postcss
 =============================================== */
 gulp.task('postcss', () => {
 	return gulp.src('dev/css/*.css')
+	.pipe(plumber({
+		errorHandler: notify.onError("Error: <%= error.message %>")
+	}))
 	.pipe(
 		postcss([
 			require("postcss-assets")({
@@ -147,9 +150,6 @@ gulp.task('postcss', () => {
 			})
 		])
 	)
-	.pipe(plumber({
-		errorHandler: notify.onError("Error: <%= error.message %>")
-	}))
 	.pipe(insert.append('/*# sourceMappingURL=style.css.map*/'))
 	.pipe(gulp.dest('build/css/'))
 	.on('end',()=>{
