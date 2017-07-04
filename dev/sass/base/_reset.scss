@@ -79,6 +79,21 @@ hr {border: 0 none;height: 0;visibility: hidden;}
 select, input, textarea {font-size: 99%;}
 pre, code {font: 100% monospace;}
 
+.pc,
+.pc-content {
+  @include breakpoint(sp) {
+    display: none;
+  }
+}
+
+.sp,
+.sp-content {
+  display: none;
+  @include breakpoint(sp) {
+    display: block;
+  }
+}
+
 
 /*clearfix*/
 .clearfix:after{
