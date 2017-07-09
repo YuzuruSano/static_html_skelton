@@ -94,6 +94,11 @@ pre, code {font: 100% monospace;}
   }
 }
 
+@include breakpoint(sp){
+	#responsive_flg {
+		display: none;
+	}
+}
 
 /*clearfix*/
 .clearfix:after{
