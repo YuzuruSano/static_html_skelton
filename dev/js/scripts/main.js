@@ -7,7 +7,41 @@ import ToTop from './ToTop';
 import DropDownMenu from './DropDownMenu';
 import BlockLink from './BlockLink';
 import Gmap from './Gmap';
+import bowser from 'bowser'
 
+if(bowser.msie === true) {
+  $('body').addClass('ie');
+}else if(bowser.msedge === true){
+  $('body').addClass('edge');
+}else if(bowser.firefox === true){
+  $('body').addClass('ff');
+}else if(bowser.tablet === true){
+  $('body').addClass('tablet');
+}
+if(bowser.mobile === true){
+  $('body').addClass('device--mobile');
+  if(bowser.android === true) {
+    $('body').addClass('device--mobile--android');
+  }
+}
+
+let os, ua = navigator.userAgent;
+if (ua.match(/Win(dows )?NT 10\.0/)) {
+  os = "win10";
+}
+else if (ua.match(/Win(dows )?NT 6\.3/)) {
+  os = "win8_1";
+}
+else if (ua.match(/Win(dows )?NT 6\.2/)) {
+  os = "win8";
+}
+else if (ua.match(/Win(dows )?NT 6\.1/)) {
+  os = "win7";
+}else{
+  os = '';
+}
+
+$('body').addClass(os);
 /* ===============================================
 Check responsive state
 =============================================== */
