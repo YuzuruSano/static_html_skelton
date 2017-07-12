@@ -5,6 +5,7 @@ import watch from 'gulp-watch';
 import browserSync from 'browser-sync';
 import notify from 'gulp-notify';
 import data from 'gulp-data';
+import fs from 'fs';
 import path from 'path';
 import changed from 'gulp-changed';
 import concat from 'gulp-concat';
@@ -59,6 +60,12 @@ gulp.task('jade_to_pug', () => {
 
 gulp.task('pug', () => {
 	let locals = {};
+	//localsにこんな感じでpugにjsonを渡せる。
+	//pug内で each d in data してループを回せる
+	//https://pugjs.org/language/iteration.html
+	// let locals = {
+	// 	'data': JSON.parse(fs.readFileSync('dev/json/data.json'))
+	// };
 	return gulp.src(['./dev/tmp/**/*.pug', '!./dev/tmp/**/_*.pug'])
 	.pipe(changed(DEST))
 	.pipe(plumber({
@@ -66,6 +73,10 @@ gulp.task('pug', () => {
 	}))
 	.pipe(data(function(file) {
 		locals = pug_build_options(file.path.replace(/.pug$/, '.html'),file.path);
+		return locals;
+	}))
+	.pipe(data(function(file) {
+		locals.relativePath = path.relative(file.base, file.path.replace(/.pug$/, '.html'));
 		return locals;
 	}))
 	.pipe(pug({
