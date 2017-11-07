@@ -16,6 +16,7 @@ import zip from 'gulp-zip';
 import postcss from 'gulp-postcss';
 import postcss_assets from 'postcss-assets';
 import insert from 'gulp-insert';
+import sourcemaps from 'gulp-sourcemaps';
 
 const del = require('del');
 const DEST = './';
@@ -152,6 +153,7 @@ gulp.task('postcss', () => {
 	.pipe(plumber({
 		errorHandler: notify.onError("Error: <%= error.message %>")
 	}))
+	.pipe(sourcemaps.init({loadMaps: true}))
 	.pipe(
 		postcss([
 			require("postcss-assets")({
@@ -161,22 +163,9 @@ gulp.task('postcss', () => {
 			})
 		])
 	)
-	.pipe(insert.append('/*# sourceMappingURL=style.css.map*/'))
-	.pipe(gulp.dest('build/css/'))
-	.on('end',()=>{
-		gulp.start(['copy_css_map']);
-	});
+	.pipe(sourcemaps.write('./'))
+	.pipe(gulp.dest('build/css/'));
 });
-
-gulp.task('copy_css_map', () => {
-	gulp.src('dev/css/style.css.map')
-	.pipe(plumber({
-		errorHandler: notify.onError("Error: <%= error.message %>")
-	}))
-	.pipe(gulp.dest('build/css/'))
-	.pipe(notify('postcss done'));
-});
-
 /* ===============================================
 default
 =============================================== */
