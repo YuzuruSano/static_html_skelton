@@ -56,8 +56,9 @@
 		"postcss": "^6.0.3",
 		"postcss-assets": "^4.1.0",
 		"postcss-loader": "^2.0.6",
+		"remodal": "^1.1.1",
 		"sass-loader": "^6.0.6",
-		"swiper": "^3.4.2",
+		"swiper": "3.4.2",
 		"watch": "^1.0.2",
 		"webpack-notifier": "^1.5.0"
 	},

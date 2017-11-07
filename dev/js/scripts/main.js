@@ -10,35 +10,35 @@ import Gmap from './Gmap';
 import bowser from 'bowser'
 
 if(bowser.msie === true) {
-  $('body').addClass('ie');
+	$('body').addClass('ie');
 }else if(bowser.msedge === true){
-  $('body').addClass('edge');
+	$('body').addClass('edge');
 }else if(bowser.firefox === true){
-  $('body').addClass('ff');
+	$('body').addClass('ff');
 }else if(bowser.tablet === true){
-  $('body').addClass('tablet');
+	$('body').addClass('tablet');
 }
 if(bowser.mobile === true){
-  $('body').addClass('device--mobile');
-  if(bowser.android === true) {
-    $('body').addClass('device--mobile--android');
-  }
+	$('body').addClass('device--mobile');
+	if(bowser.android === true) {
+		$('body').addClass('device--mobile--android');
+	}
 }
 
 let os, ua = navigator.userAgent;
 if (ua.match(/Win(dows )?NT 10\.0/)) {
-  os = "win10";
+	os = "win10";
 }
 else if (ua.match(/Win(dows )?NT 6\.3/)) {
-  os = "win8_1";
+	os = "win8_1";
 }
 else if (ua.match(/Win(dows )?NT 6\.2/)) {
-  os = "win8";
+	os = "win8";
 }
 else if (ua.match(/Win(dows )?NT 6\.1/)) {
-  os = "win7";
+	os = "win7";
 }else{
-  os = '';
+	os = '';
 }
 
 $('body').addClass(os);
@@ -80,6 +80,13 @@ show/hide toggle
 =============================================== */
 const totop = new ToTop('#totop',100,400);
 totop.exec();
+
+/**
+ * 外部リンク・PDF・Word・Exlsに_blankの自動付与
+ *
+ */
+const link_icon = require('./link_icon');
+link_icon();
 /* ===============================================
 DropDown
 
@@ -154,3 +161,24 @@ markup:
 // $(window).on('load',function(){
 // 	gmap.exec();
 // });
+
+/* ===============================================
+instagram with infinityScroll
+
+markup:
+<div class="slide--instagram_wrapper" id="insragram">
+	<div class="slide--instagram">
+		<div id="js-slide--instagram">
+			<ul class="inner"></ul>
+		</div>
+	</div>
+</div>
+=============================================== */
+/**
+ *
+ * @param {sring} requet_url instagramのリクエストURL ./_instagram_template.htmlにhtmlテンプレートサンプルあり
+ * @param {element} append_target 読み込んだ写真を追加する要素
+ * @param {element} slide_target スライドショーさせる要素
+ */
+// const instagram = require('./instagram');
+// instagram('request_url','#js-slide--instagram .inner','#js-slide--instagram');
