@@ -88,7 +88,6 @@ common parts
 
 //画像をマウスオーバーで拡大 hover使用なし
 @mixin scale_img_hasnt_hover($ratio:1.04,$speed:0.3) {
-
 	transition: transform #{$speed}s linear;
 }
 
@@ -100,6 +99,14 @@ common parts
 	transition:opacity 0.6s;
 	&:hover {
 		opacity: $opacity;
+	}
+	@include breakpoint(sp){
+		&:hover {
+			opacity: 1;
+		}
+		&:active {
+			opacify:$opacity;
+		}
 	}
 }
 

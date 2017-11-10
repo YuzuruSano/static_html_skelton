@@ -5,18 +5,19 @@ $-webkit-text-size-adjust : false;
 $base_font_size:16px;
 //$font_size:100%;
 $line_height:1.5;
-$font_color:#555555;
+$font_color:#000;
+$-webkit-tap-highlight:false;
 
-$black:#221815;
-$green:#0b6c7a;
+$black:#000;
 
 // link
-$link_color:#0b6c7a;
-$link_hover_color:#0b6c7a;
+$link_color:blue;
+$link_hover_color:red;
 
 // BREAKPOINT
 // --------------------
 $breakpoints:(
+	exsp:321px,
     sp: 768px,
     tb: 960px,
 );

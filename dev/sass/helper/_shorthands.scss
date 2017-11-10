@@ -112,6 +112,70 @@
   }
 }
 
+@include breakpoint(sp){
+	.mt60-mod {
+		margin-top: 30px!important;
+	}
+	.mt40-mod {
+		margin-top: 20px!important;
+	}
+
+	@for $i from 0 through 25 {
+	  .mt#{$i * 5}-mod {
+	    margin-top:#{$i * 5 * 0.5}px !important;
+	  }
+	}
+
+	@for $i from 0 through 25 {
+	  .mb#{$i * 5}-mod {
+	    margin-bottom:#{$i * 5 * 0.5}px !important;
+	  }
+	}
+
+	@for $i from 0 through 25 {
+	  .ml#{$i * 5}-mod {
+	    margin-left:#{$i * 5 * 0.5}px !important;
+	  }
+	}
+
+	@for $i from 0 through 25 {
+	  .mr#{$i * 5}-mod {
+	    margin-right:#{$i * 5 * 0.5}px !important;
+	  }
+	}
+
+	/* padding
+	------------------------------------- */
+	// padding-left
+
+	@for $i from 0 through 25 {
+	  .pl#{$i * 5}-mod {
+	    padding-left:#{$i * 5 * 0.5}px !important;
+	  }
+	}
+
+	// padding-right
+	@for $i from 0 through 25 {
+	  .pr#{$i * 5}-mod {
+	    padding-right:#{$i * 5 * 0.5}px !important;
+	  }
+	}
+
+	// padding-top
+	@for $i from 0 through 25 {
+	  .pt#{$i * 5}-mod {
+	    padding-top:#{$i * 5 * 0.5}px !important;
+	  }
+	}
+
+	// padding-bottom
+	@for $i from 0 through 25 {
+	  .pb#{$i * 5}-mod {
+	    padding-bottom:#{$i * 5 * 0.5}px !important;
+	  }
+	}
+}
+
 
 /* font-size
 ------------------------------------- */
