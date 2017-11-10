@@ -85,6 +85,15 @@ hr {border: 0 none;height: 0;visibility: hidden;}
 select, input, textarea {font-size: 99%;}
 pre, code {font: 100% monospace;}
 
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+input[type="submit"],input[type="text"],textarea {
+	-webkit-appearance:none;
+}
+
 .pc,
 .pc-content {
   @include breakpoint(sp) {
