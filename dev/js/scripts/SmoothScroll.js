@@ -12,12 +12,12 @@ class SmoothScroll{
 		this.checkCanEdit();
 		if(!this.canEdit){
 			$('a[href^="#"]').click(function(ev) {
-				if(!$(this).hasClass('nosms')){
-					ev.preventDefault();
-					var speed = 800; //移動スピード
-					var href= $(this).attr("href");
-					var target = $(href === "#" || href === "" ? 'html' : href);
-					var position = target.offset().top;
+				ev.preventDefault();
+				let speed = 800; //移動スピード
+				let href= $(this).attr("href");
+				let target = $(href === "#" || href === "" ? 'html' : href);
+				if(target.length > 0){
+					let position = target.offset().top;
 					$('body,html').animate({scrollTop:position}, speed, 'swing');
 					return false;
 				}

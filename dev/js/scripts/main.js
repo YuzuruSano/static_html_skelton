@@ -56,6 +56,7 @@ Check responsive state
 /* ===============================================
 SP Navi
 =============================================== */
+//通常盤
 let param = {
 	target:'#spnavi',
 	trigger:'.btn_sp_navi',
@@ -64,6 +65,32 @@ let param = {
 };
 const spnavi = new SpNavi(param);
 spnavi.exec();
+
+//execに可変引数で処理を渡してナビの開閉時に処理させるサンプル
+//例として、SPナビでアコーディオンを開くたびにiScrollをリセットする
+// let spnav_accordion_1 = (scroller)=>{
+// 	$('#scroller .inner > ul > li > span').off();
+// 	$('#scroller .inner > ul > li > span').on('click',function(){
+// 		let $parent = $(this).parent('li');
+// 		let $child = $(this).next('.gnavi-child');
+// 		let status = $child.css('display');
+
+// 		if(status == 'block'){
+// 			$child.slideUp(300,function(){
+// 				scroller.refresh();
+// 			});
+// 			$parent.removeClass('active');
+// 		}else{
+// 			$child.slideDown(300,function(){
+// 				scroller.refresh();
+// 			});
+// 			$parent.addClass('active');
+// 		}
+
+// 		return false;
+// 	});
+// }
+// spnavi.exec(spnav_accordion_1);
 /* ===============================================
 box link
 =============================================== */

@@ -12,10 +12,11 @@ class SpNavi{
 		this.fixer = param.fixer;
 	}
 
-	exec(){
+	exec(...callbacks){
 		const [target,_touches] = [this.target , this.touches];
+		const cb = callbacks;
 		let th = 0;
-
+		let scroller;
 		//set height
 		if (this.touches) {
 			th = window.innerHeight;
@@ -23,7 +24,11 @@ class SpNavi{
 			th = $(window).height();
 		}
 
-		$(target).height(th).find('#scroller > ul').css({'padding-bottom':this.fixer});//padding-bottomhは環境に合わせて調整
+		$(target).find('#scroller > .inner').css({'padding-bottom':this.fixer});//padding-bottomhは環境に合わせて調整
+
+		$('#spnavi_close').on('click',function(){
+			$(this.trigger).click();
+		}.bind(this));
 
 		//set click event
 		$(this.trigger).on('click',function(ev){
@@ -33,13 +38,15 @@ class SpNavi{
 
 			if(status == 'block'){
 				$(target).fadeOut(this.speed);
+				$('#spnavi_close').fadeOut(this.speed);
 				$(this.filter).fadeOut(this.speed);
 				$(window).off("touchmove._noscroll");
 				$(this).removeClass('active');
 			}else{
 				$(target).fadeIn(this.speed);
 				$(this.filter).fadeIn(this.speed);
-				let Scroll = new IScroll(target, {
+				$('#spnavi_close').fadeIn(this.speed);
+				scroller = new IScroll(target, {
 					mouseWheel:true,
 					preventDefault: false
 				});
@@ -49,6 +56,13 @@ class SpNavi{
 					});
 				}
 				$(this).addClass('active');
+
+				if(cb.length > 0){
+					for (let i=0;i<cb.length;i++) {
+						cb[i](scroller);
+					}
+				}
+
 			}
 		});
 
@@ -59,7 +73,6 @@ class SpNavi{
 				$(target).hide();
 			}
 		});
-
 	}
 }
 module.exports = SpNavi;
