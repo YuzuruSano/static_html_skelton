@@ -1,5 +1,6 @@
 ## 使用方法
 ※グローバルにevenizer・yarn・webpack・babel・gulpインストールしておいてね
+
 ※evenizer：https://www.npmjs.com/package/evenizer
 
 ```
@@ -27,8 +28,11 @@ yarn img-even
 コーディング環境のルートディレクトリで
 
 ```
-./css_component.sh component test
+cli/css_component.sh component test
 ```
+
+第一引数は対象ディレクトリ
+第二引数はクラス名
 
 componentディレクトリに_test.scssを作成し、
 inc/_component.scssにimport記述を追加する
