@@ -12,4 +12,6 @@ else
 	`echo "$default" >> $targetfile`
 
 	`echo "@import '../$1/_$2.scss';" >> $target/inc/_$1.scss`
+
+	`open $target/$1/_$2.scss -a /Applications/Sublime\ Text.app`
 fi
