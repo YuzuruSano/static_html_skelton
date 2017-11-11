@@ -7,7 +7,8 @@ import ToTop from './ToTop';
 import DropDownMenu from './DropDownMenu';
 import BlockLink from './BlockLink';
 import Gmap from './Gmap';
-import bowser from 'bowser'
+import bowser from 'bowser';
+import matchheight from 'jquery-match-height';
 
 if(bowser.msie === true) {
 	$('body').addClass('ie');

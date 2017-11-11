@@ -3757,6 +3757,10 @@ jquery-lineup@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/jquery-lineup/-/jquery-lineup-1.1.2.tgz#4a75adaf17124ac5d3bf8800410a52bc2181835f"
 
+jquery-match-height@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/jquery-match-height/-/jquery-match-height-0.7.2.tgz#f8d9f3ba5314daab109cf07408674be204be5f0e"
+
 jquery@*:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
