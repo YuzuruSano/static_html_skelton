@@ -46,19 +46,6 @@ const pug_build_options = (dest, src , is_build) => {
 	};
 };
 
-gulp.task('jade_to_pug', () => {
-	gulp.src(['./dev/pug/**/*.jade', './dev/pug/**/_*.jade'])
-	.pipe(changed(DEST))
-	.pipe(plumber({
-		errorHandler: notify.onError("Error: <%= error.message %>")
-	}))
-	.pipe(rename({extname: '.pug'}))
-	.pipe(gulp.dest('dev/tmp'))
-	.on('end',()=>{
-		gulp.start(['pug']);
-	});
-});
-
 gulp.task('pug', () => {
 	let locals = {};
 	//localsにこんな感じでpugにjsonを渡せる。
@@ -67,7 +54,7 @@ gulp.task('pug', () => {
 	// let locals = {
 	// 	'data': JSON.parse(fs.readFileSync('dev/json/data.json'))
 	// };
-	return gulp.src(['./dev/tmp/**/*.pug', '!./dev/tmp/**/_*.pug'])
+	return gulp.src(['./dev/pug/**/*.pug', '!./dev/pug/**/_*.pug'])
 	.pipe(changed(DEST))
 	.pipe(plumber({
 		errorHandler: notify.onError("Error: <%= error.message %>")
@@ -137,8 +124,8 @@ gulp.task('zip', () => {
 watch jade,pug postcss
 =============================================== */
 gulp.task('watch', () => {
-	gulp.watch(['./dev/pug/**/*.jade', '!./dev/pug/**/_*.jade'], () => {
-		gulp.start(['jade_to_pug']);
+	gulp.watch(['./dev/pug/**/*.pug', '!./dev/pug/**/_*.pug'], () => {
+		gulp.start(['pug']);
 	});
 
 	gulp.watch(['dev/css/*.css'], () => {

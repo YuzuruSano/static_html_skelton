@@ -3,10 +3,12 @@ const current = process.cwd();
 const webpack = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const supported = ['IE 9','IE 10','IE 11','last 4 versions'];
 
 module.exports = [{
+	mode: 'production', // 追加,
 	/* ビルドの起点となるファイルの設定 */
 	entry:{
 		main:['./dev/js/scripts/main.js']
@@ -35,11 +37,13 @@ module.exports = [{
 		jquery: 'jQuery'
 	},
 	plugins: [
-		new webpack.optimize.UglifyJsPlugin({
-			compress: {warnings: false},
-			output: {comments: false},
-			sourceMap: true
-		}),
+		// new UglifyJSPlugin({
+		// 	uglifyOptions:{
+		// 		compress: {warnings: false},
+		// 		output: {comments: false},
+		// 		sourceMap: true
+		// 	}
+		// }),
 		new webpack.ProvidePlugin({
 			$: 'jquery',
 			jQuery: 'jquery',
@@ -53,6 +57,7 @@ module.exports = [{
 	]
 },
 {
+	mode: 'production', // 追加
 	/* ビルドの起点となるファイルの設定 */
 	entry: 'babel-polyfill',
 	/* 出力されるファイルの設定 */
@@ -61,18 +66,10 @@ module.exports = [{
 		filename: 'vendor.js', // 出力先のファイル名
 		jsonpFunction: 'vendor'
 	},
-	cache: true,
-	plugins: [
-		new webpack.optimize.UglifyJsPlugin(
-		{
-			compress: {warnings: false},
-			output: {comments: false},
-			sourceMap: false
-		}
-		)
-	]
+	cache: true
 },
 {
+	mode: 'production',
 	devtool: "source-map",
 	entry: {
 		style: './dev/sass/style.scss',
