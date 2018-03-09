@@ -11,7 +11,7 @@ class SmoothScroll{
 	exec(){
 		this.checkCanEdit();
 		if(!this.canEdit){
-			$('a[href*=#]').not(".nosms").click(function() {
+			$('a[href*="#"]').not(".nosms").click(function() {
 			let speed = 600, // ミリ秒(この値を変えるとスピードが変わる)
 			href = $(this).prop("href"), //リンク先を絶対パスとして取得
 			hrefPageUrl = href.split("#")[0], //リンク先を絶対パスについて、#より前のURLを取得
