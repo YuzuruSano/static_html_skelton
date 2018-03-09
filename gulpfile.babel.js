@@ -8,14 +8,10 @@ import data from 'gulp-data';
 import fs from 'fs';
 import path from 'path';
 import changed from 'gulp-changed';
-import concat from 'gulp-concat';
-import rename from 'gulp-rename';
 import imagemin from 'gulp-imagemin'
-import runSequence from 'run-sequence';
 import zip from 'gulp-zip';
 import postcss from 'gulp-postcss';
 import postcss_assets from 'postcss-assets';
-import insert from 'gulp-insert';
 import sourcemaps from 'gulp-sourcemaps';
 
 const del = require('del');

@@ -3,7 +3,6 @@ const current = process.cwd();
 const webpack = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const supported = ['IE 9','IE 10','IE 11','last 4 versions'];
 
