@@ -2,5 +2,7 @@ node_modules/*
 .sass-cache/*
 build/*
 dev/tmp
+dev/css
 **/*.log
 **/*.html
+

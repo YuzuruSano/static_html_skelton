@@ -10,7 +10,7 @@ module.exports = [{
 	mode: 'production', // 追加,
 	/* ビルドの起点となるファイルの設定 */
 	entry:{
-		main:['./dev/js/scripts/main.js']
+		main:['babel-polyfill','./dev/js/scripts/main.js']
 		//複数連結
 		//home:['./js/scripts/main.js','./js/scripts/home.js']
 	},
@@ -54,18 +54,6 @@ module.exports = [{
 			alwaysNotify: true
 		})
 	]
-},
-{
-	mode: 'production', // 追加
-	/* ビルドの起点となるファイルの設定 */
-	entry: 'babel-polyfill',
-	/* 出力されるファイルの設定 */
-	output: {
-		path: __dirname + '/build/js', // 出力先のパス
-		filename: 'vendor.js', // 出力先のファイル名
-		jsonpFunction: 'vendor'
-	},
-	cache: true
 },
 {
 	mode: 'production',

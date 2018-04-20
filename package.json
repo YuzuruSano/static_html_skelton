@@ -31,12 +31,14 @@
 		"style-loader": "^0.18.2",
 		"url-loader": "^0.5.7",
 		"webpack": "^4.1.1",
-		"webpack-cli": "^2.0.10"
+		"webpack-cli": "^2.0.14"
 	},
 	"private": true,
 	"dependencies": {
 		"D": "^1.0.0",
 		"autoprefixer": "^7.1.1",
+		"babel-plugin-transform-async-to-generator": "^6.24.1",
+		"babel-preset-env": "^1.6.1",
 		"bxslider": "^4.2.11",
 		"cpx": "^1.5.0",
 		"extract-text-webpack-plugin": "^4.0.0-beta.0",
