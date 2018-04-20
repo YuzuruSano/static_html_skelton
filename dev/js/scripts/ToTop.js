@@ -1,6 +1,13 @@
 class ToTop{
-	constructor(target,fixer,speed,stop = true) {
+	constructor({
+		target = "#totop",
+		stop_at = "#footer",
+		fixer = 100,
+		speed = 200,
+		stop = true
+	}) {
 		this.target = target;
+		this.stop_at = stop_at;
 		this.fixer = fixer;
 		this.speed = speed;
 		this.stop = stop;
@@ -13,7 +20,7 @@ class ToTop{
 	clear_fixed_position(){
 		let scrollHeight = $(document).height();
 		let scrollPosition = $(window).height() + $(window).scrollTop();
-		let footHeight = $("#footer").innerHeight();
+		let footHeight = $(this.stop_at).innerHeight();
 
 		if ( scrollHeight - scrollPosition  <= footHeight ) {
 			$(this.target).css({

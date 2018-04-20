@@ -33,35 +33,32 @@ body#top(class=slug)
 	#wrap
 		nav#spnavi.spnavi.sp
 			#scroller
+				p(style="background-color:#fff;").bold.fs24 iScrollerでスクロールOK
 				ul
-					li
-						a(href="") nav1
-					li
-						a(href="") nav2
-					li
-						a(href="") nav3
-
+					- for (var i = 0; i < 200; i++)
+						li
+							a(href="") ナビゲーション#{i}
 		.btn_sp_navi_wrap
 			a.btn_sp_navi.nosc.nosms(href='#sp')
-				i.fa.fa-bars(aria-hidden='true')
-				br
-				span MENU
+				span.line
+				span.line
+				span.line
 		block header
-			h1 hellow worlddd
+			header#global_header.global_header
+				if slug == 'home'
+					h1 pug内でスラッグを活用すると各ページごとに処理を変更できます。
+				else
+					p 下層ページ
 		block contents
-			p
-				| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				| tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-				| quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				| cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				| proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			.pl10.pr10.pt10.pb10
+				p まずは「dev/sass/base/_setting.scss」で初期設定。
+				p サイト全体の文字色・リンク色・行間・よく使う文字色定義をしよう。
+				p breakpoint配列でbreakpointの追加も可能。
 		block footer
-			footer#footer.footer
-				.footer-inner
-					.footer-col
-					.footer-col
-
+			footer#global_footer.global_footer
+				.global_footer-inner
+					.global_footer-col
+					.global_footer-col
 		block flg
 			#responsive_flg
 		#totop

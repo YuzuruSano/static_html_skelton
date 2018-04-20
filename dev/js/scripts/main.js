@@ -106,7 +106,7 @@ sms.exec();
 To Top
 show/hide toggle
 =============================================== */
-const totop = new ToTop('#totop',100,400);
+const totop = new ToTop('#totop','#global_footer',100,400);
 totop.exec();
 
 /**
