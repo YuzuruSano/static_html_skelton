@@ -12,9 +12,14 @@ class SpNavi{
 		this.fixer = param.fixer;
 	}
 
+	scrollOff( e ){
+		e.preventDefault();
+	}
+
 	exec(...callbacks){
 		const [target,_touches] = [this.target , this.touches];
 		const cb = callbacks;
+		let _that = this;
 		let th = 0;
 		let scroller;
 		//set height
@@ -32,30 +37,30 @@ class SpNavi{
 
 		//set click event
 		$(this.trigger).on('click',function(ev){
-			ev.preventDefault();
-
 			let status = $(target).css('display');
 
 			if(status == 'block'){
 				$(target).fadeOut(this.speed);
 				$('#spnavi_close').fadeOut(this.speed);
 				$(this.filter).fadeOut(this.speed);
-				$(window).off("touchmove._noscroll");
+				document.removeEventListener( 'touchmove', _that.scrollOff, {passive: false} );
 				$(this).removeClass('active');
+				$('body').css({'position':'relative'});
 			}else{
 				$(target).fadeIn(this.speed);
 				$(this.filter).fadeIn(this.speed);
 				$('#spnavi_close').fadeIn(this.speed);
 				scroller = new IScroll(target, {
-					mouseWheel:true,
-					preventDefault: false
+					scrollX: false,
+					preventDefault: false,
+					mouseWheel: false,
+					disablePointer: true,
+					disableTouch: false,
+					disableMouse: false
 				});
-				if(_touches){
-					$(window).on("touchmove._noscroll" , function(event) {
-						event.preventDefault();
-					});
-				}
+				document.addEventListener( 'touchmove',_that.scrollOff, {passive: false});
 				$(this).addClass('active');
+				$('body').css({'position':'fixed'});
 
 				if(cb.length > 0){
 					for (let i=0;i<cb.length;i++) {
@@ -64,15 +69,16 @@ class SpNavi{
 				}
 
 			}
+			ev.preventDefault();
 		});
 
 		const r = new Responsive();
 
-		$(window).on('load resize',function(){
-			if(r.state()() === false){
-				$(target).hide();
-			}
-		});
+		// $(window).on('load resize',function(){
+		// 	if(!r.isPC()){
+		// 		$(target).hide();
+		// 	}
+		// });
 	}
 }
 module.exports = SpNavi;
