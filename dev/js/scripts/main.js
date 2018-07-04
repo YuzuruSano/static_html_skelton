@@ -11,7 +11,8 @@ import bowser from 'bowser';
 import matchheight from 'jquery-match-height';
 
 if(bowser.msie === true) {
-	$('body').addClass('ie');
+	let version = 'ie_'+Math.floor(bowser.version);
+	$('body').addClass('ie '+version);
 }else if(bowser.msedge === true){
 	$('body').addClass('edge');
 }else if(bowser.firefox === true){
