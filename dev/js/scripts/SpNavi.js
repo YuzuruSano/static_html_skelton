@@ -10,75 +10,87 @@ class SpNavi{
 		this.speed = param.speed;
 		this.scroll;
 		this.fixer = param.fixer;
+		this.current_scrollY = 0;
 	}
 
 	scrollOff( e ){
 		e.preventDefault();
 	}
 
-	exec(...callbacks){
-		const [target,_touches] = [this.target , this.touches];
-		const cb = callbacks;
-		let _that = this;
-		let th = 0;
+	close(targetObj){
+		/**
+		 * toggle appearance
+		 */
+		$(this.target).fadeOut(this.speed);
+		$(this.filter).fadeOut(this.speed);
+		targetObj.removeClass('active');
+		/**
+		 * return touchmove,adjust body position
+		 */
+		document.removeEventListener( 'touchmove', this.scrollOff, {passive: false} );
+		$('body,html').animate( { scrollTop: this.current_scrollY },1 );
+		$('body').attr( { style: '' } );
+	}
+
+	open(targetObj,callbacks){
+		/**
+		 * set var
+		 */
+		this.current_scrollY = $(window).scrollTop();
 		let scroller;
-		//set height
-		if (this.touches) {
-			th = window.innerHeight;
-		}else{
-			th = $(window).height();
+		/**
+		 * prevent touchmove,adjust body position
+		 */
+		document.addEventListener( 'touchmove',this.scrollOff, {passive: false});
+		$('body').css({'position':'fixed',width: '100%',top: -1 * this.current_scrollY});
+		/**
+		 * toggle appearance
+		 */
+		$(this.target).fadeIn(this.speed);
+		$(this.filter).fadeIn(this.speed);
+		targetObj.addClass('active');
+		/**
+		 * fire scroller
+		 */
+		scroller = new IScroll(this.target, {
+			scrollX: false,
+			preventDefault: false,
+			mouseWheel: false,
+			disablePointer: true,
+			disableTouch: false,
+			disableMouse: false
+		});
+		/**
+		 * exec callbacks
+		 */
+		if(callbacks.length > 0){
+			for (let i = 0;i < callbacks.length;i++) {
+				callbacks[i](scroller);
+			}
 		}
+	}
 
-		$(target).find('#scroller > .inner').css({'padding-bottom':this.fixer});//padding-bottomhは環境に合わせて調整
-
-		$('#spnavi_close').on('click',function(){
-			$(this.trigger).click();
-		}.bind(this));
-
-		//set click event
+	exec(...callbacks){
+		/**
+		 * bind this
+		 */
+		let _that = this;
+		/**
+		 * set fixser
+		 */
+		$(_that.target).find('#scroller > .inner').css({'padding-bottom':this.fixer});
+		/**
+		 * click event
+		 */
 		$(this.trigger).on('click',function(ev){
-			let status = $(target).css('display');
-
+			let status = $(_that.target).css('display');
 			if(status == 'block'){
-				$(target).fadeOut(this.speed);
-				$('#spnavi_close').fadeOut(this.speed);
-				$(this.filter).fadeOut(this.speed);
-				document.removeEventListener( 'touchmove', _that.scrollOff, {passive: false} );
-				$(this).removeClass('active');
-				$('body').css({'position':'relative'});
+				_that.close($(this));
 			}else{
-				$(target).fadeIn(this.speed);
-				$(this.filter).fadeIn(this.speed);
-				$('#spnavi_close').fadeIn(this.speed);
-				scroller = new IScroll(target, {
-					scrollX: false,
-					preventDefault: false,
-					mouseWheel: false,
-					disablePointer: true,
-					disableTouch: false,
-					disableMouse: false
-				});
-				document.addEventListener( 'touchmove',_that.scrollOff, {passive: false});
-				$(this).addClass('active');
-				$('body').css({'position':'fixed'});
-
-				if(cb.length > 0){
-					for (let i=0;i<cb.length;i++) {
-						cb[i](scroller);
-					}
-				}
-
+				_that.open($(this),callbacks);
 			}
 			ev.preventDefault();
 		});
-
-		const r = new Responsive();
-
-		// $(window).on('load resize',function(){
-		// 	if(!r.isPC()){
-		// 		$(target).hide();
-		// 	}
-		// });
 	}
 }
 module.exports = SpNavi;
