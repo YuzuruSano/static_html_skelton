@@ -4,6 +4,89 @@
 	opacity: 0.7;
 }
 
+/* =WordPress Core
+-------------------------------------------------------------*/
+.alignnone {
+	margin: 5px 20px 20px 0;
+}
+
+.aligncenter,
+div.aligncenter {
+	display: block;
+	margin: 5px auto 5px auto;
+}
+
+.alignright {
+	float:right;
+	margin: 5px 0 20px 20px;
+}
+
+.alignleft {
+	float: left;
+	margin: 5px 20px 20px 0;
+}
+
+.aligncenter {
+	display: block;
+	margin: 5px auto 5px auto;
+}
+
+a img.alignright {
+	float: right;
+	margin: 5px 0 20px 20px;
+}
+
+a img.alignnone {
+	margin: 5px 20px 20px 0;
+}
+
+a img.alignleft {
+	float: left;
+	margin: 5px 20px 20px 0;
+}
+
+a img.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto
+}
+
+.wp-caption {
+	background: #fff;
+	border: 1px solid #f0f0f0;
+	max-width: 96%; /* Image does not overflow the content area */
+	padding: 5px 3px 10px;
+	text-align: center;
+}
+
+.wp-caption.alignnone {
+	margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignleft {
+	margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignright {
+	margin: 5px 0 20px 20px;
+}
+
+.wp-caption img {
+	border: 0 none;
+	height: auto;
+	margin: 0;
+	max-width: 98.5%;
+	padding: 0;
+	width: auto;
+}
+
+.wp-caption p.wp-caption-text {
+	font-size: 11px;
+	line-height: 17px;
+	margin: 0;
+	padding: 0 4px 5px;
+}
+
 /* float
 ------------------------------------- */
 .fr {
@@ -33,7 +116,7 @@
 }
 @for $i from 0 through 25 {
   .mt#{$i * 5} {
-    margin-top:#{$i * 5}px !important;
+	margin-top:#{$i * 5}px !important;
   }
 }
 
@@ -42,7 +125,7 @@
 }
 @for $i from 0 through 25 {
   .mb#{$i * 5} {
-    margin-bottom:#{$i * 5}px !important;
+	margin-bottom:#{$i * 5}px !important;
   }
 }
 .mb60 {
@@ -57,7 +140,7 @@
 }
 @for $i from 0 through 25 {
   .ml#{$i * 5} {
-    margin-left:#{$i * 5}px !important;
+	margin-left:#{$i * 5}px !important;
   }
 }
 
@@ -66,7 +149,31 @@
 }
 @for $i from 0 through 25 {
   .mr#{$i * 5} {
-    margin-right:#{$i * 5}px !important;
+	margin-right:#{$i * 5}px !important;
+  }
+}
+
+@for $i from -10 through 180 {
+  .large_mt#{$i * 1} {
+	margin-top:#{$i * 1}px !important;
+  }
+}
+
+@for $i from -10 through 180 {
+  .large_mb#{$i * 1} {
+	margin-bottom:#{$i * 1}px !important;
+  }
+}
+
+@for $i from -10 through 180 {
+  .large_ml#{$i * 1} {
+	margin-left:#{$i * 1}px !important;
+  }
+}
+
+@for $i from -10 through 180 {
+  .large_mr#{$i * 1} {
+	margin-right:#{$i * 1}px !important;
   }
 }
 
@@ -78,7 +185,12 @@
 }
 @for $i from 0 through 25 {
   .pl#{$i * 5} {
-    padding-left:#{$i * 5}px !important;
+	padding-left:#{$i * 5}px !important;
+  }
+}
+@for $i from -10 through 180 {
+  .large_pl#{$i * 1} {
+	padding-left:#{$i * 1}px !important;
   }
 }
 
@@ -88,7 +200,13 @@
 }
 @for $i from 0 through 25 {
   .pr#{$i * 5} {
-    padding-right:#{$i * 5}px !important;
+	padding-right:#{$i * 5}px !important;
+  }
+}
+
+@for $i from -10 through 180 {
+  .large_pr#{$i * 1} {
+	padding-right:#{$i * 1}px !important;
   }
 }
 
@@ -98,7 +216,12 @@
 }
 @for $i from 0 through 25 {
   .pt#{$i * 5} {
-    padding-top:#{$i * 5}px !important;
+	padding-top:#{$i * 5}px !important;
+  }
+}
+@for $i from -10 through 180 {
+  .large_pt#{$i * 1} {
+	padding-top:#{$i * 1}px !important;
   }
 }
 
@@ -108,11 +231,84 @@
 }
 @for $i from 0 through 25 {
   .pb#{$i * 5} {
-    padding-bottom:#{$i * 5}px !important;
+	padding-bottom:#{$i * 5}px !important;
+  }
+}
+@for $i from -10 through 180 {
+  .large_pb#{$i * 1} {
+	padding-bottom:#{$i * 1}px !important;
   }
 }
 
+@each $breakpoint,$value in $breakpoints{
+	@media only screen and ( max-width: map-get($breakpoints, $breakpoint)){
+		@for $i from -10 through 180 {
+		  .#{$breakpoint}_mt#{$i * 1} {
+			margin-top:#{$i * 1}px !important;
+		  }
+		}
+
+		@for $i from -10 through 180 {
+		  .#{$breakpoint}_mb#{$i * 1} {
+			margin-bottom:#{$i * 1}px !important;
+		  }
+		}
+
+		@for $i from -10 through 180 {
+		  .#{$breakpoint}_ml#{$i * 1} {
+			margin-left:#{$i * 1}px !important;
+		  }
+		}
+
+		@for $i from -10 through 180 {
+		  .#{$breakpoint}_mr#{$i * 1} {
+			margin-right:#{$i * 1}px !important;
+		  }
+		}
+
+		/* padding
+		------------------------------------- */
+		// padding-left
+
+		@for $i from -10 through 180 {
+		  .#{$breakpoint}_pl#{$i * 1} {
+			padding-left:#{$i * 1}px !important;
+		  }
+		}
+
+		// padding-right
+
+		@for $i from -10 through 180 {
+		  .#{$breakpoint}_pr#{$i * 1} {
+			padding-right:#{$i * 1}px !important;
+		  }
+		}
+
+		// padding-top
+
+		@for $i from -10 through 180 {
+		  .#{$breakpoint}_pt#{$i * 1} {
+			padding-top:#{$i * 1}px !important;
+		  }
+		}
+
+		// padding-bottom
+
+		@for $i from -10 through 180 {
+		  .#{$breakpoint}_pb#{$i * 1} {
+			padding-bottom:#{$i * 1}px !important;
+		  }
+		}
+	}
+}
+
 @include breakpoint(sp){
+	.alignright,.alignleft,.aligncenter,a img.alignright, a img.alignleft,a img.aligncenter {
+		display:block;
+		float:none;
+		margin: 0 auto 10px;
+	}
+
 	.mt60-mod {
 		margin-top: 30px!important;
 	}
@@ -122,25 +318,25 @@
 
 	@for $i from 0 through 25 {
 	  .mt#{$i * 5}-mod {
-	    margin-top:#{$i * 5 * 0.5}px !important;
+		margin-top:#{$i * 5 * 0.5}px !important;
 	  }
 	}
 
 	@for $i from 0 through 25 {
 	  .mb#{$i * 5}-mod {
-	    margin-bottom:#{$i * 5 * 0.5}px !important;
+		margin-bottom:#{$i * 5 * 0.5}px !important;
 	  }
 	}
 
 	@for $i from 0 through 25 {
 	  .ml#{$i * 5}-mod {
-	    margin-left:#{$i * 5 * 0.5}px !important;
+		margin-left:#{$i * 5 * 0.5}px !important;
 	  }
 	}
 
 	@for $i from 0 through 25 {
 	  .mr#{$i * 5}-mod {
-	    margin-right:#{$i * 5 * 0.5}px !important;
+		margin-right:#{$i * 5 * 0.5}px !important;
 	  }
 	}
 
@@ -150,28 +346,28 @@
 
 	@for $i from 0 through 25 {
 	  .pl#{$i * 5}-mod {
-	    padding-left:#{$i * 5 * 0.5}px !important;
+		padding-left:#{$i * 5 * 0.5}px !important;
 	  }
 	}
 
 	// padding-right
 	@for $i from 0 through 25 {
 	  .pr#{$i * 5}-mod {
-	    padding-right:#{$i * 5 * 0.5}px !important;
+		padding-right:#{$i * 5 * 0.5}px !important;
 	  }
 	}
 
 	// padding-top
 	@for $i from 0 through 25 {
 	  .pt#{$i * 5}-mod {
-	    padding-top:#{$i * 5 * 0.5}px !important;
+		padding-top:#{$i * 5 * 0.5}px !important;
 	  }
 	}
 
 	// padding-bottom
 	@for $i from 0 through 25 {
 	  .pb#{$i * 5}-mod {
-	    padding-bottom:#{$i * 5 * 0.5}px !important;
+		padding-bottom:#{$i * 5 * 0.5}px !important;
 	  }
 	}
 }
@@ -223,6 +419,18 @@
 	display: block;
 }
 
+.dib {
+	display: inline-block;
+}
+.vat {
+	vertical-align:top;
+}
+.vam {
+	vertical-align:middle;
+}
+.vab {
+	vertical-align:bottom;
+}
 .noborder {
 	border:none!important;
 }
