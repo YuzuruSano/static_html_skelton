@@ -46,7 +46,7 @@ class ToTop{
 				$(target).fadeOut(speed);
 			}
 
-			if(this.stop){
+			if(_this.stop){
 				_this.clear_fixed_position();
 			}
 		});
