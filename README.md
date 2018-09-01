@@ -1,5 +1,5 @@
 ## 使用方法
-※グローバルにevenizer・yarn・webpack・babel・gulpインストールしておいてね
+※グローバルにevenizer・yarnインストールしておいてね
 
 ※evenizer：https://www.npmjs.com/package/evenizer
 
