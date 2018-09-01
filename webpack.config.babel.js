@@ -53,7 +53,8 @@ module.exports = [{
 			contentImage: path.join(__dirname, 'dev/js/icons/shibasaki_ko.jpg'),
 			alwaysNotify: true
 		})
-	]
+	],
+	performance: { hints: false }
 },
 {
 	mode: 'production',
@@ -108,6 +109,7 @@ module.exports = [{
 			contentImage: path.join(__dirname, 'dev/js/icons/yoshioka_riho.png'),
 			alwaysNotify: true
 		}),
-	]
+	],
+	performance: { hints: false }
 }
 ];
