@@ -55,10 +55,8 @@ class SpNavi{
 		scroller = new IScroll(this.target, {
 			scrollX: false,
 			preventDefault: false,
-			mouseWheel: false,
 			disablePointer: true,
 			disableTouch: false,
-			disableMouse: false
 		});
 		/**
 		 * exec callbacks
