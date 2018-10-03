@@ -1,4 +1,4 @@
-class SmoothScroll{
+export default class SmoothScroll{
 	constrctor() {
 		this.canEdit = false;
 	}
@@ -49,4 +49,3 @@ class SmoothScroll{
 		}
 	}
 }
-module.exports = SmoothScroll;

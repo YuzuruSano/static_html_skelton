@@ -1,4 +1,4 @@
-class ToTop{
+export default class ToTop{
 	constructor({
 		target = "#totop",
 		stop_at = "#footer",
@@ -52,4 +52,3 @@ class ToTop{
 		});
 	}
 }
-module.exports = ToTop;

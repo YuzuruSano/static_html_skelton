@@ -4,13 +4,13 @@ const webpack = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const supported = ['IE 9','IE 10','IE 11','last 4 versions'];
+const supported = ['IE 10','IE 11','last 2 versions'];
 
 module.exports = [{
 	mode: 'production', // 追加,
 	/* ビルドの起点となるファイルの設定 */
 	entry:{
-		main:['babel-polyfill','./dev/js/scripts/main.js']
+		main:['./dev/js/scripts/main.js']
 		//複数連結
 		//home:['./js/scripts/main.js','./js/scripts/home.js']
 	},
@@ -28,21 +28,14 @@ module.exports = [{
 				test: /\.js$/, // 対象となるファイルの拡張子（正規表現可）
 				exclude: /(node_modules)/, // 除外するファイル/ディレクトリ（正規表現可）
 				loader : 'babel-loader'
-			}
-			,{ test: /\.html$/, loader: 'html-loader' }
+			},
+			{ test: /\.html$/, loader: 'html-loader' }
 		]
 	},
 	externals: {
 		jquery: 'jQuery'
 	},
 	plugins: [
-		// new UglifyJSPlugin({
-		// 	uglifyOptions:{
-		// 		compress: {warnings: false},
-		// 		output: {comments: false},
-		// 		sourceMap: true
-		// 	}
-		// }),
 		new webpack.ProvidePlugin({
 			$: 'jquery',
 			jQuery: 'jquery',

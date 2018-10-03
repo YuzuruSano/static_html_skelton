@@ -1,7 +1,7 @@
 import Responsive from './Responsive';
 import IScroll from 'iscroll';
 
-class SpNavi{
+export default class SpNavi{
 	constructor(param) {
 		this.touches = typeof document.ontouchstart != "undefined",
 		this.target = param.target;
@@ -57,6 +57,7 @@ class SpNavi{
 			preventDefault: false,
 			disablePointer: true,
 			disableTouch: false,
+			mouseWheel: true
 		});
 		/**
 		 * exec callbacks
@@ -91,4 +92,3 @@ class SpNavi{
 		});
 	}
 }
-module.exports = SpNavi;

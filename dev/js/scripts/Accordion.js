@@ -1,4 +1,4 @@
-class Accordion{
+export default class Accordion{
 	constructor(target) {
 		this.target = target;
 	}
@@ -18,4 +18,3 @@ class Accordion{
 		});
 	}
 }
-module.exports = Accordion;

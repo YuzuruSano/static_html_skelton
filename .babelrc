@@ -1,4 +1,18 @@
 {
-	"presets": ["es2015"],
-	"plugins": ["transform-async-to-generator"]
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+      	"targets":[
+			'last 2 chrome versions',
+			'last 2 firefox versions',
+			'last 2 safari versions',
+			"IE 11",
+			"IE 10",
+			'last 2 Edge versions'
+      	],
+        "useBuiltIns": "usage"
+      }
+    ]
+  ]
 }

@@ -1,4 +1,4 @@
-class BlockLink{
+export default class BlockLink{
 	exec(target,blank = false){
 		$(target).on('click',function(){
 			let href = $(this).find('a').first().attr('href');
@@ -18,4 +18,3 @@ class BlockLink{
 		});
 	}
 }
-module.exports = BlockLink;

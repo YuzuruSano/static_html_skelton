@@ -1,4 +1,4 @@
-class Tab{
+export default class Tab{
 	constructor(btn,target) {
 		this.btn = btn;
 		this.target = target;
@@ -21,4 +21,3 @@ class Tab{
 		});
 	}
 }
-module.exports = Tab;

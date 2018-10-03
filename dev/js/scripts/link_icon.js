@@ -1,4 +1,4 @@
-module.exports = function() {
+function link_icon() {
 	$('a:not(:has(img))').each(function(){
 		if(!$(this).hasClass('no_linkicon')){
 			$(this).addClass('js--link_icon');
@@ -28,3 +28,4 @@ module.exports = function() {
 
 	$('.js--btn_link_icon[href^=http]:not([href*="'+location.hostname+'"],[href$=pdf],[href$=xls],[href$=xlsx],[href$=xlsm],[href$=doc],[href$=docx],[href$=pptx],[href$=pptm],[href$=ppt])').attr({target:"_blank"});
 }
+export default link_icon;

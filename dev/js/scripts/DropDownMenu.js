@@ -1,4 +1,4 @@
-class DropDownMenu{
+export default class DropDownMenu{
 	constructor(target,child,dur) {
 		this.target = target;
 		this.child = child;
@@ -20,4 +20,3 @@ class DropDownMenu{
 		})
 	}
 }
-module.exports = DropDownMenu;

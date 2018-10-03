@@ -9,6 +9,7 @@ import BlockLink from './BlockLink';
 import Gmap from './Gmap';
 import bowser from 'bowser';
 import matchheight from 'jquery-match-height';
+import link_icon from './link_icon';
 
 if(bowser.msie === true) {
 	let version = 'ie_'+Math.floor(bowser.version);
@@ -114,7 +115,6 @@ totop.exec();
  * 外部リンク・PDF・Word・Exlsに_blankの自動付与
  *
  */
-const link_icon = require('./link_icon');
 link_icon();
 /* ===============================================
 DropDown
@@ -209,5 +209,5 @@ markup:
  * @param {element} append_target 読み込んだ写真を追加する要素
  * @param {element} slide_target スライドショーさせる要素
  */
-// const instagram = require('./instagram');
+// import instagram from './instagram';
 // instagram('request_url','#js-slide--instagram .inner','#js-slide--instagram');

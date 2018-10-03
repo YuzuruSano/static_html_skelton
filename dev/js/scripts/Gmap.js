@@ -1,4 +1,4 @@
-class Gmap{
+export default class Gmap{
 	constructor(
 		target = 'map',
 		styles = [{"stylers": [{ "visibility": "on" },{ "saturation": -100 },{ "lightness": 28 },{ "gamma": 0.98 }]}],
@@ -50,4 +50,3 @@ class Gmap{
 		});
 	}
 }
-module.exports = Gmap;

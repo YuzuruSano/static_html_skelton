@@ -1,4 +1,4 @@
-class Responsive {
+export default class Responsive {
 	getState(){
 		if($('#responsive_flg').css('display') == 'block'){
 			return true;
@@ -15,4 +15,3 @@ class Responsive {
 		return false;
 	}
 }
-module.exports = Responsive;

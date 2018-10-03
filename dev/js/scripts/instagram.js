@@ -6,7 +6,7 @@ const r = new Responsive();
 const template = require('./_instagram_template.html');
 const infiniteSlide = require('./infiniteSlide.js');
 
-module.exports = function(request_url,append_target,slide_target) {
+function instagram(request_url,append_target,slide_target) {
 
 	let is = {};
 
@@ -55,3 +55,4 @@ module.exports = function(request_url,append_target,slide_target) {
 	});
 	})(jQuery);
 }
+export default instagram;
