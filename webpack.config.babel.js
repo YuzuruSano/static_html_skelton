@@ -3,6 +3,7 @@ const current = process.cwd();
 const webpack = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const globImporter = require('node-sass-glob-importer');
 
 const supported = ['IE 10','IE 11','last 2 versions'];
 
@@ -87,7 +88,8 @@ module.exports = [{
 						},
 						{
 							loader: "sass-loader", options: {
-								sourceMap: true
+								sourceMap: true,
+								importer: globImporter()
 							}
 						}
 					]
