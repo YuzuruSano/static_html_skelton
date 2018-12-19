@@ -52,6 +52,7 @@
 		"jquery-lineup": "^1.1.2",
 		"jquery-match-height": "^0.7.2",
 		"node-sass": "^4.5.3",
+		"node-sass-glob-importer": "^5.2.0",
 		"npm-run-all": "^4.0.2",
 		"postcss": "^7.0.5",
 		"postcss-assets": "^5.0.0",
