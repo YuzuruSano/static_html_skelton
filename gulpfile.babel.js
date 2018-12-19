@@ -130,3 +130,7 @@ gulp.task('zip', () => {
  * define default tasks
  */
 gulp.task('default', gulp.series(upLocalServer,watch));
+/**
+ * build only
+ */
+gulp.task('build', gulp.series(buildPug,buildPostcss));
