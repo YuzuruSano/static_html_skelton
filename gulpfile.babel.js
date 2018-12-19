@@ -17,7 +17,7 @@ const DEST = './';
  * Server
  */
 const server = browserSync.create();
-const serve = (done) => {
+const upLocalServer = (done) => {
 	server.init({
 		server: {
 			baseDir: "./",
@@ -33,7 +33,7 @@ const reloadBrowser = (done) => {
 /**
  * Pug
  */
-const pug_build_options = (dest, src , is_build) => {
+const setPugOptions = (dest, src , is_build) => {
 	let depth = src[0].split('/').length;
 	let page_prefix = './';
 	let assets_prefix = './';
@@ -54,7 +54,7 @@ const pug_build_options = (dest, src , is_build) => {
 	};
 };
 
-const excec_pug = (done) => {
+const buildPug = (done) => {
 	let locals = {};
 	gulp.src(['./dev/pug/**/*.pug', '!./dev/pug/**/_*.pug'])
 	.pipe(changed(DEST))
@@ -62,7 +62,7 @@ const excec_pug = (done) => {
 		errorHandler: notify.onError("Error: <%= error.message %>")
 	}))
 	.pipe(data(function(file) {
-		locals = pug_build_options(file.path.replace(/.pug$/, '.html'),file.path);
+		locals = setPugOptions(file.path.replace(/.pug$/, '.html'),file.path);
 		return locals;
 	}))
 	.pipe(data(function(file) {
@@ -82,7 +82,7 @@ const excec_pug = (done) => {
 /**
  * Postcss
  */
-const excec_postcss = (done) => {
+const buildPostcss = (done) => {
 	gulp.src('dev/css/*.css')
 	.pipe(plumber({
 		errorHandler: notify.onError("Error: <%= error.message %>")
@@ -106,8 +106,8 @@ const excec_postcss = (done) => {
  * watch
  */
 const watch = (done) => {
-	gulp.watch(['./dev/pug/**/*.pug', '!./dev/pug/**/_*.pug'], gulp.series(excec_pug,reloadBrowser));
-	gulp.watch(['dev/css/*.css'], gulp.series(excec_postcss,reloadBrowser));
+	gulp.watch(['./dev/pug/**/*.pug', '!./dev/pug/**/_*.pug'], gulp.series(buildPug,reloadBrowser));
+	gulp.watch(['dev/css/*.css'], gulp.series(buildPostcss,reloadBrowser));
 	done();
 }
 /**
@@ -129,4 +129,4 @@ gulp.task('zip', () => {
 /**
  * define default tasks
  */
-gulp.task('default', gulp.series(serve,watch));
+gulp.task('default', gulp.series(upLocalServer,watch));
