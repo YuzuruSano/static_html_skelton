@@ -1,3 +1,7 @@
+## 環境
+- yarn 1.12.3
+- node v11.5.0
+
 ## 使用方法
 ※グローバルにevenizer・yarnインストールしておいてね
 
@@ -34,8 +38,7 @@ cli/css_component.sh component test
 第一引数は対象ディレクトリ
 第二引数はクラス名
 
-componentディレクトリに_test.scssを作成し、
-inc/_component.scssにimport記述を追加する
+componentディレクトリに_test.scssを作成する
 
 下記ディレクトリに対応
 

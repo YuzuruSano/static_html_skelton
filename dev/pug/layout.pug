@@ -19,7 +19,7 @@ include _inc_mixins
 include _inc_conditional
 block slug
 	- var slug = ''
-	- var is_contact = false
+	- var is_contact = false;
 head
 	block meta_data
 		meta(http-equiv='X-UA-Compatible', content='IE=edge')
@@ -62,7 +62,7 @@ body#top(class=slug)
 		block flg
 			#responsive_flg
 		#totop
-			a(href="#top") トップへ
+			a(href="#top") トップ
 	block scripts
 		include _inc_scripts
 
