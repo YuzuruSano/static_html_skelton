@@ -106,6 +106,7 @@ const buildPostcss = (done) => {
  * watch
  */
 const watch = (done) => {
+	buildPug(done);
 	gulp.watch(['./dev/pug/**/*.pug', '!./dev/pug/**/_*.pug'], gulp.series(buildPug,reloadBrowser));
 	gulp.watch(['dev/css/*.css'], gulp.series(buildPostcss,reloadBrowser));
 	done();
@@ -129,7 +130,7 @@ gulp.task('zip', () => {
 /**
  * define default tasks
  */
-gulp.task('default', gulp.series(upLocalServer,watch));
+gulp.task('default', gulp.series(upLocalServer,watch,reloadBrowser));
 /**
  * build only
  */
