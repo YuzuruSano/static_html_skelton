@@ -108,7 +108,8 @@ const buildPostcss = (done) => {
 const watch = (done) => {
 	buildPug(done);
 	gulp.watch(['./dev/pug/**/*.pug', '!./dev/pug/**/_*.pug'], gulp.series(buildPug,reloadBrowser));
-	gulp.watch(['dev/css/*.css'], gulp.series(buildPostcss,reloadBrowser));
+	gulp.watch(['./dev/css/*.css'], gulp.series(buildPostcss));
+	gulp.watch(['./build/**/*'], gulp.series(reloadBrowser));
 	done();
 }
 /**
