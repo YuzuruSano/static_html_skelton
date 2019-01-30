@@ -81,9 +81,10 @@ module.exports = [
 								options: {
 									sourceMap: true,
 									plugins: [
-										require('cssnano')({
-											autoprefixer: {browsers: supported, add: true}
-										})
+										require('autoprefixer')({
+											browsers: supported
+										}),
+										require('cssnano')
 									]
 								}
 							},
