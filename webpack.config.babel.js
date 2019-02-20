@@ -1,5 +1,4 @@
 const path = require("path");
-const current = process.cwd();
 const webpack = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
