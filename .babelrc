@@ -8,7 +8,6 @@
 			'last 2 firefox versions',
 			'last 2 safari versions',
 			"IE 11",
-			"IE 10",
 			'last 2 Edge versions'
       	],
         "useBuiltIns": "usage"

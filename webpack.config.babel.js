@@ -5,7 +5,7 @@ const WebpackNotifierPlugin = require('webpack-notifier');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const globImporter = require('node-sass-glob-importer');
 
-const supported = ['IE 10','IE 11','last 2 versions'];
+const supported = ['IE 11','last 2 versions'];
 
 module.exports = [
 	{
