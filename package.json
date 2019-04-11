@@ -87,6 +87,10 @@
 		"*.{js,jsx}": [
 			"prettier-eslint --write",
 			"git add"
+		],
+		"*.{scss}": [
+			"prettier-stylelint --write ./dev/sass/**/*.scss",
+			"git add"
 		]
 	}
 }
