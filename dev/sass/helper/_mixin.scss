@@ -10,13 +10,13 @@
   @each $breakpoint, $value in $breakpoints {
     @if $size == $breakpoint {
       $flg: true;
-      @media only screen and (max-width: map-get($breakpoints, $breakpoint)) {
+      @media only screen and ( max-width : map-get( $breakpoints, $breakpoint ) ) {
         @content;
       }
     }
   }
   @if $flg == false {
-    @media only screen and ($size) {
+    @media only screen and ( $size ) {
       @content;
     }
   }
@@ -24,25 +24,25 @@
 
 @mixin clearfix {
 
-  &:after {
-    clear: both;
-    content: ".";
-    display: block;
-    height: 0px;
-    line-height: 0;
-    visibility: hidden;
+  &::after {
+    clear : both;
+    content : ".";
+    display : block;
+    height : 0px;
+    line-height : 0;
+    visibility : hidden;
   }
 
   @if $support-ie7 or $support-ie6 {
-    *zoom: 1;
+    *zoom : 1;
   }
 }
 
 @mixin rolloverop {
 
   &:hover {
-    filter: progid:DXImageTransfor.Microsoft.Alpha(Opacity=70);
-    opacity: .7;
+    filter : progid:DXImageTransfor.Microsoft.Alpha(Opacity=70);
+    opacity : .7;
   }
 }
 /* ******************************
@@ -50,17 +50,17 @@
 ****************************** */
 
 .text_indent_none {
-  display: block;
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap;
+  display : block;
+  overflow : hidden;
+  text-indent : 100%;
+  white-space : nowrap;
 }
 
 @mixin text_indent_none {
-  display: block;
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap;
+  display : block;
+  overflow : hidden;
+  text-indent : 100%;
+  white-space : nowrap;
 }
 /* ===============================================
 for bem
@@ -83,36 +83,36 @@ common parts
 =============================================== */
 //画像をマウスオーバーで拡大 imgに対して適用
 @mixin scale_img($ratio: 1.04, $speed: .3) {
-  transition: transform #{$speed}s linear;
+  transition : transform #{$speed}s linear;
 
   &:hover {
-    transform: scale($ratio);
+    transform : scale($ratio);
   }
 }
 
 //画像をマウスオーバーで拡大 hover使用なし
 @mixin scale_img_hasnt_hover($ratio: 1.04, $speed: .3) {
-  transition: transform #{$speed}s linear;
+  transition : transform #{$speed}s linear;
 }
 
 @mixin opacity($opacity: .8) {
-  opacity: $opacity;
+  opacity : $opacity;
 }
 
 @mixin opacity--anim($opacity: .8) {
-  transition: opacity .6s;
+  transition : opacity .6s;
 
   &:hover {
-    opacity: $opacity;
+    opacity : $opacity;
   }
   @include breakpoint(sp) {
 
     &:hover {
-      opacity: 1;
+      opacity : 1;
     }
 
     &:active {
-      opacify: $opacity;
+      opacify : $opacity;
     }
   }
 }
