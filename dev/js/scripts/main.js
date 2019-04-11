@@ -31,6 +31,7 @@ let param = {
   filter: "resposive_flg",
   speed: 200
 };
+
 const spnavi = new SpNavi(param);
 spnavi.exec();
 
