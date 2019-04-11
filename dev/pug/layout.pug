@@ -11,7 +11,7 @@
 	}
 -
 	var meta = {
-		title:'ページタイトル',
+		title:'ページ',
 		desc:'ディスクリプション',
 		key:'キーワード'
 	}
@@ -37,7 +37,7 @@ body#top(class=slug)
 				ul
 					- for (var i = 0; i < 200; i++)
 						li
-							a(href="") ナビゲーション#{i}
+							a(href="") ナビゲーション31#{i}
 		.btn_sp_navi_wrap
 			a.btn_sp_navi.nosc.nosms(href='#sp')
 				span.line
@@ -48,7 +48,7 @@ body#top(class=slug)
 				if slug == 'home'
 					h1 pug内でスラッグを活用すると各ページごとに処理を変更できます。
 				else
-					p 下層ページ
+					p 下層ページ;
 		block contents
 			.pl10.pr10.pt10.pb10
 				p まずは「dev/sass/base/_setting.scss」で初期設定。
