@@ -5,37 +5,31 @@ Trello CSS Guide
 https://gist.github.com/bobbygrace/9e961e8982f42eb91b80
 http://qiita.com/naru0504/items/5427f3795171c540ed91
 =============================================== */
-
 /* base
 ----------------------- */
-@import 'base/setting.scss';
-@import 'helper/mixin.scss';
-@import 'base/reset.scss';
-@import 'fonts/font.scss';
-
+@import "base/setting.scss";
+@import "helper/mixin.scss";
+@import "base/reset.scss";
+@import "fonts/font.scss";
 /* vendor
 ----------------------- */
-@import 'vendor/remodal-default-theme.scss';
-@import 'vendor/remodal.scss';
-@import 'vendor/swiper.min.scss';
-
+@import "vendor/remodal-default-theme.scss";
+@import "vendor/remodal.scss";
+@import "vendor/swiper.min.scss";
 /* layout
 ----------------------- */
-@import 'layout/*';
-
+@import "layout/*";
 /* component
 ----------------------- */
-@import 'component/*';
-
+@import "component/*";
 /* page
 ----------------------- */
-@import 'page/*';
-
+@import "page/*";
 /* page
 ----------------------- */
-@import 'helper/shorthands.scss';
+@import "helper/shorthands.scss";
 
 body {
-	background:resolve('eveniser.jpg') no-repeat left top;
-	background-size: size('eveniser.jpg',2);//retinaは第二引数に2
+  background: resolve("eveniser.jpg") no-repeat left top;
+  background-size: size("eveniser.jpg", 2); //retinaは第二引数に2
 }
