@@ -13,7 +13,7 @@ const enabledSourceMap = MODE === "development";
 
 const opts = {
   srcDir: path.join(__dirname, "dev"),
-  destDir: path.join(__dirname, "")
+  destDir: path.join(__dirname, "build")
 };
 
 const convertExtensions = {

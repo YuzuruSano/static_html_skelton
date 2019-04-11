@@ -73,9 +73,11 @@
 		"webpack-notifier": "^1.5.0"
 	},
 	"scripts": {
+		"lint:css": "prettier-stylelint --write ./dev/sass/**/*.scss",
+		"lint:js": "prettier-eslint --write ./dev/js/**/*.js",
 		"img-even": "evenizer -i ./dev/images/*.*",
 		"start": "export NODE_ENV=development && webpack-dev-server",
-		"prod": "export NODE_ENV=production && webpack -p"
+		"prod": "export NODE_ENV=production && lint:css && lint:js && webpack -p"
 	},
 	"husky": {
 		"hooks": {

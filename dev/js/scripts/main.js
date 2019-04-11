@@ -1,15 +1,15 @@
-import BrowserDetect from './BrowserDetect';
-import Responsive from './Responsive';
-import SmoothScroll from './SmoothScroll';
-import Accordion from './Accordion';
-import Tab from './Tab';
-import SpNavi from './SpNavi';
-import ToTop from './ToTop';
-import DropDownMenu from './DropDownMenu';
-import BlockLink from './BlockLink';
-import Gmap from './Gmap';
-import matchheight from 'jquery-match-height';
-import link_icon from './link_icon';
+import BrowserDetect from "./BrowserDetect";
+import Responsive from "./Responsive";
+import SmoothScroll from "./SmoothScroll";
+import Accordion from "./Accordion";
+import Tab from "./Tab";
+import SpNavi from "./SpNavi";
+import ToTop from "./ToTop";
+import DropDownMenu from "./DropDownMenu";
+import BlockLink from "./BlockLink";
+import Gmap from "./Gmap";
+import matchheight from "jquery-match-height";
+import link_icon from "./link_icon";
 /* ===============================================
 Check responsive state
 =============================================== */
@@ -26,10 +26,10 @@ SP Navi
 =============================================== */
 //通常盤
 let param = {
-	target:'#spnavi',
-	trigger:'.btn_sp_navi',
-	filter:'resposive_flg',
-	speed:200
+  target: "#spnavi",
+  trigger: ".btn_sp_navi",
+  filter: "resposive_flg",
+  speed: 200
 };
 const spnavi = new SpNavi(param);
 spnavi.exec();
@@ -73,7 +73,7 @@ sms.exec();
 To Top
 show/hide toggle
 =============================================== */
-const totop = new ToTop('#totop','#global_footer',100,400);
+const totop = new ToTop("#totop", "#global_footer", 100, 400);
 totop.exec();
 
 /**
