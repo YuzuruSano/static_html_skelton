@@ -89,7 +89,7 @@
 			"git add"
 		],
 		"*.{scss}": [
-			"prettier-stylelint --write ./dev/sass/**/*.scss",
+			"prettier-stylelint --write",
 			"git add"
 		]
 	}

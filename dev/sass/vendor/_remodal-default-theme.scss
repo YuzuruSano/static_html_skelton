@@ -114,7 +114,6 @@
 }
 
 .remodal-close:before {
-
   content: "\00d7";
 
   display: block;
@@ -133,7 +132,6 @@
 
 .remodal-confirm,
 .remodal-cancel {
-
   border: 0;
 
   cursor: pointer;
@@ -177,7 +175,6 @@
 .remodal-confirm::-moz-focus-inner,
 .remodal-cancel::-moz-focus-inner,
 .remodal-close::-moz-focus-inner {
-
   border: 0;
   padding: 0;
 }
@@ -187,14 +184,12 @@
 @-webkit-keyframes remodal-opening-keyframes {
 
   from {
-
     opacity: 0;
     -webkit-transform: scale(1.05);
     transform: scale(1.05);
   }
 
   to {
-
     -webkit-filter: blur(0);
     filter: blur(0);
 
@@ -207,14 +202,12 @@
 @keyframes remodal-opening-keyframes {
 
   from {
-
     opacity: 0;
     -webkit-transform: scale(1.05);
     transform: scale(1.05);
   }
 
   to {
-
     -webkit-filter: blur(0);
     filter: blur(0);
 
@@ -227,14 +220,12 @@
 @-webkit-keyframes remodal-closing-keyframes {
 
   from {
-
     opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1);
   }
 
   to {
-
     -webkit-filter: blur(0);
     filter: blur(0);
 
@@ -247,14 +238,12 @@
 @keyframes remodal-closing-keyframes {
 
   from {
-
     opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1);
   }
 
   to {
-
     -webkit-filter: blur(0);
     filter: blur(0);
 
