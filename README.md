@@ -1,8 +1,8 @@
 ## 環境
-- yarn 1.12.3
-- node v11.5.0
+- yarn 1.15.2
+- node 11.13.0
 
-## 使用方法
+## インストール
 ※グローバルにevenizer・yarnインストールしておいてね
 
 ※evenizer：https://www.npmjs.com/package/evenizer
@@ -10,6 +10,8 @@
 ```
 yarn install
 ```
+
+## 実行
 
 ```
 yarn start
@@ -19,7 +21,12 @@ yarn start
 * js,sass,postcss,pugのコンパイル
 * オートリロード
 
-## 画像サイズの一括調整
+## ビルド
+```
+yarn build
+```
+
+### おまけ：画像サイズの一括調整
 画像をまとめてサイズ偶数化
 コーディング環境のルートディレクトリで
 
@@ -27,7 +34,7 @@ yarn start
 yarn img-even
 ```
 
-## コンポーネント用scssファイルの自動生成
+### おまけ：コンポーネント用scssファイルの自動生成
 
 コーディング環境のルートディレクトリで
 
