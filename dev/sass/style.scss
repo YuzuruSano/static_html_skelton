@@ -30,10 +30,8 @@ http://qiita.com/naru0504/items/5427f3795171c540ed91
 @import "helper/shorthands.scss";
 
 body {
-  text-align: center;
-  font-size: 16px;
   background: resolve("eveniser.jpg") no-repeat left top;
   background-size: size("eveniser.jpg", 2); //retinaは第二引数に2
-
-
+  font-size: 16px;
+  text-align: center;
 }
