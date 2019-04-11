@@ -131,7 +131,7 @@ module.exports = [
         "window.jQuery": "jquery"
       }),
       new WebpackNotifierPlugin({
-        title: "seccess compiled!",
+        title: "Success compiled!",
         contentImage: path.join(__dirname, "dev/js/icons/shibasaki_ko.jpg"),
         alwaysNotify: true
       })
