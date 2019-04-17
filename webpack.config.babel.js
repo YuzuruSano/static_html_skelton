@@ -96,7 +96,8 @@ module.exports = [
                     }),
                     require("cssnano"),
                     require("postcss-assets")({
-                      loadPaths: ["./images/"]
+                      loadPaths: ["dev/images/"],
+                      relative: "./dev/css"
                     })
                   ]
                 }
