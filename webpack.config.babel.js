@@ -5,6 +5,8 @@ const webpack = require("webpack");
 const WebpackNotifierPlugin = require("webpack-notifier");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const globImporter = require("node-sass-glob-importer");
+const ImageminPlugin = require("imagemin-webpack-plugin").default;
+const ImageminJpegTran = require("imagemin-jpegtran");
 
 const supported = ["IE 11", "last 2 versions"];
 
@@ -124,6 +126,52 @@ module.exports = [
       new ExtractTextPlugin("[name]"),
       new CopyWebpackPlugin([{ from: "./", to: "images/" }], {
         context: "dev/images"
+      }),
+      new ImageminPlugin({
+        // GIF
+        test: /images\/([a-z_\-\s0-9]+)\.gif$/i,
+        gifsicle: {
+          interlaced: false,
+          optimizationLevel: 3,
+          colors: 256
+        }
+      }),
+
+      new ImageminPlugin({
+        // PNG
+        test: /images\/([a-z_\-\s0-9]+)\.png$/i,
+        optipng: {
+          optimizationLevel: 7,
+          bitDepthReduction: true,
+          colorTypeReduction: true,
+          paletteReduction: true
+        }
+      }),
+
+      new ImageminPlugin({
+        // JPG, JPEG
+        test: /images\/([a-z_\-\s0-9]+)\.jpe?g$/i,
+        jpegtran: {
+          progressive: true,
+          arithmetic: false
+        },
+        plugins: [
+          ImageminJpegTran({
+            quality: 85,
+            progressive: true,
+            targa: false,
+            revert: false,
+            dcScanOpt: 1,
+            notrellis: false,
+            notrellisDC: false,
+            tune: "hvs-psnr",
+            noovershoot: false,
+            arithmetic: false,
+            // quantTable : 0,
+            smooth: 0
+            // maxmemory  : Number,
+          })
+        ]
       }),
       new webpack.ProvidePlugin({
         $: "jquery",

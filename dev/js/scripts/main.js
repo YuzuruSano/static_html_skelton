@@ -1,14 +1,14 @@
 import BrowserDetect from "./BrowserDetect";
-import Responsive from "./Responsive";
+//import Responsive from "./Responsive";
 import SmoothScroll from "./SmoothScroll";
-import Accordion from "./Accordion";
-import Tab from "./Tab";
+//import Accordion from "./Accordion";
+//import Tab from "./Tab";
 import SpNavi from "./SpNavi";
 import ToTop from "./ToTop";
-import DropDownMenu from "./DropDownMenu";
-import BlockLink from "./BlockLink";
-import Gmap from "./Gmap";
-import matchheight from "jquery-match-height";
+//import DropDownMenu from "./DropDownMenu";
+//import BlockLink from "./BlockLink";
+//import Gmap from "./Gmap";
+//import matchheight from "jquery-match-height";
 import link_icon from "./link_icon";
 /* ===============================================
 Check responsive state
