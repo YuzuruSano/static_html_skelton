@@ -11,7 +11,6 @@ const ImageminJpegTran = require("imagemin-jpegtran");
 const supported = ["IE 11", "last 2 versions"];
 
 const MODE = process.env.NODE_ENV;
-const enabledSourceMap = MODE === "development";
 
 const opts = {
   srcDir: path.join(__dirname, "dev"),
@@ -45,9 +44,7 @@ Object.keys(convertExtensions).forEach(from => {
 module.exports = [
   {
     mode: MODE,
-    /* ビルドの起点となるファイルの設定 */
     entry: files,
-    /* 出力されるファイルの設定 */
     output: {
       filename: "[name]",
       path: opts.destDir
@@ -55,7 +52,6 @@ module.exports = [
     cache: true,
     devtool: MODE !== "production" ? "inline-source-map" : "",
     module: {
-      /* loaderの設定 */
       rules: [
         {
           test: /\.pug$/,
@@ -113,8 +109,8 @@ module.exports = [
           })
         },
         {
-          test: /\.js$/, // 対象となるファイルの拡張子（正規表現可）
-          exclude: /(node_modules)/, // 除外するファイル/ディレクトリ（正規表現可）
+          test: /\.js$/,
+          exclude: /(node_modules)/,
           loader: "babel-loader"
         },
         { test: /\.html$/, loader: "html-loader" }

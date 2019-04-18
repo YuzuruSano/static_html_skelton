@@ -18,7 +18,8 @@ yarn start
 ```
 下記を自動実行
 
-* js,sass,postcss,pugのコンパイル
+* js, scss + postcss, pugのコンパイル
+* git commit時にコード整形
 * オートリロード
 
 ## ビルド
