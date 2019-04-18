@@ -1,10 +1,8 @@
-node_modules/*
-.sass-cache/*
-build/*
-dev/.sass-cache
-.node-version
+node_modules
+build
+.sass-cache
 dev/tmp
 dev/css
-**/*.log
-**/*.html
+*.log
+*.html
 
