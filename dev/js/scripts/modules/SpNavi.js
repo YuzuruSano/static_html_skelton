@@ -1,6 +1,6 @@
 import Responsive from "./Responsive";
 import IScroll from "iscroll";
-
+console.log("in");
 export default class SpNavi {
   constructor(param) {
     (this.touches = typeof document.ontouchstart != "undefined"),
