@@ -27,7 +27,15 @@ const config = merge(common, {
       contentImage: path.join(__dirname, "dev/js/icons/shibasaki_ko.jpg"),
       alwaysNotify: true
     })
-  ]
+  ],
+  devServer: {
+    open: true,
+    compress: true,
+    inline: true,
+    hot: true,
+    host: "localhost",
+    disableHostCheck: true
+  }
 });
 
 for (const key in config.entry) {

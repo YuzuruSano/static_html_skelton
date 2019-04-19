@@ -85,7 +85,7 @@
 		"lint:js": "prettier-eslint --write ./dev/js/**/*.js",
 		"lint": "yarn lint:js & yarn lint:css",
 		"img-even": "evenizer -i ./dev/images/*.*",
-		"start": "webpack-dev-server --hot --inline --config webpack.dev.js",
+		"start": "webpack-dev-server --config webpack.dev.js",
 		"build": "webpack --config webpack.production.js"
 	},
 	"husky": {
