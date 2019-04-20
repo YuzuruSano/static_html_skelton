@@ -1,12 +1,9 @@
 const merge = require("webpack-merge"); // webpack-merge
 const common = require("./webpack.common.js"); // 汎用設定をインポート
 const path = require("path");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 const WebpackNotifierPlugin = require("webpack-notifier");
 const globImporter = require("node-sass-glob-importer");
-const ImageminPlugin = require("imagemin-webpack-plugin").default;
-const ImageminJpegTran = require("imagemin-jpegtran");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const supported = ["IE 11", "last 2 versions"];
 
@@ -41,7 +38,7 @@ const config = merge(common, {
 for (const key in config.entry) {
   if (config.entry.hasOwnProperty(key)) {
     config.entry[key].unshift(
-      "webpack-dev-server/client?http://localhost:8080/"
+      "webpack-hot-middleware/client?http://localhost:8080/"
     );
     config.entry[key].unshift("webpack/hot/only-dev-server");
   }

@@ -1,15 +1,9 @@
+import Entry from "entry";
 import BrowserDetect from "modules/BrowserDetect";
 import SmoothScroll from "modules/SmoothScroll";
 import SpNavi from "modules/SpNavi";
 import ToTop from "modules/ToTop";
 import link_icon from "modules/link_icon";
-import "../../sass/style.scss";
-
-const req = require.context("../../pug/", false, /\.pug/);
-req.keys().forEach(fileName => {
-  //const m = fileName.match(/^\.\/_/);
-  req(fileName);
-});
 
 /* ===============================================
 SP Navi
