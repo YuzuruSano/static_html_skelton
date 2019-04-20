@@ -107,6 +107,9 @@
 		"*.scss": [
 			"prettier-stylelint --write",
 			"git add"
+		],
+		"ignore": [
+			"**/build/**/*.js"
 		]
 	}
 }
