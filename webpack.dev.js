@@ -5,6 +5,7 @@ const webpack = require("webpack");
 const WebpackNotifierPlugin = require("webpack-notifier");
 const globImporter = require("node-sass-glob-importer");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const supported = ["IE 11", "last 2 versions"];
 
 const config = merge(common, {
@@ -25,6 +26,18 @@ const config = merge(common, {
       alwaysNotify: true
     })
   ],
+  optimization: {
+    minimizer: [
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorOptions: {
+          map: {
+            inline: false,
+            annotation: true,
+          }
+        }
+      }),
+    ],
+  },
   devServer: {
     open: true,
     compress: true,

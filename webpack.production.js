@@ -2,13 +2,36 @@ const merge = require("webpack-merge"); // webpack-merge
 const common = require("./webpack.common.js"); // 汎用設定をインポート
 const globImporter = require("node-sass-glob-importer");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 const supported = ["IE 11", "last 2 versions"];
 
 const config = merge(common, {
   output: {
     publicPath: "/"
   },
-  mode: "production"
+  mode: "production",
+  optimization: {
+    namedChunks: true,
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/].*\.js$/,
+          name: 'vendor',
+          chunks: 'all'
+        }
+      }
+    },
+    minimizer: [
+      new TerserPlugin({
+        parallel: true,
+        terserOptions: {
+          compress: {
+            drop_console: true
+          }
+        }
+      })
+    ]
+  }
 });
 
 config.module.rules.push({
