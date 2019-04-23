@@ -16,14 +16,26 @@ const webpackDevMiddlewareInstance = webpackDevMiddleware(bundler, {
 const server = browserSync({
   port: 8080,
   ghostMode: false,
+  socket: {
+    domain: 'localhost:8080'
+  },
   server: {
     baseDir: "build",
-    middleware: [webpackDevMiddlewareInstance, webpackHotMiddleware(bundler)]
+    middleware: [
+      function (req, res, next) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        next();
+      },
+      webpackDevMiddlewareInstance,
+      webpackHotMiddleware(bundler)
+    ]
   },
   files: [
     {
-      // pugファイルを更新してもなぜかリロードしてくれないので手動で更新する
-      match: ["./dev/pug/**/*.pug"],
+      /**
+       * php & pug
+       */
+      match: ["./dev/pug/**/*.pug", "../**/*.php"],
       fn: (event, file) => {
         webpackDevMiddlewareInstance.waitUntilValid(() => {
           console.log("finish");

@@ -10,7 +10,7 @@ const supported = ["IE 11", "last 2 versions"];
 
 const config = merge(common, {
   output: {
-    publicPath: "/"
+    publicPath: "http://localhost:8080/"
   },
   mode: "development",
   devtool: "inline-source-map",
@@ -43,7 +43,6 @@ const config = merge(common, {
     compress: true,
     inline: true,
     hot: true,
-    host: "localhost",
     disableHostCheck: true
   }
 });
@@ -51,7 +50,7 @@ const config = merge(common, {
 for (const key in config.entry) {
   if (config.entry.hasOwnProperty(key)) {
     config.entry[key].unshift(
-      "webpack-hot-middleware/client?http://localhost:8080/"
+      "webpack-hot-middleware/client?path=http://localhost:8080/__webpack_hmr"
     );
     config.entry[key].unshift("webpack/hot/only-dev-server");
   }
