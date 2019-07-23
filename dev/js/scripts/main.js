@@ -8,7 +8,7 @@ import link_icon from "modules/link_icon";
 /* ===============================================
 SP Navi
 =============================================== */
-//通常盤
+//通常版
 let param = {
   target: "#spnavi",
   trigger: ".btn_sp_navi",

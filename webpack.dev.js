@@ -6,7 +6,6 @@ const WebpackNotifierPlugin = require("webpack-notifier");
 const globImporter = require("node-sass-glob-importer");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const supported = ["IE 11", "last 2 versions"];
 
 const config = merge(common, {
   output: {
@@ -75,9 +74,7 @@ config.module.rules.push({
       options: {
         sourceMap: true,
         plugins: [
-          require("autoprefixer")({
-            browsers: supported
-          }),
+          require("autoprefixer")(),
           require("cssnano"),
           require("postcss-assets")({
             loadPaths: ["dev/images/"],

@@ -3,7 +3,6 @@ const common = require("./webpack.common.js"); // 汎用設定をインポート
 const globImporter = require("node-sass-glob-importer");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
-const supported = ["IE 11", "last 2 versions"];
 
 const config = merge(common, {
   output: {
@@ -52,9 +51,7 @@ config.module.rules.push({
       options: {
         sourceMap: true,
         plugins: [
-          require("autoprefixer")({
-            browsers: supported
-          }),
+          require("autoprefixer")(),
           require("cssnano"),
           require("postcss-assets")({
             loadPaths: ["dev/images/"],

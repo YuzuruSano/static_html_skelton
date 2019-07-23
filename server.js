@@ -38,7 +38,6 @@ const server = browserSync({
       match: ["./dev/pug/**/*.pug", "../**/*.php"],
       fn: (event, file) => {
         webpackDevMiddlewareInstance.waitUntilValid(() => {
-          console.log("finish");
           server.reload();
         });
       }
