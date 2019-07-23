@@ -12,11 +12,17 @@ font-face定義例
 // }
 
 body {
-	font-family:"游ゴシック体", "Yu Gothic", YuGothic,"Helvetica Neue",Helvetica,Arial,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
-	-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%;
-	-webkit-text-size-adjust: none;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  font-family : "游ゴシック体", "Yu Gothic", YuGothic, "Helvetica Neue",
+    Helvetica, Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN",
+    "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック",
+    "MS PGothic", sans-serif;
+  -webkit-font-smoothing : antialiased;
+  -moz-osx-font-smoothing : grayscale;
+  -webkit-text-size-adjust : 100%;
+  -moz-text-size-adjust : 100%;
+  -ms-text-size-adjust : 100%;
+  -webkit-text-size-adjust : none;
+  text-size-adjust : 100%;
 }
 /* ===============================================
 mixinの指定例
@@ -55,9 +61,11 @@ mixinの指定例
 // }
 
 .font-yu_mincho {
-	font-family: YuMincho,"Yu Mincho","游明朝体","游明朝","ヒラギノ明朝 ProN W3","Hiragino Mincho ProN","ＭＳ ゴシック","MS Gothic","メイリオ",Meiryo,serif;
+  font-family : YuMincho, "Yu Mincho", "游明朝体", "游明朝",
+    "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "ＭＳ ゴシック", "MS Gothic",
+    "メイリオ", Meiryo, serif;
 }
 
 .font-opensans {
-	font-family: 'Open Sans', sans-serif;;
+  font-family : "Open Sans", sans-serif;
 }

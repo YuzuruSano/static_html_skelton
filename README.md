@@ -1,6 +1,6 @@
 ## 環境
-- yarn 1.12.3
-- node v11.5.0
+- yarn 1.15.2
+- node 11.13.0
 
 ## 使用方法
 
@@ -8,37 +8,22 @@
 yarn install
 ```
 
+## 実行
+
 ```
 yarn start
 ```
 下記を自動実行
 
-* js,sass,postcss,pugのコンパイル
+* js, scss + postcss, pugのコンパイル
+* git commit時にコード整形
 * オートリロード
 
-## 画像サイズの一括調整
-画像をまとめてサイズ偶数化
-コーディング環境のルートディレクトリで
+## ビルド
 
+通常はHot Module Replacementで変更検知しているので  
+サーバにアップする際などファイルの実態が必要な場合はビルドしてください。  
+./build/ 配下に各種ファイルがコンパイルされます。
 ```
-yarn img-even
+yarn build
 ```
-
-## コンポーネント用scssファイルの自動生成
-
-コーディング環境のルートディレクトリで
-
-```
-cli/css_component.sh component test
-```
-
-第一引数は対象ディレクトリ
-第二引数はクラス名
-
-componentディレクトリに_test.scssを作成する
-
-下記ディレクトリに対応
-
-scss/component
-scss/layout
-scss/page
