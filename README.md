@@ -3,9 +3,6 @@
 - node v11.5.0
 
 ## 使用方法
-※グローバルにevenizer・yarnインストールしておいてね
-
-※evenizer：https://www.npmjs.com/package/evenizer
 
 ```
 yarn install
