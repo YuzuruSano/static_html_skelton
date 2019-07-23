@@ -11,7 +11,7 @@
 	}
 -
 	var meta = {
-		title:'ページタイトル',
+		title:'ページ',
 		desc:'ディスクリプション',
 		key:'キーワード'
 	}
@@ -33,11 +33,6 @@ body#top(class=slug)
 	#wrap
 		nav#spnavi.spnavi.sp
 			#scroller
-				p(style="background-color:#fff;").bold.fs24 iScrollerでスクロールOK
-				ul
-					- for (var i = 0; i < 200; i++)
-						li
-							a(href="") ナビゲーション#{i}
 		.btn_sp_navi_wrap
 			a.btn_sp_navi.nosc.nosms(href='#sp')
 				span.line
@@ -46,9 +41,9 @@ body#top(class=slug)
 		block header
 			header#global_header.global_header
 				if slug == 'home'
-					h1 pug内でスラッグを活用すると各ページごとに処理を変更できます。
+					h1 pug内でスラッグを活用すると各ページごとに処理を変更できる
 				else
-					p 下層ページ
+					p 下層ページ;
 		block contents
 			.pl10.pr10.pt10.pb10
 				p まずは「dev/sass/base/_setting.scss」で初期設定。

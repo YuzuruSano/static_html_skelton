@@ -6,88 +6,79 @@
  *  Made by Ilya Makarov
  *  Under MIT License
  */
-
 /* ==========================================================================
    Remodal's necessary styles
    ========================================================================== */
-
 /* Hide scroll bar */
 
 html.remodal-is-locked {
-  overflow: hidden;
+  overflow : hidden;
 
-  -ms-touch-action: none;
-  touch-action: none;
+  -ms-touch-action : none;
+  touch-action : none;
 }
-
 /* Anti FOUC */
 
 .remodal,
-[data-remodal-id] {
-  display: none;
+[ data-remodal-id ] {
+  display : none;
 }
-
 /* Necessary styles of the overlay */
 
 .remodal-overlay {
-  position: fixed;
-  z-index: 9999;
-  top: -5000px;
-  right: -5000px;
-  bottom: -5000px;
-  left: -5000px;
+  bottom : -5000px;
 
-  display: none;
+  display : none;
+  left : -5000px;
+  position : fixed;
+  right : -5000px;
+  top : -5000px;
+  z-index : 9999;
 }
-
 /* Necessary styles of the wrapper */
 
 .remodal-wrapper {
-  position: fixed;
-  z-index: 10000;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  bottom : 0;
 
-  display: none;
-  overflow: auto;
+  display : none;
+  left : 0;
+  overflow : auto;
 
-  text-align: center;
+  -webkit-overflow-scrolling : touch;
+  position : fixed;
+  right : 0;
 
-  -webkit-overflow-scrolling: touch;
+  text-align : center;
+  top : 0;
+  z-index : 10000;
 }
 
-.remodal-wrapper:after {
-  display: inline-block;
+.remodal-wrapper::after {
+  content : "";
+  display : inline-block;
 
-  height: 100%;
-  margin-left: -0.05em;
-
-  content: "";
+  height : 100%;
+  margin-left : -.05em;
 }
-
 /* Fix iPad, iPhone glitches */
 
 .remodal-overlay,
 .remodal-wrapper {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+  -webkit-backface-visibility : hidden;
+  backface-visibility : hidden;
 }
-
 /* Necessary styles of the modal dialog */
 
 .remodal {
-  position: relative;
+  outline : none;
+  position : relative;
 
-  outline: none;
-
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  text-size-adjust: 100%;
+  -webkit-text-size-adjust : 100%;
+  -ms-text-size-adjust : 100%;
+  text-size-adjust : 100%;
 }
 
 .remodal-is-initialized {
   /* Disable Anti-FOUC */
-  display: inline-block;
+  display : inline-block;
 }

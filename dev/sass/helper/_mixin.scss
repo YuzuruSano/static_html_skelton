@@ -5,59 +5,62 @@
 // @include breakpoint(sp) { ... }
 // @include breakpoint(tb) { ... }
 // --------------------
-@mixin breakpoint($size){
+@mixin breakpoint($size) {
   $flg: false;
-  @each $breakpoint,$value in $breakpoints{
+  @each $breakpoint, $value in $breakpoints {
     @if $size == $breakpoint {
       $flg: true;
-      @media only screen and ( max-width: map-get($breakpoints, $breakpoint)){
+      @media only screen and ( max-width : map-get( $breakpoints, $breakpoint ) ) {
         @content;
       }
     }
   }
   @if $flg == false {
-    @media only screen and ( $size ){
+    @media only screen and ( $size ) {
       @content;
     }
   }
 }
 
-@mixin clearfix{
-	&:after{
-		content:".";
-		display: block;
-		height:0px;
-		clear:both;
-		line-height:0;
-		visibility:hidden;
-	}
+@mixin clearfix {
 
-	@if $support-ie7 or $support-ie6 {
-		*zoom:1;
-	}
+  &::after {
+    clear : both;
+    content : ".";
+    display : block;
+    height : 0px;
+    line-height : 0;
+    visibility : hidden;
+  }
+
+  @if $support-ie7 or $support-ie6 {
+    *zoom : 1;
+  }
 }
 
 @mixin rolloverop {
-	&:hover {
-		filter: progid:DXImageTransfor.Microsoft.Alpha(Opacity=70);
-		opacity: 0.7;
-	}
+
+  &:hover {
+    filter : progid:DXImageTransfor.Microsoft.Alpha(Opacity=70);
+    opacity : .7;
+  }
 }
 /* ******************************
 # テキスト非表示
 ****************************** */
-.text_indent_none{
-	text-indent: 100%;
-	white-space: nowrap;
-	display: block;
-	overflow: hidden;
+
+.text_indent_none {
+  display : block;
+  overflow : hidden;
+  text-indent : 100%;
+  white-space : nowrap;
 }
 
-@mixin text_indent_none{
-	text-indent: 100%;
-	white-space: nowrap;
-	display: block;
-	overflow: hidden;
+@mixin text_indent_none {
+  display : block;
+  overflow : hidden;
+  text-indent : 100%;
+  white-space : nowrap;
 }
 /* ===============================================
 for bem
@@ -65,51 +68,54 @@ for bem
 //Element
 @mixin e($name) {
   @at-root #{&}__#{$name} {
-	@content;
+    @content;
   }
 }
 
 //Modifier
 @mixin m($name) {
   @at-root #{&}--#{$name} {
-	@content;
+    @content;
   }
 }
 /* ===============================================
 common parts
 =============================================== */
 //画像をマウスオーバーで拡大 imgに対して適用
-@mixin scale_img($ratio:1.04,$speed:0.3) {
-	transition: transform #{$speed}s linear;
-	&:hover {
-		transform: scale($ratio);
-	}
+@mixin scale_img($ratio: 1.04, $speed: .3) {
+  transition : transform #{$speed}s linear;
+
+  &:hover {
+    transform : scale($ratio);
+  }
 }
 
 //画像をマウスオーバーで拡大 hover使用なし
-@mixin scale_img_hasnt_hover($ratio:1.04,$speed:0.3) {
-	transition: transform #{$speed}s linear;
+@mixin scale_img_hasnt_hover($ratio: 1.04, $speed: .3) {
+  transition : transform #{$speed}s linear;
 }
 
-@mixin opacity($opacity:0.8) {
-	opacity: $opacity;
+@mixin opacity($opacity: .8) {
+  opacity : $opacity;
 }
 
-@mixin opacity--anim($opacity:0.8) {
-	transition:opacity 0.6s;
-	&:hover {
-		opacity: $opacity;
-	}
-	@include breakpoint(sp){
-		&:hover {
-			opacity: 1;
-		}
-		&:active {
-			opacify:$opacity;
-		}
-	}
-}
+@mixin opacity--anim($opacity: .8) {
+  transition : opacity .6s;
 
+  &:hover {
+    opacity : $opacity;
+  }
+  @include breakpoint(sp) {
+
+    &:hover {
+      opacity : 1;
+    }
+
+    &:active {
+      opacify : $opacity;
+    }
+  }
+}
 /* ===============================================
 postcss assets
 =============================================== */

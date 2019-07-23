@@ -1,27 +1,26 @@
 // # text adjust
-$-webkit-text-size-adjust : false;
+$-webkit-text-size-adjust: false;
 
 // # text
-$base_font_size:16px;
+$base_font_size: 16px;
 //$font_size:100%;
-$line_height:1.5;
-$font_color:#000;
-$-webkit-tap-highlight:false;
+$line_height: 1.5;
+$font_color: #000;
+$-webkit-tap-highlight: false;
 
-$black:#000;
+$black: #000;
 
 // link
-$link_color:blue;
-$link_hover_color:red;
+$link_color: blue;
+$link_hover_color: red;
 
 // BREAKPOINT
 // --------------------
-$breakpoints:(
-	exsp:321px,
-    sp: 768px,
-    tb: 960px,
+$breakpoints: (
+  exsp: 321px,
+  sp: 768px,
+  tb: 960px
 );
-
 /* ===============================================
 garamond typekit font
 .font-garamond
