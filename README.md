@@ -2,10 +2,7 @@
 - yarn 1.15.2
 - node 11.13.0
 
-## インストール
-※グローバルにevenizer・yarnインストールしておいてね
-
-※evenizer：https://www.npmjs.com/package/evenizer
+## 使用方法
 
 ```
 yarn install
