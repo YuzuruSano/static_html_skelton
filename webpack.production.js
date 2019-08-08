@@ -35,7 +35,7 @@ const config = merge(common, {
 
 config.module.rules.push({
   test: /\.scss$/,
-  exclude: /(node_modules)/,
+  exclude: /node_modules/,
   use: [
     MiniCssExtractPlugin.loader,
     {

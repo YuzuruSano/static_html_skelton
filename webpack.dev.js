@@ -6,6 +6,9 @@ const WebpackNotifierPlugin = require("webpack-notifier");
 const globImporter = require("node-sass-glob-importer");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+const postcssAssets = require('cssnano');
 
 const config = merge(common, {
   output: {
@@ -57,7 +60,7 @@ for (const key in config.entry) {
 
 config.module.rules.push({
   test: /\.scss$/,
-  exclude: /(node_modules)/,
+  exclude: /node_modules/,
   use: [
     "css-hot-loader",
     MiniCssExtractPlugin.loader,
@@ -74,9 +77,18 @@ config.module.rules.push({
       options: {
         sourceMap: true,
         plugins: [
-          require("autoprefixer")(),
-          require("cssnano"),
-          require("postcss-assets")({
+          autoprefixer(),
+          cssnano({
+            preset: [
+              'default',
+              {
+                discardComments: {
+                  removeAll: true
+                }
+              }
+            ]
+          }),
+          postcssAssets({
             loadPaths: ["dev/images/"],
             relative: "./dev/css"
           })

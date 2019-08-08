@@ -18,6 +18,7 @@ module.exports = {
     rules: [
       {
         test: /\.pug$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: "file-loader",
@@ -40,10 +41,18 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        exclude: /(node_modules)/,
-        loader: "babel-loader"
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true,
+              cacheCompression: false
+            }
+          }
+        ]
       },
-      { test: /\.html$/, loader: "html-loader" }
+      { test: /\.html$/, exclude: /node_modules/,loader: "html-loader" }
     ]
   },
   externals: {
@@ -55,9 +64,7 @@ module.exports = {
   },
   performance: { hints: false },
   plugins: [
-    new CopyWebpackPlugin([{ from: "./", to: "images/" }], {
-      context: "dev/images"
-    }),
+    new CopyWebpackPlugin([{ from: "./dev/images", to: "images/" }]),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
