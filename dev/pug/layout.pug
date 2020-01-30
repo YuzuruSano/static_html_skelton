@@ -15,6 +15,7 @@
 		desc:'ディスクリプション',
 		key:'キーワード'
 	}
+- var dev = (env.replace(/"/g, '') == 'development') ? true : false;
 include _inc_mixins
 include _inc_conditional
 block slug

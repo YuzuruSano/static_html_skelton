@@ -34,7 +34,10 @@ module.exports = {
           {
             loader: "pug-html-loader",
             options: {
-              pretty: true
+              pretty: true,
+              data: {
+                "env": JSON.stringify(process.env.NODE_ENV)
+              }
             }
           }
         ]
