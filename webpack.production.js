@@ -2,7 +2,7 @@ const merge = require("webpack-merge"); // webpack-merge
 const common = require("./webpack.common.js"); // 汎用設定をインポート
 const globImporter = require("node-sass-glob-importer");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const TerserPlugin = require('terser-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 
 const config = merge(common, {
   output: {
@@ -15,8 +15,8 @@ const config = merge(common, {
       cacheGroups: {
         vendor: {
           test: /[\\/]node_modules[\\/].*\.js$/,
-          name: 'vendor',
-          chunks: 'all'
+          name: "vendor",
+          chunks: "all"
         }
       }
     },
@@ -64,7 +64,9 @@ config.module.rules.push({
       loader: "sass-loader",
       options: {
         sourceMap: true,
-        importer: globImporter()
+        sassOptions: {
+          importer: globImporter()
+        }
       }
     }
   ]
