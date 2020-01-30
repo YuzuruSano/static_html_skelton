@@ -13,7 +13,7 @@
 		"babel-eslint": "^10.0.1",
 		"babel-loader": "^8.0.4",
 		"babel-plugin-transform-async-to-generator": "^6.24.1",
-		"browser-sync": "2.26.7",
+		"browser-sync": "2.24.7",
 		"copy-webpack-plugin": "^5.0.2",
 		"core-js": "^3.6.4",
 		"cpx": "^1.5.0",
@@ -104,9 +104,6 @@
 		"*.scss": [
 			"prettier-stylelint --write",
 			"git add"
-		],
-		"ignore": [
-			"**/build/**/*.js"
 		]
 	},
 	"browserslist": [
