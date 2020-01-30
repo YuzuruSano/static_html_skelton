@@ -2,9 +2,9 @@ const path = require("path");
 const webpack = require("webpack");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ImageminPlugin = require("imagemin-webpack-plugin").default;
-const ImageminJpegTran = require("imagemin-jpegtran");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const isProduction = process.argv[process.argv.indexOf('--mode') + 1] === 'production';
 module.exports = {
   entry: {
     main: [path.resolve(__dirname, "./dev/js/scripts/main.js")]
@@ -74,27 +74,10 @@ module.exports = {
       "window.jQuery": "jquery"
     }),
     new ImageminPlugin({
-      // JPG, JPEG
-      test: /images\/([a-z_\-\s0-9]+)\.jpe?g$/i,
-      jpegtran: {
-        progressive: true,
-        arithmetic: false
-      },
-      plugins: [
-        ImageminJpegTran({
-          quality: 85,
-          progressive: true,
-          targa: false,
-          revert: false,
-          dcScanOpt: 1,
-          notrellis: false,
-          notrellisDC: false,
-          tune: "hvs-psnr",
-          noovershoot: false,
-          arithmetic: false,
-          smooth: 0
-        })
-      ]
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      pngquant: {
+        quality: '95-100',
+      }
     }),
     new MiniCssExtractPlugin({
       filename: "css/style.css"
