@@ -98,12 +98,10 @@
 	"prettier": {},
 	"lint-staged": {
 		"*.js": [
-			"prettier-eslint --write",
-			"git add"
+			"prettier-eslint --write"
 		],
 		"*.scss": [
-			"prettier-stylelint --write",
-			"git add"
+			"prettier-stylelint --write"
 		]
 	},
 	"browserslist": [
