@@ -45,7 +45,15 @@ export default class SmoothScroll {
             }
 
             if ($(".spnavi").css("display") == "block") {
-              $(".btn_sp_navi").click();
+              $('#spnavi').fadeOut(200);
+              $('.btn_sp_navi').removeClass("active");
+              /**
+               * return touchmove,adjust body position
+               */
+              document.removeEventListener("touchmove", this.scrollOff, {
+                passive: false
+              });
+              $("body").attr({ style: "" });
             }
 
             return false;

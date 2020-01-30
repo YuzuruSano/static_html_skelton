@@ -74,27 +74,6 @@ module.exports = {
       "window.jQuery": "jquery"
     }),
     new ImageminPlugin({
-      // GIF
-      test: /images\/([a-z_\-\s0-9]+)\.gif$/i,
-      gifsicle: {
-        interlaced: false,
-        optimizationLevel: 3,
-        colors: 256
-      }
-    }),
-
-    new ImageminPlugin({
-      // PNG
-      test: /images\/([a-z_\-\s0-9]+)\.png$/i,
-      optipng: {
-        optimizationLevel: 7,
-        bitDepthReduction: true,
-        colorTypeReduction: true,
-        paletteReduction: true
-      }
-    }),
-
-    new ImageminPlugin({
       // JPG, JPEG
       test: /images\/([a-z_\-\s0-9]+)\.jpe?g$/i,
       jpegtran: {

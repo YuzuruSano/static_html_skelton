@@ -8,7 +8,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
-const postcssAssets = require('cssnano');
+const postcssAssets = require('postcss-assets');
 
 const config = merge(common, {
   output: {
