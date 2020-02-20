@@ -20,7 +20,7 @@ spnavi.exec();
 /* ===============================================
 Smooth Scroll
 =============================================== */
-const sms = new SmoothScroll();
+const sms = new SmoothScroll(spnavi);
 sms.exec();
 /* ===============================================
 To Top

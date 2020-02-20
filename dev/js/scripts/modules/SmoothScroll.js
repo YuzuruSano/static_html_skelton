@@ -1,6 +1,7 @@
 export default class SmoothScroll {
-  constrctor() {
+  constructor(spnav = {}) {
     this.canEdit = false;
+    this.spnav = spnav;
   }
   checkCanEdit() {
     if ("CCM_EDIT_MODE" in window) {
@@ -10,6 +11,7 @@ export default class SmoothScroll {
   }
   exec() {
     this.checkCanEdit();
+    const _that = this;
     if (!this.canEdit) {
       $('a[href*="#"]')
         .not(".nosms")
@@ -43,14 +45,16 @@ export default class SmoothScroll {
                 }
               );
             }
-
-            if ($(".spnavi").css("display") == "block") {
-              $('#spnavi').fadeOut(200);
-              $('.btn_sp_navi').removeClass("active");
+            if (
+              Object.keys(_that.spnav).length > 0 &&
+              $(".spnavi").css("display") == "block"
+            ) {
+              $("#spnavi").fadeOut(200);
+              $(".btn_sp_navi").removeClass("active");
               /**
                * return touchmove,adjust body position
                */
-              document.removeEventListener("touchmove", this.scrollOff, {
+              document.removeEventListener("touchmove", _that.spnav.scrollOff, {
                 passive: false
               });
               $("body").attr({ style: "" });
