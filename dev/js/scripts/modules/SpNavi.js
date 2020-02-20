@@ -11,6 +11,7 @@ export default class SpNavi {
     this.scroll;
     this.fixer = param.fixer;
     this.current_scrollY = 0;
+    this.scrollOff = this.scrollOff.bind(this);
   }
 
   scrollOff(e) {

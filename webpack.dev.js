@@ -6,9 +6,9 @@ const WebpackNotifierPlugin = require("webpack-notifier");
 const globImporter = require("node-sass-glob-importer");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-const postcssAssets = require('postcss-assets');
+const autoprefixer = require("autoprefixer");
+const cssnano = require("cssnano");
+const postcssAssets = require("postcss-assets");
 
 const config = merge(common, {
   output: {
@@ -34,11 +34,11 @@ const config = merge(common, {
         cssProcessorOptions: {
           map: {
             inline: false,
-            annotation: true,
+            annotation: true
           }
         }
-      }),
-    ],
+      })
+    ]
   },
   devServer: {
     open: true,
@@ -80,7 +80,7 @@ config.module.rules.push({
           autoprefixer(),
           cssnano({
             preset: [
-              'default',
+              "default",
               {
                 discardComments: {
                   removeAll: true
@@ -99,7 +99,9 @@ config.module.rules.push({
       loader: "sass-loader",
       options: {
         sourceMap: true,
-        importer: globImporter()
+        sassOptions: {
+          importer: globImporter()
+        }
       }
     }
   ]
