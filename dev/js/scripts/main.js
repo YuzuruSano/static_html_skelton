@@ -26,7 +26,14 @@ sms.exec();
 To Top
 show/hide toggle
 =============================================== */
-const totop = new ToTop("#totop", "#global_footer", 100, 400);
+const totop_param = {
+  target: "#totop",
+  stop_at: "#global_footer",
+  fixer: 100,
+  speed: 400,
+  stop: true
+};
+const totop = new ToTop(totop_param);
 totop.exec();
 
 if (module.hot) {
