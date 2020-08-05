@@ -6,17 +6,43 @@
 // @include breakpoint(tb) { ... }
 // --------------------
 @mixin breakpoint($size) {
-  $flg: false;
-  @each $breakpoint, $value in $breakpoints {
-    @if $size == $breakpoint {
-      $flg: true;
-      @media only screen and ( max-width : map-get( $breakpoints, $breakpoint ) ) {
+  $flg: if($size != false, map_has_key($breakpoints, $size), false);
+  @if $flg == true {
+    @media only screen and (max-width: map-get($breakpoints, $size)) {
+      @content;
+    }
+  } @else {
+    @media only screen and ($size) {
+      @content;
+    }
+  }
+}
+
+/* ===============================================
+# hover
+#
+# 引数なしの場合、$breakpointsのtbキーの値より上のブレイクポイントでhoverが動作します。
+# @include hover { ... }
+#
+# 引数に設定した$breakpoinstのキーの値より上のブレイクポイントでhoverが動作します。
+# @include hover(sp) { ... }
+#
+# 引数にfalseを設定すれば通常のhoverも利用できます。
+# @include hover(false) { ... }
+=============================================== */
+
+@mixin hover($size: tb) {
+  $key_exists: if($size != false, map_has_key($breakpoints, $size), false);
+  @if $key_exists != false {
+    @media only screen and ( min-width : map_get( $breakpoints, $size ) ) {
+
+      &:hover {
         @content;
       }
     }
-  }
-  @if $flg == false {
-    @media only screen and ( $size ) {
+  } @else {
+
+    &:hover {
       @content;
     }
   }
