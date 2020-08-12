@@ -4,6 +4,8 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 
+const isProduction = process.argv[process.argv.indexOf('--mode') + 1] === 'production';
+
 module.exports = {
   entry: {
     bundle: [path.resolve(__dirname, "./dev/js/scripts/main.js")],
@@ -23,7 +25,9 @@ module.exports = {
         use: [
           {
             loader: "file-loader",
-            options: { name: "[name].html" }
+            options: { 
+              name: "[name].html" 
+            }
           },
           "extract-loader",
           {
@@ -68,11 +72,12 @@ module.exports = {
   },
   performance: { hints: false },
   plugins: [
+    new FixStyleOnlyEntriesPlugin({
+      extensions: ['scss', 'css'],
+      ignore: 'webpack-hot-middleware'
+    }),
     new MiniCssExtractPlugin({
       filename: 'css/[name]'
-    }),
-    new FixStyleOnlyEntriesPlugin({
-      extensions: ['scss', 'css']
     }),
     new CopyWebpackPlugin({
       patterns: [{ from: "./dev/images", to: "images/" }]
