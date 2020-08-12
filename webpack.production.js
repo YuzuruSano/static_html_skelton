@@ -1,7 +1,7 @@
-const merge = require("webpack-merge"); // webpack-merge
+const { merge } = require("webpack-merge"); // webpack-merge
 const common = require("./webpack.common.js"); // 汎用設定をインポート
 const globImporter = require("node-sass-glob-importer");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ImageminPlugin = require("imagemin-webpack-plugin").default;
 const TerserPlugin = require("terser-webpack-plugin");
 
 const config = merge(common, {
@@ -30,14 +30,21 @@ const config = merge(common, {
         }
       })
     ]
-  }
+  },
+  plugins: [
+    new ImageminPlugin({
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      pngquant: {
+        quality: '95-100',
+      }
+    })
+  ]
 });
 
 config.module.rules.push({
   test: /\.scss$/,
   exclude: /node_modules/,
   use: [
-    MiniCssExtractPlugin.loader,
     {
       loader: "css-loader",
       options: {
