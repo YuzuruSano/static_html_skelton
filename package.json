@@ -81,7 +81,7 @@
 		"jquery-match-height": "^0.7.2",
 		"lodash": "^4.17.4",
 		"remodal": "^1.1.1",
-		"swiper": "6.1.1",
+		"swiper": "6.1.1"
 	},
 	"scripts": {
 		"lint:css": "prettier-stylelint --write ./dev/sass/**/*.scss",
