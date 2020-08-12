@@ -58,7 +58,7 @@ const config = merge(common, {
           {
             folder: 'build',
             method: (absoluteItemPath) => {
-              return new RegExp(/_.*\.html$/, 'm').test(absoluteItemPath);
+              return new RegExp(/\/_.+\.html$/, 'm').test(absoluteItemPath);
             },
             recursive: true
           }
