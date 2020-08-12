@@ -1,4 +1,4 @@
-const merge = require("webpack-merge"); // webpack-merge
+const { merge } = require("webpack-merge"); // webpack-merge
 const common = require("./webpack.common.js"); // 汎用設定をインポート
 const path = require("path");
 const webpack = require("webpack");
@@ -19,9 +19,6 @@ const config = merge(common, {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
-    new MiniCssExtractPlugin({
-      filename: "css/style.css"
-    }),
     new WebpackNotifierPlugin({
       title: "Success compiled!",
       contentImage: path.join(__dirname, "dev/js/icons/shibasaki_ko.jpg"),
@@ -46,7 +43,7 @@ const config = merge(common, {
     inline: true,
     hot: true,
     disableHostCheck: true,
-	host: '0.0.0.0'
+    host: '0.0.0.0'
   }
 });
 

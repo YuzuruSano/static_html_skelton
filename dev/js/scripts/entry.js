@@ -1,4 +1,5 @@
 import "../../sass/style.scss";
+import "../../sass/shorthands.scss";
 
 const req = require.context("../../pug/", false, /\.pug/);
 req.keys().forEach(fileName => {

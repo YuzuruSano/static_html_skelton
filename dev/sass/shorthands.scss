@@ -1,4 +1,6 @@
 @charset "UTF-8";
+@import "foundation/setting.scss";
+@import "foundation/mixin.scss";
 
 .rollover-op:hover {
   filter : progid:DXImageTransfor.Microsoft.Alpha(Opacity=70);
