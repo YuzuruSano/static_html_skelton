@@ -6,43 +6,17 @@
 // @include breakpoint(tb) { ... }
 // --------------------
 @mixin breakpoint($size) {
-  $flg: if($size != false, map_has_key($breakpoints, $size), false);
-  @if $flg == true {
-    @media only screen and (max-width: map-get($breakpoints, $size)) {
-      @content;
-    }
-  } @else {
-    @media only screen and ($size) {
-      @content;
-    }
-  }
-}
-
-/* ===============================================
-# hover
-#
-# 引数なしの場合、$breakpointsのtbキーの値より上のブレイクポイントでhoverが動作します。
-# @include hover { ... }
-#
-# 引数に設定した$breakpoinstのキーの値より上のブレイクポイントでhoverが動作します。
-# @include hover(sp) { ... }
-#
-# 引数にfalseを設定すれば通常のhoverも利用できます。
-# @include hover(false) { ... }
-=============================================== */
-
-@mixin hover($size: tb) {
-  $key_exists: if($size != false, map_has_key($breakpoints, $size), false);
-  @if $key_exists != false {
-    @media only screen and ( min-width : map_get( $breakpoints, $size ) ) {
-
-      &:hover {
+  $flg: false;
+  @each $breakpoint, $value in $breakpoints {
+    @if $size == $breakpoint {
+      $flg: true;
+      @media only screen and ( max-width : map-get( $breakpoints, $breakpoint ) ) {
         @content;
       }
     }
-  } @else {
-
-    &:hover {
+  }
+  @if $flg == false {
+    @media only screen and ( $size ) {
       @content;
     }
   }
@@ -164,3 +138,21 @@ postcss assets
 // @function inline($url,$ratio = 1) {
 //   @return unquote("inline(#{$url},#{$ratio})");
 // }
+/* ===============================================
+fz
+=============================================== */
+@mixin fz($size) {
+  // font-size: $size + px;
+  $base: 16;
+  font-size : ($size / $base) + rem;
+}
+
+/* ===============================================
+hoverアクションはtabサイズ以上で発動させる
+=============================================== */
+@mixin onlypc {
+  // 960はタブのサイズ
+  @media only screen and ( min-width : 960px ) {
+    @content;
+  }
+}
