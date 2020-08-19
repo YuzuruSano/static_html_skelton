@@ -25,15 +25,16 @@ module.exports = {
         use: [
           {
             loader: "file-loader",
-            options: { 
-              name: "[name].html" 
+            options: {
+              name: "[name].html"
             }
           },
           "extract-loader",
           {
             loader: "html-loader",
             options: {
-              attributes: true
+              attributes: true,
+              minimize:false
             }
           },
           {
