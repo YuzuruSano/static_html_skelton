@@ -4,26 +4,30 @@ Trello CSS Guide
 https://gist.github.com/bobbygrace/9e961e8982f42eb91b80
 http://qiita.com/naru0504/items/5427f3795171c540ed91
 =============================================== */
-/* base
+
+/* foundation
 ----------------------- */
-@import "base/setting.scss";
-@import "helper/mixin.scss";
-@import "base/reset.scss";
-@import "fonts/font.scss";
+@import "foundation/setting.scss";
+@import "foundation/mixin.scss";
+@import "foundation/reset.scss";
+@import "foundation/fonts/font.scss";
+
 /* vendor
 ----------------------- */
 @import "vendor/remodal-default-theme.scss";
 @import "vendor/remodal.scss";
 @import "vendor/swiper.min.scss";
+
 /* layout
 ----------------------- */
 @import "layout/*";
-/* component
+
+/* object
 ----------------------- */
-@import "component/*";
-/* page
+@import "object/component/*";
+@import "object/project/*";
+@import "object/utility/*";
+
+
+/* helper
 ----------------------- */
-@import "page/*";
-/* page
------------------------ */
-@import "helper/shorthands.scss";

@@ -1,16 +1,19 @@
 const path = require("path");
 const webpack = require("webpack");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const ImageminPlugin = require("imagemin-webpack-plugin").default;
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 
 const isProduction = process.argv[process.argv.indexOf('--mode') + 1] === 'production';
+
 module.exports = {
   entry: {
-    main: [path.resolve(__dirname, "./dev/js/scripts/main.js")]
+    bundle: [path.resolve(__dirname, "./dev/js/scripts/main.js")],
+    'style.css': [path.resolve(__dirname, "./dev/sass/style.scss")],
+    'shorthands.css': [path.resolve(__dirname, "./dev/sass/shorthands.scss")]
   },
   output: {
-    filename: "js/bundle.js",
+    filename: 'js/[name].js',
     path: path.resolve(__dirname, "./build"),
     publicPath: "http://localhost:8080/"
   },
@@ -22,13 +25,16 @@ module.exports = {
         use: [
           {
             loader: "file-loader",
-            options: { name: "[name].html" }
+            options: {
+              name: "[name].html"
+            }
           },
           "extract-loader",
           {
             loader: "html-loader",
             options: {
-              attrs: ["img:src", ":data-src"]
+              attributes: true,
+              minimize:false
             }
           },
           {
@@ -67,20 +73,20 @@ module.exports = {
   },
   performance: { hints: false },
   plugins: [
-    new CopyWebpackPlugin([{ from: "./dev/images", to: "images/" }]),
+    new FixStyleOnlyEntriesPlugin({
+      extensions: ['scss', 'css'],
+      ignore: 'webpack-hot-middleware'
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name]'
+    }),
+    new CopyWebpackPlugin({
+      patterns: [{ from: "./dev/images", to: "images/" }]
+    }),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
       "window.jQuery": "jquery"
-    }),
-    new ImageminPlugin({
-      test: /\.(jpe?g|png|gif|svg)$/i,
-      pngquant: {
-        quality: '95-100',
-      }
-    }),
-    new MiniCssExtractPlugin({
-      filename: "css/style.css"
     })
   ]
 };
