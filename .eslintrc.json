@@ -7,7 +7,7 @@
     },
     "parser": "babel-eslint",
     "plugins": [
-        "prettier",
+        "prettier"
     ],
     "parserOptions": {
         "version": 2018,
