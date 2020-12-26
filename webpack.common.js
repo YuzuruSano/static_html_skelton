@@ -3,6 +3,7 @@ const webpack = require("webpack");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
+const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
 
 const isProduction =
   process.argv[process.argv.indexOf("--mode") + 1] === "production";
@@ -74,6 +75,7 @@ module.exports = {
   },
   performance: { hints: false },
   plugins: [
+    new HardSourceWebpackPlugin(),
     new FixStyleOnlyEntriesPlugin({
       extensions: ["scss", "css"],
       ignore: "webpack-hot-middleware",

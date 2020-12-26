@@ -12,7 +12,7 @@ const postcssAssets = require("postcss-assets");
 
 const config = merge(common, {
   output: {
-    publicPath: "http://localhost:8080/"
+    publicPath: "http://localhost:8080/",
   },
   mode: "development",
   devtool: "inline-source-map",
@@ -22,8 +22,8 @@ const config = merge(common, {
     new WebpackNotifierPlugin({
       title: "Success compiled!",
       contentImage: path.join(__dirname, "dev/js/icons/shibasaki_ko.jpg"),
-      alwaysNotify: true
-    })
+      alwaysNotify: true,
+    }),
   ],
   optimization: {
     minimizer: [
@@ -31,11 +31,11 @@ const config = merge(common, {
         cssProcessorOptions: {
           map: {
             inline: false,
-            annotation: true
-          }
-        }
-      })
-    ]
+            annotation: true,
+          },
+        },
+      }),
+    ],
   },
   devServer: {
     open: true,
@@ -43,8 +43,8 @@ const config = merge(common, {
     inline: true,
     hot: true,
     disableHostCheck: true,
-    host: '0.0.0.0'
-  }
+    host: "0.0.0.0",
+  },
 });
 
 for (const key in config.entry) {
@@ -67,8 +67,8 @@ config.module.rules.push({
       options: {
         sourceMap: true,
         importLoaders: 1,
-        url: false
-      }
+        url: false,
+      },
     },
     {
       loader: "postcss-loader",
@@ -81,28 +81,28 @@ config.module.rules.push({
               "default",
               {
                 discardComments: {
-                  removeAll: true
-                }
-              }
-            ]
+                  removeAll: true,
+                },
+              },
+            ],
           }),
           postcssAssets({
             loadPaths: ["dev/images/"],
-            relative: "./dev/css"
-          })
-        ]
-      }
+            relative: "./dev/css",
+          }),
+        ],
+      },
     },
     {
       loader: "sass-loader",
       options: {
         sourceMap: true,
         sassOptions: {
-          importer: globImporter()
-        }
-      }
-    }
-  ]
+          importer: globImporter(),
+        },
+      },
+    },
+  ],
 });
 
 module.exports = config;
