@@ -5,6 +5,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const RemovePlugin = require("remove-files-webpack-plugin");
+const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
 
 const config = merge(common, {
   output: {
@@ -55,6 +56,7 @@ const config = merge(common, {
         ],
       },
     }),
+    new HardSourceWebpackPlugin(),
   ],
 });
 
