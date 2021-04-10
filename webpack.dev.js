@@ -5,37 +5,28 @@ const webpack = require("webpack");
 const WebpackNotifierPlugin = require("webpack-notifier");
 const globImporter = require("node-sass-glob-importer");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const autoprefixer = require("autoprefixer");
 const cssnano = require("cssnano");
 const postcssAssets = require("postcss-assets");
 
 const config = merge(common, {
   output: {
-    publicPath: "http://localhost:8080/"
+    publicPath: "http://localhost:8080/",
   },
   mode: "development",
   devtool: "inline-source-map",
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
     new WebpackNotifierPlugin({
       title: "Success compiled!",
       contentImage: path.join(__dirname, "dev/js/icons/shibasaki_ko.jpg"),
-      alwaysNotify: true
-    })
+      alwaysNotify: true,
+    }),
   ],
   optimization: {
-    minimizer: [
-      new OptimizeCSSAssetsPlugin({
-        cssProcessorOptions: {
-          map: {
-            inline: false,
-            annotation: true
-          }
-        }
-      })
-    ]
+    minimize: true,
+    minimizer: [new CssMinimizerPlugin()],
   },
   devServer: {
     open: true,
@@ -43,8 +34,8 @@ const config = merge(common, {
     inline: true,
     hot: true,
     disableHostCheck: true,
-    host: '0.0.0.0'
-  }
+    host: "0.0.0.0",
+  },
 });
 
 for (const key in config.entry) {
@@ -67,42 +58,44 @@ config.module.rules.push({
       options: {
         sourceMap: true,
         importLoaders: 1,
-        url: false
+        url: false,
       }
     },
     {
       loader: "postcss-loader",
       options: {
         sourceMap: true,
-        plugins: [
-          autoprefixer(),
-          cssnano({
-            preset: [
-              "default",
-              {
-                discardComments: {
-                  removeAll: true
+        postcssOptions: {
+          plugins: [
+            autoprefixer(),
+            cssnano({
+              preset: [
+                "default",
+                {
+                  discardComments: {
+                    removeAll: true,
+                  }
                 }
-              }
-            ]
-          }),
-          postcssAssets({
-            loadPaths: ["dev/images/"],
-            relative: "./dev/css"
-          })
-        ]
-      }
+              ]
+            }),
+            postcssAssets({
+              loadPaths: ["dev/images/"],
+              relative: "./dev/css",
+            }),
+          ],
+        },
+      },
     },
     {
       loader: "sass-loader",
       options: {
         sourceMap: true,
         sassOptions: {
-          importer: globImporter()
-        }
+          importer: globImporter(),
+        },
       }
-    }
-  ]
+    },
+  ],
 });
 
 module.exports = config;

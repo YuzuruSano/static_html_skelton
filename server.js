@@ -9,7 +9,7 @@ const bundler = webpack(webpackConfig);
 const webpackDevMiddlewareInstance = webpackDevMiddleware(bundler, {
   publicPath: webpackConfig.output.publicPath,
   stats: {
-    colors: true
+    colors: true,
   }
 });
 
@@ -17,17 +17,17 @@ const server = browserSync({
   port: 8080,
   ghostMode: false,
   socket: {
-    domain: 'localhost:8080'
+    domain: "localhost:8080",
   },
   server: {
     baseDir: "build",
     middleware: [
       function (req, res, next) {
-        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader("Access-Control-Allow-Origin", "*");
         next();
       },
       webpackDevMiddlewareInstance,
-      webpackHotMiddleware(bundler)
+      webpackHotMiddleware(bundler),
     ]
   },
   files: [
