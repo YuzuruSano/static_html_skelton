@@ -28,3 +28,11 @@ yarn start
 ```
 yarn build
 ```
+
+## コミットできない場合
+
+下記でhuskyをインストールし直してみてください
+
+```
+$ yarn husky install
+```
