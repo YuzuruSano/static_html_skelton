@@ -1,4 +1,18 @@
-extends layout.pug
-block slug
+extends _layout.pug
+block vars
+	-
+		ogp = {
+			'title':'インデックス用に変更',
+			'description':'インデックス用に変更',
+			'url':'test',
+			'image':'test',
+			'siteName':'test',
+			'lang':'test',
+			'fbid':'test',
+		}
 	- slug = 'home'
-	//上書きしたい箇所があればブロックを呼び出して記述
+block contents
+	.pl10.pr10.pt10.pb10
+			p まずは「dev/sass/base/_setting.scss」で初期設定。
+			p サイト全体の文字色・リンク色・行間・よく使う文字色定義をしよう。
+			p breakpoint配列でbreakpointの追加も可能。

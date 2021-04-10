@@ -1,0 +1,44 @@
+include _vars
+include _inc_mixins
+block vars
+	- slug = ''
+	- is_contact = false;
+<html class="no-js" lang="ja">
+head
+	block meta_data
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(charset='UTF-8')
+		meta#viewport(content='width=device-width', name='viewport')
+		+meta(meta)
+		+ogp(ogp)
+	block css
+		+css
+body#top(class=slug)
+	#wrap
+		nav#spnavi.spnavi.sp
+			#scroller
+		.btn_sp_navi_wrap
+			a.btn_sp_navi.nosc.nosms(href='#sp')
+				span.line
+				span.line
+				span.line
+		block header
+			header#global_header.global_header
+				if slug == 'home'
+					h1 pug内でスラッグを活用すると各ページごとに処理を変更
+				else
+					p 下層ページ;
+		block contents
+		block footer
+			footer#global_footer.global_footer
+				.global_footer-inner
+					.global_footer-col
+					.global_footer-col
+		block flg
+			#responsive_flg
+		#totop
+			a(href="#top") トップ
+	block scripts
+		+scripts
+
+</html>

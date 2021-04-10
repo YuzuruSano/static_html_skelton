@@ -12,12 +12,6 @@ http://qiita.com/naru0504/items/5427f3795171c540ed91
 @import "foundation/reset.scss";
 @import "foundation/fonts/font.scss";
 
-/* vendor
------------------------ */
-@import "vendor/remodal-default-theme.scss";
-@import "vendor/remodal.scss";
-@import "vendor/swiper.min.scss";
-
 /* layout
 ----------------------- */
 @import "layout/*";
@@ -27,7 +21,3 @@ http://qiita.com/naru0504/items/5427f3795171c540ed91
 @import "object/component/*";
 @import "object/project/*";
 @import "object/utility/*";
-
-
-/* helper
------------------------ */

@@ -12,7 +12,7 @@ font-face定義例
 // }
 
 body {
-  font-family : 'Noto Sans JP', sans-serif, "游ゴシック体", "Yu Gothic", YuGothic, "Helvetica Neue",
+  font-family : "游ゴシック体", "Yu Gothic", YuGothic, "Helvetica Neue",
     Helvetica, Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN",
     "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック",
     "MS PGothic";
@@ -23,14 +23,6 @@ body {
   -ms-text-size-adjust : 100%;
   -webkit-text-size-adjust : none;
   text-size-adjust : 100%;
-}
-@font-face {
-  font-family: 'NotoSansMedium';
-  src: url(../font/Noto_Sans_JP/NotoSansJP-Medium.otf);
-}
-@font-face {
-  font-family: 'NotoSansBold';
-  src: url(../font/Noto_Sans_JP/NotoSansJP-Bold.otf);
 }
 /* ===============================================
 mixinの指定例
@@ -72,13 +64,4 @@ mixinの指定例
   font-family : YuMincho, "Yu Mincho", "游明朝体", "游明朝",
     "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "ＭＳ ゴシック", "MS Gothic",
     "メイリオ", Meiryo, serif;
-}
-.font-opensans {
-  font-family: 'Open Sans', sans-serif;
-}
-.font-notosans {
-  font-family: 'Noto Sans JP', sans-serif;
-}
-.font-manrope {
-  font-family: 'Manrope', sans-serif;
 }

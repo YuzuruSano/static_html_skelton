@@ -1,4 +1,3 @@
-import Entry from "entry";
 import BrowserDetect from "modules/BrowserDetect";
 import SmoothScroll from "modules/SmoothScroll";
 import SpNavi from "modules/SpNavi";
