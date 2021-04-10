@@ -2,7 +2,7 @@ import BrowserDetect from "modules/BrowserDetect";
 import SmoothScroll from "modules/SmoothScroll";
 import SpNavi from "modules/SpNavi";
 import ToTop from "modules/ToTop";
-import link_icon from "modules/link_icon";
+import LinkIcon from "modules/LinkIcon";
 
 /* ===============================================
 SP Navi
@@ -34,6 +34,8 @@ const totop_param = {
 };
 const totop = new ToTop(totop_param);
 totop.exec();
+
+LinkIcon();
 
 if (module.hot) {
   module.hot.accept();
