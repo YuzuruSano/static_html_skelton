@@ -84,7 +84,7 @@
 		"jquery-match-height": "^0.7.2",
 		"lodash": "^4.17.4",
 		"remodal": "^1.1.1",
-		"swiper": "3.4.2"
+		"swiper": "6.5.1"
 	},
 	"scripts": {
 		"postinstall": "patch-package",
