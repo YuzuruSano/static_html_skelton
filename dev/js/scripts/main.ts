@@ -1,8 +1,12 @@
-import BrowserDetect from "modules/BrowserDetect";
-import SmoothScroll from "modules/SmoothScroll";
-import SpNavi from "modules/SpNavi";
-import ToTop from "modules/ToTop";
-import LinkIcon from "modules/LinkIcon";
+import BrowserDetect from "./modules/BrowserDetect";
+import SmoothScroll from "./modules/SmoothScroll";
+import SpNavi from "./modules/SpNavi";
+import ToTop from "./modules/ToTop";
+import LinkIcon from "./modules/LinkIcon";
+
+window.onload = () => {
+  new BrowserDetect();
+}
 
 /* ===============================================
 SP Navi
@@ -14,25 +18,25 @@ let param = {
   filter: "resposive_flg",
   speed: 200
 };
-const spnavi = new SpNavi(param);
+const spnavi: SpNavi = new SpNavi(param);
 spnavi.exec();
 /* ===============================================
 Smooth Scroll
 =============================================== */
-const sms = new SmoothScroll(spnavi);
+const sms: SmoothScroll = new SmoothScroll(spnavi);
 sms.exec();
 /* ===============================================
 To Top
 show/hide toggle
 =============================================== */
-const totop_param = {
+const totop_param: Object = {
   target: "#totop",
   stop_at: "#global_footer",
   fixer: 100,
   speed: 400,
   stop: true
 };
-const totop = new ToTop(totop_param);
+const totop: ToTop = new ToTop(totop_param);
 totop.exec();
 
 LinkIcon();
