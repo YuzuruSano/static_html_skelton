@@ -8,7 +8,7 @@ const RemoveEmptyScriptsPlugin = require("webpack-remove-empty-scripts");
 
 const app = {
   entry: {
-    bundle: [path.resolve(__dirname, "./dev/js/scripts/main.ts")],
+    bundle: [path.resolve(__dirname, "./dev/js/scripts/main.js")],
     "style.css": [path.resolve(__dirname, "./dev/sass/style.scss")],
   },
   output: {
@@ -33,11 +33,11 @@ const app = {
         ],
       },
       {
-        test: /\.(j|t)s$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: [
           {
-            loader: "babel-loader",
+            loader: "babel-loader?cacheDirectory",
             options: {
               cacheDirectory: true,
               cacheCompression: false
@@ -52,7 +52,7 @@ const app = {
   },
   resolve: {
     modules: ["node_modules", "dev/js/scripts"],
-    extensions: [".js", ".jsx", ".ts", ".css"],
+    extensions: [".js", ".jsx", ".css"],
   },
   performance: { hints: false },
   plugins: [
