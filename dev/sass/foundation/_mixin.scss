@@ -12,7 +12,6 @@
 }
 
 @mixin clearfix {
-
   &::after {
     clear : both;
     content : ".";
@@ -20,10 +19,6 @@
     height : 0px;
     line-height : 0;
     visibility : hidden;
-  }
-
-  @if $support-ie7 or $support-ie6 {
-    *zoom : 1;
   }
 }
 /* ===============================================
