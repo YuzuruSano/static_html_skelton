@@ -2,23 +2,12 @@
 # Mixins 汎用mixin
 *************************************** */
 // RESPONSIVE
-// @include breakpoint(sp) { ... }
-// @include breakpoint(tb) { ... }
+// @include mq(sp) { ... }
+// @include mq(tb) { ... }
 // --------------------
-@mixin breakpoint($size) {
-  $flg: false;
-  @each $breakpoint, $value in $breakpoints {
-    @if $size == $breakpoint {
-      $flg: true;
-      @media only screen and ( max-width : map-get( $breakpoints, $breakpoint ) ) {
-        @content;
-      }
-    }
-  }
-  @if $flg == false {
-    @media only screen and ( $size ) {
-      @content;
-    }
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
   }
 }
 
@@ -37,107 +26,6 @@
     *zoom : 1;
   }
 }
-
-@mixin rolloverop {
-
-  &:hover {
-    filter : progid:DXImageTransfor.Microsoft.Alpha(Opacity=70);
-    opacity : .7;
-  }
-}
-/* ******************************
-# テキスト非表示
-****************************** */
-
-.text_indent_none {
-  display : block;
-  overflow : hidden;
-  text-indent : 100%;
-  white-space : nowrap;
-}
-
-@mixin text_indent_none {
-  display : block;
-  overflow : hidden;
-  text-indent : 100%;
-  white-space : nowrap;
-}
-/* ===============================================
-for bem
-=============================================== */
-//Element
-@mixin e($name) {
-  @at-root #{&}__#{$name} {
-    @content;
-  }
-}
-
-//Modifier
-@mixin m($name) {
-  @at-root #{&}--#{$name} {
-    @content;
-  }
-}
-/* ===============================================
-common parts
-=============================================== */
-//画像をマウスオーバーで拡大 imgに対して適用
-@mixin scale_img($ratio: 1.04, $speed: .3) {
-  transition : transform #{$speed}s linear;
-
-  &:hover {
-    transform : scale($ratio);
-  }
-}
-
-//画像をマウスオーバーで拡大 hover使用なし
-@mixin scale_img_hasnt_hover($ratio: 1.04, $speed: .3) {
-  transition : transform #{$speed}s linear;
-}
-
-@mixin opacity($opacity: .8) {
-  opacity : $opacity;
-}
-
-@mixin opacity--anim($opacity: .8) {
-  transition : opacity .6s;
-
-  &:hover {
-    opacity : $opacity;
-  }
-  @include breakpoint(sp) {
-
-    &:hover {
-      opacity : 1;
-    }
-
-    &:active {
-      opacify : $opacity;
-    }
-  }
-}
-/* ===============================================
-postcss assets
-=============================================== */
-// @function resolve($url,$ratio = 1) {
-//   @return unquote("resolve(#{$url},#{$ratio})");
-// }
-
-// @function width($url,$ratio = 1) {
-//   @return unquote("width(#{$url},#{$ratio})");
-// }
-
-// @function height($url,$ratio = 1) {
-//   @return unquote("height(#{$url},#{$ratio})");
-// }
-
-// @function size($url,$ratio = 1) {
-//   @return unquote("size(#{$url},#{$ratio})");
-// }
-
-// @function inline($url,$ratio = 1) {
-//   @return unquote("inline(#{$url},#{$ratio})");
-// }
 /* ===============================================
 fz
 =============================================== */
@@ -145,14 +33,4 @@ fz
   // font-size: $size + px;
   $base: 16;
   font-size : ($size / $base) + rem;
-}
-
-/* ===============================================
-hoverアクションはtabサイズ以上で発動させる
-=============================================== */
-@mixin onlypc {
-  // 960はタブのサイズ
-  @media only screen and ( min-width : 960px ) {
-    @content;
-  }
 }

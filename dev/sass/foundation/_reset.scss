@@ -219,7 +219,7 @@ textarea {
 
 .pc,
 .pc-content {
-  @include breakpoint(sp) {
+  @include mq(lg) {
     display : none;
   }
 }
@@ -227,17 +227,11 @@ textarea {
 .sp,
 .sp-content {
   display : none;
-  @include breakpoint(sp) {
+  @include mq(md) {
     display : block;
   }
 }
 
-@include breakpoint(sp) {
-
-  #responsive_flg {
-    display : none;
-  }
-}
 /* clearfix */
 
 .clearfix::after {

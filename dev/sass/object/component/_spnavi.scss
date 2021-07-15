@@ -36,7 +36,7 @@
     }
   }
 }
-@include breakpoint(sp) {
+@include mq(md) {
 
   .spnavi {
     background-color : rgba(0, 0, 0, .6);
