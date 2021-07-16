@@ -1,0 +1,21 @@
+@charset "UTF-8";
+/* ===============================================
+Trello CSS Guide
+https://gist.github.com/bobbygrace/9e961e8982f42eb91b80
+http://qiita.com/naru0504/items/5427f3795171c540ed91
+
+componentとporojectの使い分けが悩むと思うのでメモ
+
+人間で言えば、裸んぼの人間が最小単位のモジュールcomponentで、他にネクタイや靴下、スーツといったcomponentがあり、組み合わせてビジネスマンprojectになると考えられます
+
+・小さい単位をComponent
+・Componentの集まりをProject
+=============================================== */
+
+/* foundation
+----------------------- */
+@use "foundation";
+
+// /* layout
+// ----------------------- */
+@use "layout";

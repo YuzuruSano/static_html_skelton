@@ -9,7 +9,7 @@ const RemoveEmptyScriptsPlugin = require("webpack-remove-empty-scripts");
 const app = {
   entry: {
     bundle: [path.resolve(__dirname, "./dev/js/scripts/main.ts")],
-    "style.css": [path.resolve(__dirname, "./dev/sass/style.scss")],
+    "basis.css": [path.resolve(__dirname, "./dev/sass/basis.scss")],
   },
   output: {
     filename: "js/[name].js",

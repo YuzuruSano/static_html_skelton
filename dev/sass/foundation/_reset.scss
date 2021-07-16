@@ -1,3 +1,6 @@
+@use "variables";
+@use "mixin";
+
 html,
 body,
 div,
@@ -77,9 +80,9 @@ html {
 }
 
 body {
-  color : $font_color;
-  font-size : $base_font_size;
-  line-height : $line_height;
+  color : variables.$font_color;
+  font-size : variables.$base_font_size;
+  line-height : variables.$line_height;
   overflow-wrap : break-word;
   min-height: 100%;
   overflow-wrap: break-word;
@@ -127,7 +130,7 @@ div {
 }
 
 a {
-  color : $link_color;
+  color : variables.$link_color;
   text-decoration : none;
 
   img {
@@ -137,7 +140,7 @@ a {
 }
 
 a:hover {
-  color : $link_hover_color;
+  color : variables.$link_hover_color;
   text-decoration : none;
 }
 
@@ -228,7 +231,7 @@ textarea {
 
 .pc,
 .pc-content {
-  @include mq(lg) {
+  @include mixin.mq(lg) {
     display : none;
   }
 }
@@ -236,7 +239,7 @@ textarea {
 .sp,
 .sp-content {
   display : none;
-  @include mq(md) {
+  @include mixin.mq(md) {
     display : block;
   }
 }

@@ -1,3 +1,5 @@
+@use "../../foundation/mixin";
+
 #spnavi {
   position: fixed;
   top: 0;
@@ -46,7 +48,7 @@
   }
 }
 
-@include mq(md) {
+@include mixin.mq(md) {
   .btn_sp_navi_wrap {
     display : block;
     position : absolute;
