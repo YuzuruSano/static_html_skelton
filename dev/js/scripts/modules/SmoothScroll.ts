@@ -13,7 +13,7 @@ export default class SmoothScroll {
   }
 
   bindEvent() : void {
-    document.querySelectorAll("a[href^=\\#]").forEach(element => {
+    document.querySelectorAll("a[href^=\\#]:not(._no-smooth-scroll)").forEach(element => {
       element.addEventListener("click", event => {
         const el = <HTMLLinkElement>event.currentTarget;
         const href = new URL(el.href);

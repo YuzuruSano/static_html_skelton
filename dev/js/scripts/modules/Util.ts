@@ -18,7 +18,7 @@ export default class Util{
 	 * スクロール量の取得
 	 * @returns 
 	 */
-	scrollTop() : Number {
+	scrollTop() : number {
 		const scrollingElement = this.scrollingElement();
 		return (scrollingElement) ? scrollingElement.scrollTop : 0;
 	}
