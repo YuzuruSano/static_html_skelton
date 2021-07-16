@@ -50,10 +50,9 @@ export default class SpNavi {
     /**
      * set var
      */
-    const util = <Util>new Util();
+    const util = new Util();
     this.current_scrollY = util.scrollTop();
 
-    let scroller;
     /**
      * prevent touchmove,adjust body position
      */
@@ -72,7 +71,7 @@ export default class SpNavi {
     /**
      * fire scroller
      */
-    scroller = new IScroll(this.target , {
+    const scroller = new IScroll(this.target , {
       scrollX: false,
       preventDefault: false,
       disablePointer: true,
@@ -101,7 +100,6 @@ export default class SpNavi {
       }else{
         this.open();
       }
-    })
-    
+    });
   }
 }
