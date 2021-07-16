@@ -10,6 +10,8 @@ head
 		meta#viewport(content='width=device-width', name='viewport')
 		+meta(meta)
 		+ogp(ogp)
+	block scripts
+		+scripts
 body#top(class=slug)
 	#wrap
 		nav#spnavi.spnavi.sp
@@ -33,6 +35,4 @@ body#top(class=slug)
 					.global_footer-col
 		#totop._to_fadein
 			a(href="#top") トップ
-	block scripts
-		+scripts
 </html>
