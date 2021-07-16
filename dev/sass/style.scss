@@ -22,13 +22,3 @@ http://qiita.com/naru0504/items/5427f3795171c540ed91
 @import "object/component/*";
 @import "object/project/*";
 @import "object/utility/*";
-
-.global_header + * {
-  height:1000px;
-  background: #ccc;
-}
-
-.global_footer {
-  height: 300px;
-  background: #000;
-}
