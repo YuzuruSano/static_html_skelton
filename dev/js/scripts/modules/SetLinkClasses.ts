@@ -3,10 +3,10 @@
  * aタグに._not_blank付与で除外できます
  */
 export default class SetLinkClasses{
-  private location:String;
-  private exclude: tring;
+  private location:string;
+  private exclude: string;
 
-  constructor(exclude: String = '_not_blank'){
+  constructor(exclude: string = '_not_blank'){
     this.location = location.hostname;
     this.exclude = exclude;
   }

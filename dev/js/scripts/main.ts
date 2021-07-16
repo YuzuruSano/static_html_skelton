@@ -5,11 +5,28 @@ import ToggleToTop from "./modules/ToggleToTop";
 import SetLinkClasses from "./modules/SetLinkClasses";
 
 /**
- * 
+ * ブラウザ判定用のクラスを設定する
  */
 new BrowserDetect();
+
+/**
+ * 外部リンクに自動_blank付与
+ */
 const slc = new SetLinkClasses();
 slc.set_external();
+
+/**
+ * totopボタンをフッター直前で止める
+ */
+const totop_param: Object = {
+  target: "#totop",
+  stop_at: "#global_footer",//フッターのセレクタ
+  fixer: 100,
+  speed: 400,
+  stop: true
+};
+new ToggleToTop(totop_param);
+
 /* ===============================================
 SP Navi
 =============================================== */
@@ -27,19 +44,8 @@ Smooth Scroll
 =============================================== */
 const sms: SmoothScroll = new SmoothScroll(spnavi);
 sms.exec();
-/* ===============================================
-To Top
-show/hide toggle
-=============================================== */
-const totop_param: Object = {
-  target: "#totop",
-  stop_at: "#global_footer",
-  fixer: 100,
-  speed: 400,
-  stop: true
-};
-const toggleToTop: ToggleToTop = new ToggleToTop(totop_param);
-toggleToTop.bindEvent();
+
+
 
 if (module.hot) {
   module.hot.accept();
