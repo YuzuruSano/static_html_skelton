@@ -6,15 +6,13 @@ export default class BrowserDetect {
   private browserDetected;
   private browserType;
   private bodyElement: HTMLElement | null;
-  private bodyClass;
 
   constructor() {
     this.browser = Bowser.getParser(window.navigator.userAgent);
     this.browserData = this.browser.parsedResult;
     this.browserDetected = this.browserData.browser;
     this.browserType = this.browserData.platform.type;
-    this.bodyElement = document.querySelector<HTMLElement>("body");
-    this.bodyClass = (this.bodyElement !== null) ? this.bodyElement : null;
+    this.bodyElement = document.body;
 
     this.checkBrowser();
     this.checkTablet();
@@ -25,28 +23,28 @@ export default class BrowserDetect {
   checkBrowser(): void {
     if (this.browserDetected.name === "Internet Explorer") {
       const version:string = "ie_" + Math.floor(this.browserDetected.version);
-      this.bodyClass.add('ie');
-      this.bodyClass.add(version);
+      this.bodyElement?.classList.add('ie');
+      this.bodyElement?.classList.add(version);
     } else if (this.browserDetected.name === "Microsoft Edge") {
-      this.bodyClass.add("edge");
+      this.bodyElement?.classList.add("edge");
     } else if (this.browserDetected.name === "Firefox") {
-      this.bodyClass.add("ff");
+      this.bodyElement?.classList.add("ff");
     } else if (this.browserDetected.name === "Safari") {
-      this.bodyClass.add("safari");
+      this.bodyElement?.classList.add("safari");
     }
   }
 
   checkTablet(): void {
     if (this.browserType == "tablet") {
-      this.bodyClass.add("tablet");
+      this.bodyElement?.classList.add("tablet");
     }
   }
 
   checkMobile(): void {
     if (this.browserType === "mobile") {
-      this.bodyClass.add("device--mobile");
+      this.bodyElement?.classList.add("device--mobile");
       if (this.browserType === "Android") {
-        this.bodyClass.add("device--mobile--android");
+        this.bodyElement?.classList.add("device--mobile--android");
       }
     }
   }
@@ -66,6 +64,6 @@ export default class BrowserDetect {
       os = "";
     }
 
-    if (os) this.bodyClass.add(os);
+    if (os) this.bodyElement?.classList.add(os);
   }
 }
