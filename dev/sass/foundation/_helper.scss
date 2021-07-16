@@ -1,4 +1,4 @@
-._toFadeIn {
+._to_fadein {
   transition: opacity 1s, visibility 0s ease 1s;
   opacity: 0;
   visibility: hidden;
@@ -9,7 +9,7 @@
   }
 }
 
-._toFadeOut {
+._to_fadeout {
   transition-delay: 0s;
   opacity: 1;
   visibility: visible;
