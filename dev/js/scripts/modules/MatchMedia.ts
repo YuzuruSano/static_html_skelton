@@ -25,7 +25,7 @@ export default class MatchMedia {
    * @param メディアクエリ定義オブジェクトのキー
    * @returns bool
    */
-  is(key:string = ''){
+  is(key: string = ''): Boolean{
     const basis = this.is_mobile_first ? 'mix' : 'max';
     if (this.queries[key]){
       const q = `screen and (${basis}-width: ${this.queries[key]}px)`

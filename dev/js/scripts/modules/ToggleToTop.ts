@@ -26,7 +26,7 @@ export default class ToggleToTop {
     this.bindEvent();
   }
 
-  bindEvent() {
+  bindEvent(): void {
     window.addEventListener("load", () => {
       this.toggle();
     })
@@ -49,7 +49,7 @@ export default class ToggleToTop {
    * position fixed or relativeを切り替えるだけなのでhtml構造による位置調整や左右位置などはDOM/CSSで別途調整必要
    * @return void
    */
-  togglePosition() {
+  togglePosition(): void {
     if (!this.target) return;
     
     const scrollHeight: Number = document.body.clientHeight,
@@ -67,7 +67,7 @@ export default class ToggleToTop {
     }
   }
 
-  toggle() {
+  toggle(): void {
     if (this.util.scrollTop() > this.fixer) {
       this.target?.classList.add('_triggerd');
     } else {

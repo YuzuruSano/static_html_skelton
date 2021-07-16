@@ -11,7 +11,7 @@ export default class SetLinkClasses{
     this.exclude = exclude;
   }
 
-  set_external(){
+  set_external(): void{
     const elements = document.querySelectorAll<HTMLElement>(`[href^=http]:not([href*="${this.location}"]),[href$=pdf],[href$=xls],[href$=xlsx],[href$=xlsm],[href$=doc],[href$=docx],[href$=pptx],[href$=pptm],[href$=ppt]`);
     
     [...elements].forEach( element => {
