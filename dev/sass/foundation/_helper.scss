@@ -1,6 +1,6 @@
 //ロード時に非表示状態の要素を._triggerd付与でフェードインさせる
 ._to_fadein {
-  transition: opacity 1s, visibility 0s ease 1s;
+  transition: opacity .3s, visibility 0s ease .3s;
   opacity: 0;
   visibility: hidden;
   &._triggerd {
@@ -15,7 +15,7 @@
   opacity: 1;
   visibility: visible;
   &._triggerd {
-    transition: opacity 1s, visibility 0s ease 1s;
+    transition: opacity .3s, visibility 0s ease .3s;
     opacity: 0;
     visibility: hidden;
   }
