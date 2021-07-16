@@ -72,7 +72,8 @@
 	"private": true,
 	"dependencies": {
 		"bowser": "^2.0.0-beta.3",
-		"iscroll": "^5.2.0"
+		"iscroll": "^5.2.0",
+		"scroll-to-element": "^2.0.3"
 	},
 	"scripts": {
 		"postinstall": "patch-package",
