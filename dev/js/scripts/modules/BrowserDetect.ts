@@ -24,7 +24,7 @@ export default class BrowserDetect {
 
   checkBrowser(): void {
     if (this.browserDetected.name === "Internet Explorer") {
-      const version:String = "ie_" + Math.floor(this.browserDetected.version);
+      const version:string = "ie_" + Math.floor(this.browserDetected.version);
       this.bodyClass.add('ie');
       this.bodyClass.add(version);
     } else if (this.browserDetected.name === "Microsoft Edge") {
@@ -52,8 +52,8 @@ export default class BrowserDetect {
   }
 
   checkWinOS(): void {
-    let os: String,
-      ua: String = navigator.userAgent;
+    let os: string,
+      ua: string = navigator.userAgent;
     if (ua.match(/Win(dows )?NT 10\.0/)) {
       os = "win10";
     } else if (ua.match(/Win(dows )?NT 6\.3/)) {
