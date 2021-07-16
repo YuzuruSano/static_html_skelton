@@ -31,14 +31,9 @@ export default class SpNavi {
   }
 
   close() {
-    /**
-     * toggle appearance
-     */
     this.target?.classList.remove('_triggerd');
     document.body.classList.remove('sp-nav-active');
-    /**
-     * return touchmove,adjust body position
-     */
+    
     document.removeEventListener("touchmove", this.scrollOff);
     window.scrollTo(0, this.current_scrollY)
     
@@ -47,30 +42,18 @@ export default class SpNavi {
   }
 
   open() {
-    /**
-     * set var
-     */
     const util = new Util();
     this.current_scrollY = util.scrollTop();
 
-    /**
-     * prevent touchmove,adjust body position
-     */
     document.addEventListener("touchmove", this.scrollOff, { passive: false });
 
     document.body.style.position = "fixed";
-
     const top = -1 * +this.current_scrollY
     document.body.style.top = `${top}px`;
     
-    /**
-     * toggle appearance
-     */
     this.target?.classList.add('_triggerd');
     document.body.classList.add('sp-nav-active');
-    /**
-     * fire scroller
-     */
+    
     const scroller = new IScroll(this.target , {
       scrollX: false,
       preventDefault: false,
@@ -78,9 +61,7 @@ export default class SpNavi {
       disableTouch: false,
       mouseWheel: true
     });
-    /**
-     * exec callbacks
-     */
+    
     if (this.callbacks.length) {
       for (let i = 0; i < this.callbacks.length; i++) {
         this.callbacks[i](scroller);
@@ -89,9 +70,6 @@ export default class SpNavi {
   }
 
   bindEvent() {
-    /**
-     * click event
-     */
     this.trigger?.addEventListener("click", event => {
       event.preventDefault();
 

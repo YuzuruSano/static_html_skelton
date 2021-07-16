@@ -9,24 +9,24 @@ export default class ToggleToTop {
   private stop: Boolean;
   private util: Util;
   
-  constructor({
-    target = "#totop",
-    stop_at = "#footer",
-    fixer = 100,
-    speed = 200,
-    stop = true
+  constructor(param = {
+    target: "#totop",
+    stop_at: "#global_footer",
+    fixer: 100,
+    speed: 400,
+    stop: true
   }) {
-    this.target = document.querySelector(target);
-    this.stop_at = document.querySelector(stop_at);
-    this.fixer = fixer;
-    this.speed = speed;
-    this.stop = stop;
+    this.target = document.querySelector(param.target);
+    this.stop_at = document.querySelector(param.stop_at);
+    this.fixer = param.fixer;
+    this.speed = param.speed;
+    this.stop = param.stop;
     this.util = new Util();
 
     this.bindEvent();
   }
 
-  bindEvent(): void {
+  bindEvent() : void {
     window.addEventListener("load", () => {
       this.toggle();
     })

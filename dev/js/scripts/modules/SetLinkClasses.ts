@@ -9,6 +9,8 @@ export default class SetLinkClasses{
   constructor(exclude: string = '_not_blank'){
     this.location = location.hostname;
     this.exclude = exclude;
+
+    this.set_external();
   }
 
   set_external(): void{
