@@ -27,6 +27,7 @@ const config = merge(common, {
   optimization: {
     minimize: true,
     minimizer: [new CssMinimizerPlugin()],
+    runtimeChunk: 'single'
   },
   devServer: {
     open: true,
