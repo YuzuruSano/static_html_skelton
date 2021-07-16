@@ -11,16 +11,6 @@
   }
 }
 
-@mixin clearfix {
-  &::after {
-    clear : both;
-    content : ".";
-    display : block;
-    height : 0px;
-    line-height : 0;
-    visibility : hidden;
-  }
-}
 /* ===============================================
 fz
 =============================================== */

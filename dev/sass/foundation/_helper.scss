@@ -1,0 +1,21 @@
+._toFadeIn {
+  transition: opacity 1s, visibility 0s ease 1s;
+  opacity: 0;
+  visibility: hidden;
+  &.triggerd {
+    transition-delay: 0s;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+._toFadeOut {
+  transition-delay: 0s;
+  opacity: 1;
+  visibility: visible;
+  &.triggerd {
+    transition: opacity 1s, visibility 0s ease 1s;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
