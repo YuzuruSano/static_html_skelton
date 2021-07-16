@@ -1,5 +1,14 @@
-.spnavi {
-  display : none;
+#spnavi {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background-color : rgba(0, 0, 0, .6);
+  height : 100%;
+  width : 100%;
+  #scroller {
+    padding-bottom: 50px;
+  }
 }
 
 .btn_sp_navi_wrap {
@@ -16,7 +25,7 @@
     width : 20px;
   }
 
-  .active {
+  @at-root .sp-nav-active & {
 
     .line {
       background-color : #fff;
@@ -36,15 +45,8 @@
     }
   }
 }
+
 @include mq(md) {
-
-  .spnavi {
-    background-color : rgba(0, 0, 0, .6);
-    height : 100%;
-    position : fixed;
-    width : 100%;
-  }
-
   .btn_sp_navi_wrap {
     display : block;
     position : absolute;
