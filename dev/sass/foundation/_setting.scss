@@ -1,18 +1,14 @@
-// # text adjust
-$-webkit-text-size-adjust: false;
-
 // # text
-$base_font_size: 14px;
-//$font_size:100%;
-$line_height: 1.5;
-$font_color: #363636;
-$-webkit-tap-highlight: false;
+$base_font_size: 16px!default;
+$line_height: 1.5!default;
+$font_color: #363636!default;
+$-webkit-tap-highlight: false!default;
 
-$black: #000;
+$black: #000!default;
 
 // link
-$link_color: #363636;
-$link_hover_color: #444444;
+$link_color: #363636!default;
+$link_hover_color: #444444!default;
 
 // BREAKPOINT
 // --------------------
