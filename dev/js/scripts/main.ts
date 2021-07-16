@@ -1,13 +1,15 @@
 import BrowserDetect from "./modules/BrowserDetect";
 import SmoothScroll from "./modules/SmoothScroll";
 import SpNavi from "./modules/SpNavi";
-import ToTop from "./modules/ToTop";
-import LinkIcon from "./modules/LinkIcon";
+import ToggleToTop from "./modules/ToggleToTop";
+import SetLinkClasses from "./modules/SetLinkClasses";
 
-window.onload = () => {
-  new BrowserDetect();
-}
-
+/**
+ * 
+ */
+new BrowserDetect();
+const slc = new SetLinkClasses();
+slc.set_external();
 /* ===============================================
 SP Navi
 =============================================== */
@@ -36,10 +38,8 @@ const totop_param: Object = {
   speed: 400,
   stop: true
 };
-const totop: ToTop = new ToTop(totop_param);
-totop.exec();
-
-LinkIcon();
+const toggleToTop: ToggleToTop = new ToggleToTop(totop_param);
+toggleToTop.bindEvent();
 
 if (module.hot) {
   module.hot.accept();

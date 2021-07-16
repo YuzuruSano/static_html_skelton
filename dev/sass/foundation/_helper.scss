@@ -1,19 +1,20 @@
+//ロード時に非表示状態の要素を._triggerd付与でフェードインさせる
 ._to_fadein {
   transition: opacity 1s, visibility 0s ease 1s;
   opacity: 0;
   visibility: hidden;
-  &.triggerd {
+  &._triggerd {
     transition-delay: 0s;
     opacity: 1;
     visibility: visible;
   }
 }
-
+//ロード時に表示状態の要素を._triggerd付与でフェードアウトさせる
 ._to_fadeout {
   transition-delay: 0s;
   opacity: 1;
   visibility: visible;
-  &.triggerd {
+  &._triggerd {
     transition: opacity 1s, visibility 0s ease 1s;
     opacity: 0;
     visibility: hidden;
