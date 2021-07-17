@@ -4,7 +4,6 @@ import SpNavi from "./modules/SpNavi";
 import ToggleToTop from "./modules/ToggleToTop";
 import SetLinkClasses from "./modules/SetLinkClasses";
 import MatchMedia from "./modules/MatchMedia";
-
 /**
  * ブラウザ判定用のクラスを設定する
  */

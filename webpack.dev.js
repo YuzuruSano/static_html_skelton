@@ -96,7 +96,7 @@ config.module.rules.push({
         },
       }
     },
-  ],
+  ]
 });
 
 module.exports = config;
