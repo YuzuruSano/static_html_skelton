@@ -26,7 +26,7 @@ export default class MatchMedia {
    * @returns bool
    */
   is(key: string = ''): Boolean{
-    const basis = this.is_mobile_first ? 'mix' : 'max';
+    const basis = this.is_mobile_first ? 'min' : 'max';
     if (this.queries[key]){
       const q = `screen and (${basis}-width: ${this.queries[key]}px)`
       return window.matchMedia(q).matches;

@@ -1,3 +1,4 @@
+const path = require("path");
 const { merge } = require("webpack-merge"); // webpack-merge
 const common = require("./webpack.common.js"); // 汎用設定をインポート
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
