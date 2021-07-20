@@ -3,7 +3,6 @@ const common = require("./webpack.common.js"); // 汎用設定をインポート
 const path = require("path");
 const webpack = require("webpack");
 const WebpackNotifierPlugin = require("webpack-notifier");
-const globImporter = require("node-sass-glob-importer");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const autoprefixer = require("autoprefixer");
@@ -92,7 +91,7 @@ config.module.rules.push({
       options: {
         sourceMap: true,
         sassOptions: {
-          importer: globImporter(),
+          includePaths: [path.resolve(__dirname, './dev/sass')],
         },
       }
     },

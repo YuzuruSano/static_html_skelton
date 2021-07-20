@@ -1,6 +1,5 @@
 const { merge } = require("webpack-merge"); // webpack-merge
 const common = require("./webpack.common.js"); // 汎用設定をインポート
-const globImporter = require("node-sass-glob-importer");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
@@ -98,7 +97,7 @@ config.module.rules.push({
       options: {
         sourceMap: true,
         sassOptions: {
-          importer: globImporter(),
+          includePaths: [path.resolve(__dirname, './dev/sass')],
         },
       },
     },
