@@ -40,6 +40,7 @@ $ yarn husky install
 ## huskyが動かない場合
 
 開発中に静的開発階層を移動させたなどして動かないときはpackage.jsonのscriptsにこちらを追加
+```cd ..```の箇所は.gitの存在するディレクトリにたどり着けるように調整してください
 
 ```diff
 //略
