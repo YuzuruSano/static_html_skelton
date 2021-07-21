@@ -65,7 +65,7 @@ $ yarn prepare
 $ npx husky add .husky/pre-commit "yarn lint-staged"
 ```
 
-```{移動させたディレクトリ}assets/.husky/pre-commit``` が追加されるので
+```{移動させたディレクトリ}/.husky/pre-commit``` が追加されるので
 
 ```diff
 #!/bin/sh
