@@ -79,6 +79,7 @@ documents.forEach((document) => {
   const fileName = document.replace("./dev/pug/", "").replace(".pug", ".html");
   app.plugins.push(
     new HtmlWebpackPlugin({
+      inject: "body",
       filename: `${fileName}`,
       template: document,
       environment: process.env.NODE_ENV,
