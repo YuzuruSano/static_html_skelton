@@ -1,4 +1,5 @@
 @use "variables";
+@use "sass:math";
 
 /* ***************************************
 # Mixins 汎用mixin
@@ -20,4 +21,22 @@ fz
   // font-size: $size + px;
   $base: 16;
   font-size : ($size / $base) + rem;
+}
+
+//pxをvwに変換するfunction
+@function get_vw($size, $viewport: 375) {
+  $rate: math.div(100 , $viewport);
+  @return $rate * $size * 1vw;
+}
+
+//フォント用のmixin
+@mixin font-vw($font_size: 10, $viewsize: 375) {
+  //font-size: $font_size * 1px;
+  font-size: get_vw($font_size, $viewsize);
+}
+
+//画像用のmixin
+@mixin img-vw($img_size, $viewsize: 375) {
+  width: $img_size * 1px;
+  width: get_vw($img_size, $viewsize);
 }
