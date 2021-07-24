@@ -87,7 +87,7 @@ config.module.rules.push({
             require("cssnano"),
             require("postcss-assets")({
               loadPaths: ["dev/images/"],
-              relative: "./dev/css",
+              relative: true
             }),
           ],
         },

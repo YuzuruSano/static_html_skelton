@@ -80,7 +80,7 @@ config.module.rules.push({
             }),
             postcssAssets({
               loadPaths: ["dev/images/"],
-              relative: "./dev/css",
+              relative: true
             }),
           ],
         },
