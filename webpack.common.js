@@ -80,6 +80,18 @@ ProjectConfig.pages.forEach((page) => {
       filename: page.filename,
       template: page.template,
       chunks: page.chunks,
+      chunksSortMode: function (chunk1, chunk2) {
+        const orders = page.chunks,
+          order1 = orders.indexOf(chunk1),
+          order2 = orders.indexOf(chunk2);
+        if (order1 > order2) {
+          return 1;
+        } else if (order1 < order2) {
+          return -1;
+        } else {
+          return 0;
+        }
+      },
       environment: process.env.NODE_ENV,
       minify: process.env.NODE_ENV === "develop" ? true : false,
     })
