@@ -35,10 +35,9 @@ export default class SpNavi {
     document.body.classList.remove('sp-nav-active');
     
     document.removeEventListener("touchmove", this.scrollOff);
-    window.scrollTo(0, this.current_scrollY)
-    
     document.body.style.position = "relative";
     document.body.style.top = "auto";
+    window.scrollTo(0, this.current_scrollY)
   }
 
   open() {
