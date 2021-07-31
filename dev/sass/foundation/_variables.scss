@@ -10,6 +10,17 @@ $black: #000!default;
 $link_color: #363636!default;
 $link_hover_color: #444444!default;
 
+$fw-light: 300 !default;
+$fw-regular: 400 !default;
+$fw-midium: 500 !default;
+$fw-bokd: 700 !default;
+
+//和英混在の場合は優先したい英語フォントを先頭に設定する
+$default: "Lato", "Noto Sans JP", "游ゴシック体", "Yu Gothic", YuGothic,
+  "Helvetica Neue", Helvetica, Arial, "ヒラギノ角ゴ Pro W3",
+  "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo,
+  "ＭＳ Ｐゴシック", "MS PGothic", sans-serif!default;
+
 // BREAKPOINT
 // --------------------
 $breakpoint-sm: 640px !default;

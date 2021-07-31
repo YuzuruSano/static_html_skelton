@@ -1,4 +1,4 @@
-@use "../../foundation/mixin";
+@use "global" as g;
 
 #spnavi {
   position: fixed;
@@ -48,7 +48,7 @@
   }
 }
 
-@include mixin.mq(md) {
+@include g.mq(md) {
   .btn_sp_navi_wrap {
     display : block;
     position : absolute;

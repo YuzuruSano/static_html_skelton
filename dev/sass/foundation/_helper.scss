@@ -1,3 +1,15 @@
+._weight-light {
+  font-weight : 300;
+}
+
+._weight-normal {
+  font-weight : 500;
+}
+
+._weight-bold {
+  font-weight : 700;
+}
+
 //ロード時に非表示状態の要素を._triggerd付与でフェードインさせる
 ._to_fadein {
   transition: opacity .3s, visibility 0s ease .3s;

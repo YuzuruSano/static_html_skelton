@@ -1,3 +1,4 @@
+@use "global" as g;
 /* ===============================================
 font-face定義例
 =============================================== */
@@ -12,10 +13,7 @@ font-face定義例
 // }
 
 body {
-  font-family : "游ゴシック体", "Yu Gothic", YuGothic, "Helvetica Neue",
-    Helvetica, Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN",
-    "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック",
-    "MS PGothic";
+  font-family : g.$default;
   -webkit-font-smoothing : antialiased;
   -moz-osx-font-smoothing : grayscale;
   -webkit-text-size-adjust : 100%;
