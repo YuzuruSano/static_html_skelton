@@ -8,7 +8,7 @@ const RemovePlugin = require("remove-files-webpack-plugin");
 
 const config = merge(common, {
   output: {
-    publicPath: "/",
+    publicPath: "./",
   },
   cache: {
     type: "filesystem",
