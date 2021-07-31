@@ -1,13 +1,19 @@
+@use "global" as g;
+
 ._weight-light {
-  font-weight : 300;
+  font-weight : g.$fw-light;
 }
 
-._weight-normal {
-  font-weight : 500;
+._weight-regular {
+  font-weight : g.$fw-regular;
+}
+
+._weight-midium {
+  font-weight : g.$fw-midium;
 }
 
 ._weight-bold {
-  font-weight : 700;
+  font-weight : g.$fw-bold;
 }
 
 //ロード時に非表示状態の要素を._triggerd付与でフェードインさせる
