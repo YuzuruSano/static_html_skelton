@@ -1,0 +1,11 @@
+@use "global" as g;
+
+header,footer {
+  height: 800px;
+  background-color: #000;
+}
+.object-square {
+  width: 100px;
+  height: 100px;
+  background-color: #000;
+}

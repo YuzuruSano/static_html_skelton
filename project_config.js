@@ -24,6 +24,16 @@ const pages = [
       'basis.css', 'pages/home.css'// 使用するcss 
     ]
   },
+  {
+    filename: "scrolltrigger.html",//出力するファイル名
+    template: "./dev/pug/scrolltrigger.pug",//対象のpugファイル
+    chunks: [
+      'main', //使用するjs,
+      'scrolltrigger', //使用するjs,
+      'basis.css',
+      'pages/scrolltrigger.css'
+    ]
+  },
   // {//下層ページの追加例
   //   filename: "news.html",
   //   template: "./dev/pug/news.pug",
