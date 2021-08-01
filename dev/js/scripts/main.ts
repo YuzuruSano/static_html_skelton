@@ -4,6 +4,14 @@ import SpNavi from "./modules/SpNavi";
 import ToggleToTop from "./modules/ToggleToTop";
 import SetLinkClasses from "./modules/SetLinkClasses";
 import MatchMedia from "./modules/MatchMedia";
+import Prism from 'prismjs';
+
+const pre = document.querySelectorAll<HTMLElement>('pre');
+pre.forEach(p => {
+  const html:string = Prism.highlight(p.innerHTML, Prism.languages.javascript, 'javascript');
+  p.innerHTML = html;
+})
+
 /**
  * ブラウザ判定用のクラスを設定する
  */

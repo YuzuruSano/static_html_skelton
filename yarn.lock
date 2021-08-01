@@ -3593,7 +3593,7 @@ escalade@^3.1.1:
   resolved "https://registry.yarnpkg.com/escalade/-/escalade-3.1.1.tgz#d8cfdc7000965c5a0174b4a82eaa5c0552742e40"
   integrity sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==
 
-escape-html@~1.0.3:
+escape-html@^1.0.3, escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
   integrity sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=
@@ -4669,6 +4669,11 @@ growly@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
   integrity sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
+
+gsap@^3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.7.1.tgz#1c5857f4fbcbd3f5ca0b513ef7abf828fbaa20a8"
+  integrity sha512-4qxuaC2yFWRjMRof5tI/7c9/+L4xMsCoqHrZAmuh+IbOokTnZyoeF0VgvcVHq3uo+/VJZCs7PTvjrFasfGl+ww==
 
 handle-thing@^2.0.0:
   version "2.0.1"
@@ -5767,6 +5772,13 @@ jsonfile@^4.0.0:
   integrity sha1-h3Gq4HmbZAdrdmQPygWPnBDjPss=
   optionalDependencies:
     graceful-fs "^4.1.6"
+
+jstransformer-escape-html@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/jstransformer-escape-html/-/jstransformer-escape-html-1.1.0.tgz#4639c61de4cde6798ec63db2b1ab4d745f919999"
+  integrity sha1-RjnGHeTN5nmOxj2ysatNdF+RmZk=
+  dependencies:
+    escape-html "^1.0.3"
 
 jstransformer@1.0.0:
   version "1.0.0"
@@ -7986,6 +7998,11 @@ pretty-format@^23.0.1:
   dependencies:
     ansi-regex "^3.0.0"
     ansi-styles "^3.2.0"
+
+prismjs@^1.24.1:
+  version "1.24.1"
+  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.24.1.tgz#c4d7895c4d6500289482fa8936d9cdd192684036"
+  integrity sha512-mNPsedLuk90RVJioIky8ANZEwYm5w9LcvCXrxHlwf4fNVSn8jEipMybMkWUyyF0JhnC+C4VcOVSBuHRKs1L5Ow==
 
 process-nextick-args@~2.0.0:
   version "2.0.1"
