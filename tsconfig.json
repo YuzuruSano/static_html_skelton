@@ -1,24 +1,19 @@
 {
-  "compilerOptions": {
-    "sourceMap": true,
-    "target": "es2015",
-    "module": "commonjs",
-    "noEmit":true,
-    "strict": true,
-    "allowJs": true,
-    "noImplicitAny": false,
-    "jsx": "preserve",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ]
-  },
-  "exclude": [
-    "node_modules"
-  ],
+	"compilerOptions": {
+		"sourceMap": true,
+		"target": "es2015",
+		"module": "commonjs",
+		"noEmit": true,
+		"strict": true,
+		"allowJs": true,
+		"noImplicitAny": false,
+		"jsx": "preserve",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"lib": ["dom", "dom.iterable", "esnext"]
+	},
+	"exclude": ["node_modules"]
 }
