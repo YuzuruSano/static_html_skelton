@@ -82,7 +82,7 @@
 		"iscroll": "^5.2.0",
 		"jquery-inview": "^1.1.2",
 		"jquery-match-height": "^0.7.2",
-		"lodash": "^4.17.4",
+		"lodash": "^4.17.21",
 		"remodal": "^1.1.1",
 		"swiper": "6.5.1"
 	},
