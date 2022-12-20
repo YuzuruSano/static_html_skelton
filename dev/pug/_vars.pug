@@ -14,6 +14,9 @@
 		desc:'ディスクリプション',
 		key:'キーワード'
 	}
-- dev = (self.htmlWebpackPlugin.options.environment.replace(/"/g, '') == 'development') ? true : false;
+
+//- Use pug-loader option `data` to pass the `isDev` variable into Pug
+- dev = isDev
+
 - slug = ''
 - is_contact = false;

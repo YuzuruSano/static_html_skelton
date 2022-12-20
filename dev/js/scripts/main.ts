@@ -44,6 +44,8 @@ new SpNavi();
  */
 new SmoothScroll();
 
-if (module.hot) {
-	module.hot.accept();
-}
+// Note: Outdated usage, is not required more.
+// if (module.hot) {
+// 	module.hot.accept();
+// }
+console.log('>> main.ts');

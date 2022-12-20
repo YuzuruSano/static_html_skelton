@@ -1,34 +1,34 @@
 const path = require("path");
 const globule = require("globule");
 const webpack = require("webpack");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const RemoveEmptyScriptsPlugin = require("webpack-remove-empty-scripts");
+const PugPlugin = require("pug-plugin");
 const ProjectConfig = require("./project_config.js");
 
+const isDev = process.env.NODE_ENV === "development";
+
 const app = {
+  // Using pug-plugin, define only the Pug files in entry.
+  // The pug-plugin extracts JS and CSS from their sources defined in Pug.
   entry: ProjectConfig.entries,
   output: {
-    filename: "js/[name].js",
+    filename: "js/[name].[contenthash:8].js",
     path: path.resolve(__dirname, "./build"),
-    publicPath: "http://localhost:8080/",
+
+    // Note: defaults publicPath is `auto`, generates relative public paths and works fine
+    //publicPath: "http://localhost:8080/",
   },
   module: {
     rules: [
       {
         test: /\.pug$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: "pug-loader",
-            options: {
-              pretty: true,
-              root: path.resolve(__dirname, "dev/"),
-              self: true,
-            },
+        loader: PugPlugin.loader, // PugPlugin already contain the pug-loader
+        options: {
+          basedir: path.resolve(__dirname, "dev/"),
+          data: {
+            isDev, // pass global data into Pug templates
           },
-        ],
+        },
       },
       {
         test: /\.(j|t)s(|x)$/,
@@ -46,6 +46,14 @@ const app = {
           },
         ],
       },
+      {
+        test: /\.(png|svg|jpe?g|webp|ico)$/i,
+        type: "asset/resource",
+        generator: {
+          // output filename of images
+          filename: "img/[name].[hash:8][ext]",
+        },
+      },
     ],
   },
   externals: {
@@ -57,13 +65,18 @@ const app = {
   },
   performance: { hints: false },
   plugins: [
-    new RemoveEmptyScriptsPlugin(),
-    new MiniCssExtractPlugin({
-      filename: "css/[name]",
+    // enable processing of Pug files in Webpack entry
+    new PugPlugin({
+      pretty: true,
+      extractCss: {
+        // hashed output filename of CSS
+        filename: "css/[name].[contenthash:8].css",
+      },
     }),
-    new CopyWebpackPlugin({
-      patterns: [{ from: "./dev/images", to: "images/" }],
-    }),
+    // Note: use require('source/images/image.jpg') in Pug
+    // new CopyWebpackPlugin({
+    //   patterns: [{ from: "./dev/images", to: "images/" }],
+    // }),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
@@ -71,33 +84,5 @@ const app = {
     }),
   ],
 };
-
-const documents = globule.find("./dev/**/*.pug", {
-  ignore: ["./dev/**/_*/*.pug", "./dev/**/_*.pug"],
-});
-
-ProjectConfig.pages.forEach((page) => {
-  app.plugins.push(
-    new HtmlWebpackPlugin({
-      filename: page.filename,
-      template: page.template,
-      chunks: page.chunks,
-      chunksSortMode: function (chunk1, chunk2) {
-        const orders = page.chunks,
-          order1 = orders.indexOf(chunk1),
-          order2 = orders.indexOf(chunk2);
-        if (order1 > order2) {
-          return 1;
-        } else if (order1 < order2) {
-          return -1;
-        } else {
-          return 0;
-        }
-      },
-      environment: process.env.NODE_ENV,
-      minify: process.env.NODE_ENV === "develop" ? true : false,
-    })
-  );
-});
 
 module.exports = app;

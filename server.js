@@ -1,46 +1,49 @@
-const browserSync = require("browser-sync");
-const webpack = require("webpack");
-const webpackDevMiddleware = require("webpack-dev-middleware");
-const webpackHotMiddleware = require("webpack-hot-middleware");
+// Note: Don't use outdated webpack-dev-middleware and webpack-hot-middleware for HMR
+// instead of these use webpack-dev-server with option watchFiles, see webpack.dev.js > devServer
 
-const webpackConfig = require("./webpack.dev");
-const bundler = webpack(webpackConfig);
+// const browserSync = require("browser-sync");
+// const webpack = require("webpack");
+// const webpackDevMiddleware = require("webpack-dev-middleware");
+// const webpackHotMiddleware = require("webpack-hot-middleware");
 
-const webpackDevMiddlewareInstance = webpackDevMiddleware(bundler, {
-  publicPath: webpackConfig.output.publicPath,
-  stats: {
-    colors: true,
-  }
-});
+// const webpackConfig = require("./webpack.dev");
+// const bundler = webpack(webpackConfig);
 
-const server = browserSync({
-  port: 8080,
-  ghostMode: false,
-  socket: {
-    domain: "localhost:8080",
-  },
-  server: {
-    baseDir: "build",
-    middleware: [
-      function (req, res, next) {
-        res.setHeader("Access-Control-Allow-Origin", "*");
-        next();
-      },
-      webpackDevMiddlewareInstance,
-      webpackHotMiddleware(bundler),
-    ]
-  },
-  files: [
-    {
-      /**
-       * php & pug
-       */
-      match: ["./dev/pug/**/*.pug", "../**/*.php"],
-      fn: (event, file) => {
-        webpackDevMiddlewareInstance.waitUntilValid(() => {
-          server.reload();
-        });
-      }
-    }
-  ]
-});
+// const webpackDevMiddlewareInstance = webpackDevMiddleware(bundler, {
+//   publicPath: webpackConfig.output.publicPath,
+//   stats: {
+//     colors: true,
+//   }
+// });
+
+// const server = browserSync({
+//   port: 8080,
+//   ghostMode: false,
+//   socket: {
+//     domain: "localhost:8080",
+//   },
+//   server: {
+//     baseDir: "build",
+//     middleware: [
+//       function (req, res, next) {
+//         res.setHeader("Access-Control-Allow-Origin", "*");
+//         next();
+//       },
+//       webpackDevMiddlewareInstance,
+//       webpackHotMiddleware(bundler),
+//     ]
+//   },
+//   files: [
+//     {
+//       /**
+//        * php & pug
+//        */
+//       match: ["./dev/pug/**/*.pug", "../**/*.php"],
+//       fn: (event, file) => {
+//         webpackDevMiddlewareInstance.waitUntilValid(() => {
+//           server.reload();
+//         });
+//       }
+//     }
+//   ]
+// });

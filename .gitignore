@@ -1,3 +1,4 @@
+.DS_Store
 node_modules/*
 .sass-cache/*
 build/*
@@ -7,4 +8,5 @@ dev/tmp
 dev/css
 **/*.log
 **/*.html
-
+package-lock.json
+yarn.lock

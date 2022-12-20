@@ -12,6 +12,9 @@ block vars
 		}
 	- slug = 'home'
 block contents
+	//- load source images in Pug via require()
+	img(src=require('/js/icons/shibasaki_ko.jpg'))
+	
 	.pl10.pr10.pt10.pb10
 			p まずは「dev/sass/base/_setting.scss」で初期設定。
 			p サイト全体の文字色・リンク色・行間・よく使う文字色定義をしよう。
