@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const RemoveEmptyScriptsPlugin = require("webpack-remove-empty-scripts");
-const ProjectConfig = require('./project_config.js');
+const ProjectConfig = require("./project_config.js");
 
 const app = {
   entry: ProjectConfig.entries,
@@ -26,19 +26,22 @@ const app = {
               pretty: true,
               root: path.resolve(__dirname, "dev/"),
               self: true,
-            }
+            },
           },
         ],
       },
       {
-        test: /\.(j|t)s$/,
+        test: /\.(j|t)s(|x)$/,
         exclude: /node_modules/,
         use: [
           {
-            loader: "babel-loader",
+            loader: "swc-loader",
             options: {
-              cacheDirectory: true,
-              cacheCompression: false
+              jsc: {
+                parser: {
+                  syntax: "typescript",
+                },
+              },
             },
           },
         ],
@@ -59,14 +62,14 @@ const app = {
       filename: "css/[name]",
     }),
     new CopyWebpackPlugin({
-      patterns: [{ from: "./dev/images", to: "images/" }]
+      patterns: [{ from: "./dev/images", to: "images/" }],
     }),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
       "window.jQuery": "jquery",
     }),
-  ]
+  ],
 };
 
 const documents = globule.find("./dev/**/*.pug", {
@@ -74,7 +77,6 @@ const documents = globule.find("./dev/**/*.pug", {
 });
 
 ProjectConfig.pages.forEach((page) => {
-  
   app.plugins.push(
     new HtmlWebpackPlugin({
       filename: page.filename,

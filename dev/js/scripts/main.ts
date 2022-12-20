@@ -1,9 +1,9 @@
 import BrowserDetect from "./modules/BrowserDetect";
+import MatchMedia from "./modules/MatchMedia";
+import SetLinkClasses from "./modules/SetLinkClasses";
 import SmoothScroll from "./modules/SmoothScroll";
 import SpNavi from "./modules/SpNavi";
 import ToggleToTop from "./modules/ToggleToTop";
-import SetLinkClasses from "./modules/SetLinkClasses";
-import MatchMedia from "./modules/MatchMedia";
 /**
  * ブラウザ判定用のクラスを設定する
  */
@@ -13,7 +13,6 @@ new BrowserDetect();
  * 外部リンクに自動_blank付与
  */
 new SetLinkClasses();
-
 /**
  * 画面幅判定
  */
@@ -25,7 +24,7 @@ new SetLinkClasses();
 //   lg : 1024,
 //   xl : 1280
 // }
-const mm  = new MatchMedia();
+const mm = new MatchMedia();
 // console.log(mm.is('sm'));
 // console.log(mm.is('md'));
 // console.log(mm.is('lg'));
@@ -46,5 +45,5 @@ new SpNavi();
 new SmoothScroll();
 
 if (module.hot) {
-  module.hot.accept();
+	module.hot.accept();
 }
