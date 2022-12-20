@@ -1,0 +1,40 @@
+@use "global" as g;
+
+._weight-light {
+  font-weight : g.$fw-light;
+}
+
+._weight-regular {
+  font-weight : g.$fw-regular;
+}
+
+._weight-midium {
+  font-weight : g.$fw-midium;
+}
+
+._weight-bold {
+  font-weight : g.$fw-bold;
+}
+
+//ロード時に非表示状態の要素を._triggerd付与でフェードインさせる
+._to_fadein {
+  transition: opacity .3s, visibility 0s ease .3s;
+  opacity: 0;
+  visibility: hidden;
+  &._triggerd {
+    transition-delay: 0s;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+//ロード時に表示状態の要素を._triggerd付与でフェードアウトさせる
+._to_fadeout {
+  transition-delay: 0s;
+  opacity: 1;
+  visibility: visible;
+  &._triggerd {
+    transition: opacity .3s, visibility 0s ease .3s;
+    opacity: 0;
+    visibility: hidden;
+  }
+}

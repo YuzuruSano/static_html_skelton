@@ -1,3 +1,6 @@
+@use "variables";
+@use "mixin";
+
 html,
 body,
 div,
@@ -51,36 +54,45 @@ fieldset,
 form,
 label,
 legend {
-  background : none repeat scroll 0 0;
-  border : 0 none;
-  margin : 0;
-  outline : 0 none;
-  padding : 0;
-  vertical-align : baseline;
+  background: none repeat scroll 0 0;
+  border: 0 none;
+  margin: 0;
+  outline: 0 none;
+  padding: 0;
+  vertical-align: baseline;
+}
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  width: 100%;
+}
+
+*,
+::before,
+::after {
+  box-sizing: inherit; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0;
 }
 
 body {
-  background-color : #fff;
-  color : $font_color;
-  font-size : $base_font_size;
-  line-height : $line_height;
-  overflow-wrap : break-word;
-  position : relative;
-  @if $-webkit-text-size-adjust == false {
-    -webkit-text-size-adjust : none;
-  }
-}
-
-* {
-  @if $-webkit-tap-highlight == false {
-    -webkit-tap-highlight-color : rgba(0, 0, 0, 0) !important;
-  }
-
-  box-sizing : border-box;
+  color: variables.$font_color;
+  font-size: variables.$base_font_size;
+  line-height: variables.$line_height;
+  overflow-wrap: break-word;
+  min-height: 100%;
+  overflow-wrap: break-word;
+  padding: 0;
+  width: 100%;
 }
 
 main {
   display: block;
+  overflow-x: hidden;
 }
 
 h1,
@@ -89,7 +101,7 @@ h3,
 h4,
 h5,
 h6 {
-  line-height : 1.2;
+  line-height: 1.2;
 }
 
 table,
@@ -97,158 +109,151 @@ caption,
 tbody,
 tfoot,
 thead {
-  margin : 0;
-  outline : 0 none;
-  padding : 0;
+  margin: 0;
+  outline: 0 none;
+  padding: 0;
 }
 
 th,
 td {
-  background : none repeat scroll 0 0;
-  margin : 0;
-  outline : 0 none;
-  padding : 0;
-  vertical-align : top;
+  background: none repeat scroll 0 0;
+  margin: 0;
+  outline: 0 none;
+  padding: 0;
+  vertical-align: top;
 }
 
 p,
 span,
 div {
-  line-height : inherit;
+  line-height: inherit;
 }
 
 a {
-  color : $link_color;
-  text-decoration : none;
+  color: variables.$link_color;
+  text-decoration: none;
 
   img {
-    border : none;
-    outline : 0 !important;
+    border: none;
+    outline: 0 !important;
   }
 }
 
 a:hover {
-  color : $link_hover_color;
-  text-decoration : none;
+  color: variables.$link_hover_color;
+  text-decoration: none;
 }
 
 button:focus {
-  outline : 0 !important;
+  outline: 0 !important;
 }
 
 button:active {
-  outline : none;
+  outline: none;
 }
 
 a,
 p,
 img,
 div {
-
   &:focus {
-    outline : none;
+    outline: none;
   }
 }
 
 ol,
 ul {
-  list-style : none outside none;
+  list-style: none outside none;
 }
 
 fieldset,
 img {
-  vertical-align : bottom;
+  vertical-align: bottom;
 }
 
 blockquote,
 q {
-  quotes : none;
+  quotes: none;
 }
 
 blockquote::before,
 blockquote::after,
 q::before,
 q::after {
-  content : none;
+  content: none;
 }
 
 ins {
-  text-decoration : none;
+  text-decoration: none;
 }
 
 del {
-  text-decoration : line-through;
+  text-decoration: line-through;
 }
 
 table {
-  border-collapse : collapse;
-  border-spacing : 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 br {
-  letter-spacing : 0;
+  letter-spacing: 0;
 }
 
 hr {
-  border : 0 none;
-  height : 0;
-  visibility : hidden;
+  border: 0 none;
+  height: 0;
+  visibility: hidden;
 }
 
 select,
 input,
 textarea {
-  font-size : 99%;
+  font-size: 99%;
 }
 
 pre,
 code {
-  font : 100% monospace;
+  font: 100% monospace;
 }
 
 img {
-  height : auto;
-  max-width : 100%;
+  height: auto;
+  max-width: 100%;
 }
 
-input[ type = "submit" ],
-input[ type = "text" ],
+input[type="submit"],
+input[type="text"],
 textarea {
-  -webkit-appearance : none;
+  -webkit-appearance: none;
 }
 
 .pc,
 .pc-content {
-  @include breakpoint(sp) {
-    display : none;
+  @include mixin.mq(lg) {
+    display: none;
   }
 }
 
 .sp,
 .sp-content {
-  display : none;
-  @include breakpoint(sp) {
-    display : block;
+  display: none;
+  @include mixin.mq(md) {
+    display: block;
   }
 }
 
-@include breakpoint(sp) {
-
-  #responsive_flg {
-    display : none;
-  }
-}
 /* clearfix */
 
 .clearfix::after {
-  clear : both;
-  content : ".";
-  display : block;
-  height : 0px;
-  line-height : 0;
-  visibility : hidden;
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0px;
+  line-height: 0;
+  visibility: hidden;
 }
 
 .clearfix {
-  *zoom : 1;
+  *zoom: 1;
 }

@@ -1,0 +1,36 @@
+// # text
+$base_font_size: 16px!default;
+$line_height: 1.5!default;
+$font_color: #363636!default;
+$-webkit-tap-highlight: false!default;
+
+$black: #000!default;
+
+// link
+$link_color: #363636!default;
+$link_hover_color: #444444!default;
+
+$fw-light: 300 !default;
+$fw-regular: 400 !default;
+$fw-midium: 500 !default;
+$fw-bold: 700 !default;
+
+//和英混在の場合は優先したい英語フォントを先頭に設定する
+$default: "Lato", "Noto Sans JP", "游ゴシック体", "Yu Gothic", YuGothic,
+  "Helvetica Neue", Helvetica, Arial, "ヒラギノ角ゴ Pro W3",
+  "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo,
+  "ＭＳ Ｐゴシック", "MS PGothic", sans-serif!default;
+
+// BREAKPOINT
+// --------------------
+$breakpoint-sm: 640px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 1024px !default;
+$breakpoint-xl: 1280px !default;
+
+$breakpoints: (
+  'sm': 'screen and (max-width: 640px)',
+  'md': 'screen and (max-width: 768px)',
+  'lg': 'screen and (max-width: 1024px)',
+  'xl': 'screen and (max-width: 1280px)',
+) !default;
